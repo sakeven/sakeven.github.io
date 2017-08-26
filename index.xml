@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sakeven&#39;s Blog</title>
+    <link>https://sakeven.me/</link>
+    <description>Recent content on Sakeven&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 02 Aug 2017 18:10:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://sakeven.me/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Kubernetes Scheduler</title>
+      <link>https://sakeven.me/posts/2017/08/02/kubernetes-scheduler/</link>
+      <pubDate>Wed, 02 Aug 2017 18:10:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/posts/2017/08/02/kubernetes-scheduler/</guid>
+      <description>目标 公平：如何保证每个节点都能被分配资源 资源高效利用：集群所有资源最大化使用 效率：调度的性能要好，能够尽快地对大批量的 Pod 完成调度工作 灵活：允</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes QoS</title>
+      <link>https://sakeven.me/posts/2017/07/30/kubernetes-qos/</link>
+      <pubDate>Sun, 30 Jul 2017 18:10:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/posts/2017/07/30/kubernetes-qos/</guid>
+      <description>Pod 的 QoS 分为三个级别：Guaranteed、Burstable、BestEffort。 其等级划分与 Pod 的资源（CPU、内存）要求有关： BestEffort 当 Pod 中的</description>
+    </item>
+    
+    <item>
+      <title>The Art of Exploitation</title>
+      <link>https://sakeven.me/posts/2016/05/10/the-art-of-exploitation/</link>
+      <pubDate>Tue, 10 May 2016 22:37:04 +0800</pubDate>
+      
+      <guid>https://sakeven.me/posts/2016/05/10/the-art-of-exploitation/</guid>
+      <description>1. 栈保护 在函数内有这样一段汇编： 0x000000000040055d &amp;lt;+0&amp;gt;: push rbp 0x000000000040055e &amp;lt;+1&amp;gt;: mov rbp,rsp 0x0000000000400561 &amp;lt;+4&amp;gt;: sub rsp,0x50 . . . 0x0000000000400575 &amp;lt;+24&amp;gt;: mov rax,QWORD PTR fs:0x28 0x000000000040057e &amp;lt;+33&amp;gt;: mov QWORD PTR [rbp-0x8],rax . . . 0x000000000040058f &amp;lt;+50&amp;gt;: mov rax,QWORD PTR [rbp-0x8] 0x0000000000400593 &amp;lt;+54&amp;gt;: xor rax,QWORD PTR fs:0x28 0x000000000040059c &amp;lt;+63&amp;gt;: je 0x4005a3 &amp;lt;test_function+70&amp;gt; 0x000000000040059e &amp;lt;+65&amp;gt;: call 0x400440 &amp;lt;__stack_chk_fail@plt&amp;gt; 0x00000000004005a3 &amp;lt;+70&amp;gt;:</description>
+    </item>
+    
+    <item>
+      <title>GDB</title>
+      <link>https://sakeven.me/posts/2016/05/09/gdb/</link>
+      <pubDate>Mon, 09 May 2016 15:18:01 +0800</pubDate>
+      
+      <guid>https://sakeven.me/posts/2016/05/09/gdb/</guid>
+      <description>设置 intel 格式汇编 在 ~/.gdbinit中： set disassembly intel 查看寄存器 (gdb) i r rax 0x4005a5 4195749 rbx 0x0 0 rcx 0x0 0 rdx 0x7fffffffe628 140737488348712 rsi 0x7fffffffe618 140737488348696 rdi 0x1 1 rbp 0x7fffffffe530 0x7fffffffe530 rsp 0x7fffffffe530 0x7fffffffe530 r8 0x7ffff7dd4e80 140737351863936 r9 0x7ffff7dea560 140737351951712 r10 0x7fffffffe3c0 140737488348096 r11 0x7ffff7a36dd0 140737348070864 r12 0x400470 4195440</description>
+    </item>
+    
+    <item>
+      <title>Qemu Install</title>
+      <link>https://sakeven.me/posts/2016/04/29/qemu-install/</link>
+      <pubDate>Fri, 29 Apr 2016 15:08:36 +0800</pubDate>
+      
+      <guid>https://sakeven.me/posts/2016/04/29/qemu-install/</guid>
+      <description>qemu 在 ubuntu 14.04 下安装 qemu 的 README.md 写的安装方式过于简略。实际上 qemu 的编译安装比较麻烦，需要下载一些依赖。 以下是安装依赖，并配置编译安装 qemu 到 /usr/local/bin wget http://wiki.qemu-project.org/download/qemu-2.6.0-rc3.tar.bz2 tar jxvf qemu-2.6.0-rc3.tar.bz2 cd qemu-2.6.0-rc3/ sudo</description>
+    </item>
+    
+    <item>
+      <title>ShadowSocks Analysis</title>
+      <link>https://sakeven.me/posts/2016/04/28/shadowsocks-analysis/</link>
+      <pubDate>Thu, 28 Apr 2016 21:32:52 +0800</pubDate>
+      
+      <guid>https://sakeven.me/posts/2016/04/28/shadowsocks-analysis/</guid>
+      <description>Socks5 协议 Socks5 是一种代理协议，常见的还有 http/https、socks4 代理。支持 TCP/UDP。 基于 TCP 的 socks5 1. 客户端向代理发送请求进行协商认证：</description>
+    </item>
+    
+    <item>
+      <title>Function Pointer</title>
+      <link>https://sakeven.me/posts/2014/11/08/function-pointer/</link>
+      <pubDate>Sat, 08 Nov 2014 21:00:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/posts/2014/11/08/function-pointer/</guid>
+      <description>定义 函数指针是指向函数的指针。 函数指针的声明方法为： 返回值类型 ( * 指针变量名) ([形参列表]); 如： int (*proc)(int); // 声明函数指针 proc 使用 #include &amp;lt;stdio.h&amp;gt; int add(int, int); // 函数</description>
+    </item>
+    
+    <item>
+      <title>Bitwise</title>
+      <link>https://sakeven.me/posts/2014/04/06/bitwise/</link>
+      <pubDate>Sun, 06 Apr 2014 19:17:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/posts/2014/04/06/bitwise/</guid>
+      <description>大小写互相转换 如果仔细观察 ASCII 码表的话，就可以发现大小写字母的二进制表示中第 5 位相差一个 1 。于是大小写转换可以写成如下： void ch(char *c) { *c = (*c) ^ (1&amp;lt;&amp;lt;5); } 计</description>
+    </item>
+    
+    <item>
+      <title>Prime</title>
+      <link>https://sakeven.me/posts/2013/10/24/prime/</link>
+      <pubDate>Thu, 24 Oct 2013 19:00:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/posts/2013/10/24/prime/</guid>
+      <description>〇. 素数的性质 素数只能被 1 和它本身整除。 一. 素数的普通算法 最朴素的素数测试，试除法，依次检验 \( 1-\sqrt n \) 能否整除 n bool is_prime(int n) { if(n % 2== 0 &amp;amp;&amp;amp; n != 2) return false; for(int</description>
+    </item>
+    
+    <item>
+      <title>About me</title>
+      <link>https://sakeven.me/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://sakeven.me/about/</guid>
+      <description>About me</description>
+    </item>
+    
+  </channel>
+</rss>

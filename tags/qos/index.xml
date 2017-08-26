@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Qos on Sakeven&#39;s Blog</title>
+    <link>https://sakeven.me/tags/qos/</link>
+    <description>Recent content in Qos on Sakeven&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 30 Jul 2017 18:10:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://sakeven.me/tags/qos/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Kubernetes QoS</title>
+      <link>https://sakeven.me/posts/2017/07/30/kubernetes-qos/</link>
+      <pubDate>Sun, 30 Jul 2017 18:10:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/posts/2017/07/30/kubernetes-qos/</guid>
+      <description>Pod 的 QoS 分为三个级别：Guaranteed、Burstable、BestEffort。 其等级划分与 Pod 的资源（CPU、内存）要求有关： BestEffort 当 Pod 中的</description>
+    </item>
+    
+  </channel>
+</rss>

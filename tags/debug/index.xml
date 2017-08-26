@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Debug on Sakeven&#39;s Blog</title>
+    <link>https://sakeven.me/tags/debug/</link>
+    <description>Recent content in Debug on Sakeven&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 09 May 2016 15:18:01 +0800</lastBuildDate>
+    
+	<atom:link href="https://sakeven.me/tags/debug/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>GDB</title>
+      <link>https://sakeven.me/posts/2016/05/09/gdb/</link>
+      <pubDate>Mon, 09 May 2016 15:18:01 +0800</pubDate>
+      
+      <guid>https://sakeven.me/posts/2016/05/09/gdb/</guid>
+      <description>设置 intel 格式汇编 在 ~/.gdbinit中： set disassembly intel 查看寄存器 (gdb) i r rax 0x4005a5 4195749 rbx 0x0 0 rcx 0x0 0 rdx 0x7fffffffe628 140737488348712 rsi 0x7fffffffe618 140737488348696 rdi 0x1 1 rbp 0x7fffffffe530 0x7fffffffe530 rsp 0x7fffffffe530 0x7fffffffe530 r8 0x7ffff7dd4e80 140737351863936 r9 0x7ffff7dea560 140737351951712 r10 0x7fffffffe3c0 140737488348096 r11 0x7ffff7a36dd0 140737348070864 r12 0x400470 4195440</description>
+    </item>
+    
+  </channel>
+</rss>

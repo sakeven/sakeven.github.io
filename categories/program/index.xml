@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Program on Sakeven&#39;s Blog</title>
+    <link>https://sakeven.me/categories/program/</link>
+    <description>Recent content in Program on Sakeven&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 08 Nov 2014 21:00:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://sakeven.me/categories/program/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Function Pointer</title>
+      <link>https://sakeven.me/posts/2014/11/08/function-pointer/</link>
+      <pubDate>Sat, 08 Nov 2014 21:00:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/posts/2014/11/08/function-pointer/</guid>
+      <description>定义 函数指针是指向函数的指针。 函数指针的声明方法为： 返回值类型 ( * 指针变量名) ([形参列表]); 如： int (*proc)(int); // 声明函数指针 proc 使用 #include &amp;lt;stdio.h&amp;gt; int add(int, int); // 函数</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Sakeven&#39;s Blog</title>
+    <link>https://sakeven.me/categories/</link>
+    <description>Recent content in Categories on Sakeven&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 06 Apr 2014 19:17:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://sakeven.me/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Algorithm</title>
+      <link>https://sakeven.me/categories/algorithm/</link>
+      <pubDate>Sun, 06 Apr 2014 19:17:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/categories/algorithm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://sakeven.me/categories/linux/</link>
+      <pubDate>Tue, 10 May 2016 22:37:04 +0800</pubDate>
+      
+      <guid>https://sakeven.me/categories/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Network</title>
+      <link>https://sakeven.me/categories/network/</link>
+      <pubDate>Thu, 28 Apr 2016 21:32:52 +0800</pubDate>
+      
+      <guid>https://sakeven.me/categories/network/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Orchestration</title>
+      <link>https://sakeven.me/categories/orchestration/</link>
+      <pubDate>Wed, 02 Aug 2017 18:10:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/categories/orchestration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Program</title>
+      <link>https://sakeven.me/categories/program/</link>
+      <pubDate>Sat, 08 Nov 2014 21:00:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/categories/program/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

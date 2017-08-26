@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Function Pointer | Sakeven&#39;s Blog</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">Function Pointer</span></h1>
+
+<h2 class="date">2014/11/08</h2>
+
+<p class="terms">
+  
+  
+  Categories: <a href="/categories/program">Program</a> 
+  
+  
+  
+  Tags: <a href="/tags/c">c</a> 
+  
+  
+</p>
+</div>
+
+<main>
+
+
+<h2 id="定义">定义</h2>
+
+<p>函数指针是指向函数的指针。
+函数指针的声明方法为：</p>
+
+<pre><code class="language-none">返回值类型 ( * 指针变量名) ([形参列表]);
+</code></pre>
+
+<p>如：</p>
+
+<pre><code class="language-c++">int (*proc)(int); // 声明函数指针 proc 
+</code></pre>
+
+<h2 id="使用">使用</h2>
+
+<pre><code class="language-c++">#include &lt;stdio.h&gt;
+
+int add(int, int); // 函数 add 声明
+ 
+int main(int argc, char const *argv[])
+{
+    int (*proc)(int, int); // 函数指针 proc 声明
+
+    proc = add;   // 赋值
+    
+    proc(2, 2);    // 输出 4
+    (*proc)(2, 1); // 输出 3
+
+    add(2, 3);     // 输出 5
+    (*add)(2, 4);  // 输出 6
+
+    proc = &amp;add;  // 赋值 
+    
+    proc(5, 5);    // 输出 10
+    (*proc)(5, 6); // 输出 11
+    
+    return 0;
+}
+
+int add(int a, int b){ // 函数 add 定义
+    printf(&quot;%d\n&quot;, a + b);
+    return a + b;
+} 
+</code></pre>
+
+<h2 id="区别">区别</h2>
+
+<ol>
+<li><p>与指针函数的区别：函数指针指向函数，而指针函数的返回值是一个指针。</p>
+
+<p>指针函数声明如下：</p>
+
+<pre><code class="language-none"> 返回值类型 * 函数名([形参列表]);
+</code></pre></li>
+
+<li><p>与函数名的区别：函数名也是一个函数指针，但是函数名是个常量，而函数指针通常是个变量。</p></li>
+</ol>
+
+<h2 id="作用">作用</h2>
+
+<h3 id="面向接口编程">面向接口编程：</h3>
+
+<p>接口通常描述一个对象应该具有什么行为方法，是具有面向对象的特点的，而 C 语言是面向过程的。函数指针很好的解决这个问题。</p>
+
+<pre><code class="language-c++">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+#define MAXLEN 4096
+
+void trim(char* str, int (*ptr)(char)) {
+    int i = 0, j = 0;
+    char newstr[MAXLEN];
+
+    while(str[i]){
+        if ( ptr(str[i]) != 1 ) {
+            newstr[j++] = str[i];
+        }
+        i ++;
+    }
+    newstr[j] = 0;
+
+    printf(&quot;%s\n&quot;, newstr);
+}
+
+int deleteSpace(char c) {
+    if (c == ' ') {
+        return 1;
+    }
+    return 0;
+}
+
+int deleteSharp(char c) {
+    if ( c == '#') {
+        return 1;
+    }
+    return 0;
+}
+
+int main() {
+    char str[] = &quot;Hello World#Yes ha&quot;;
+
+    trim(str, deleteSharp);
+    trim(str, deleteSpace);
+
+    return 0;
+}
+</code></pre>
+
+<p>上面程序 trim 函数根据输入的函数指针 ptr，删除特定的字符。函数 trim 并不关心 ptr 的实现，它仅仅关注它的行为，即参数个数为一个，参数类型为 char，并且返回值类型为 int 的一类函数。</p>
+
+<p>这样一来：</p>
+
+<ul>
+<li>分层设计，底层开发者不需要关注具体函数的实现，而由上层开发者实现。</li>
+<li>松耦合，降低各层之间的耦合度。</li>
+<li>面向接口开发，只要上层开发者提供函数 ptr 的实现，trim 函数就能正常工作。</li>
+</ul>
+
+<h3 id="回调函数-callback">回调函数（callback）</h3>
+
+<p>回调函数就是上层开发者对函数指针的实现。Windows 编程中有许多地方用到回调函数。
+如，计时器中使用回调函数通知程序。</p>
+
+</main>
+
+  <footer>
+  <script>
+(function() {
+    var i, text, code, codes = document.getElementsByTagName('code');
+    for (i = 0; i < codes.length;) {
+      code = codes[i];
+      if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\$[^$]/.test(text) && /[^$]\$$/.test(text)) {
+          text = text.replace(/^\$/, '\\(').replace(/\$$/, '\\)');
+          code.textContent = text;
+        }
+        if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+            /^\$(.|\s)+\$$/.test(text) ||
+            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+          code.outerHTML = code.innerHTML;  
+          continue;
+        }
+      }
+      i++;
+    }
+  })();  
+</script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/go.min.js"></script>
+<script>
+hljs.initHighlightingOnLoad();
+</script>
+  
+  <hr/>
+  &copy; <a href="mailto:sakeven.jiang@gmail.com">Sakven Jiang</a> 2017 | <a href="https://github.com/sakeven">Github</a>
+  
+  </footer>
+  </body>
+</html>
+

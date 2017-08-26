@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scheduler on Sakeven&#39;s Blog</title>
+    <link>https://sakeven.me/tags/scheduler/</link>
+    <description>Recent content in Scheduler on Sakeven&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 02 Aug 2017 18:10:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://sakeven.me/tags/scheduler/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Kubernetes Scheduler</title>
+      <link>https://sakeven.me/posts/2017/08/02/kubernetes-scheduler/</link>
+      <pubDate>Wed, 02 Aug 2017 18:10:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/posts/2017/08/02/kubernetes-scheduler/</guid>
+      <description>目标 公平：如何保证每个节点都能被分配资源 资源高效利用：集群所有资源最大化使用 效率：调度的性能要好，能够尽快地对大批量的 Pod 完成调度工作 灵活：允</description>
+    </item>
+    
+  </channel>
+</rss>
