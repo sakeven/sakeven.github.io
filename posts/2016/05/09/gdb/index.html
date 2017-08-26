@@ -89,46 +89,40 @@ rip            0x4005a9	0x4005a9 &lt;main+4&gt;
 <ol>
 <li><p>command <code>x</code>, short for examine.</p></li>
 
-<li><p>格式化字符</p></li>
-</ol>
+<li><p>格式化字符</p>
 
-<pre><code>  o Display in octal.
-  x Display in hexadecimal.
-  u Display in unsigned, standard base-10 decimal.
-  d Display in decimal
-  t Display in binary.
-  
-  (gdb) x/2x $rip
-</code></pre>
+<pre><code>o Display in octal.
+x Display in hexadecimal.
+u Display in unsigned, standard base-10 decimal.
+d Display in decimal
+t Display in binary.
 
-<ol>
-<li>数据长度字符</li>
-</ol>
+(gdb) x/2x $rip
+</code></pre></li>
 
-<pre><code>  b A single byte
-  h A halfword, which is two bytes in size
-  w A word, which is four bytes in size
-  g A giant, which is eight bytes in size
-  
-  (gdb) x/4xb $rip
-</code></pre>
+<li><p>数据长度字符</p>
 
-<ol>
-<li>指令字符</li>
-</ol>
+<pre><code>b A single byte
+h A halfword, which is two bytes in size
+w A word, which is four bytes in size
+g A giant, which is eight bytes in size
+    
+(gdb) x/4xb $rip
+</code></pre></li>
+
+<li><p>指令字符</p>
 
 <p>i, short for instruction, to display the memory as disassembled assembly language instructions.</p>
 
-<pre><code>  (gdb) x/3i $rip
-</code></pre>
+<pre><code>(gdb) x/3i $rip
+</code></pre></li>
 
-<ol>
-<li>其它格式化字符</li>
-</ol>
+<li><p>其它格式化字符</p>
 
 <p>The c format letter can be used to automatically look up a byte on the ASCII table.</p>
 
-<p>The s format letter will display an entire string of character data.</p>
+<p>The s format letter will display an entire string of character data.</p></li>
+</ol>
 
 </main>
 
