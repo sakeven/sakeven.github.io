@@ -6,10 +6,19 @@
     <description>Recent content on Sakeven&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 27 Aug 2017 14:58:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 27 Aug 2017 22:42:00 +0800</lastBuildDate>
     
 	<atom:link href="https://sakeven.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>RESTful API Design</title>
+      <link>https://sakeven.me/posts/2017/08/27/restful-api-design/</link>
+      <pubDate>Sun, 27 Aug 2017 22:42:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/posts/2017/08/27/restful-api-design/</guid>
+      <description>之前有过多次面试别人的经历，大多简历上会写上使用 RESTful API 进行设计或者对其熟悉。然而问下来，却一知半解。 如果有读者不了解 RESTful API，可以先看看这篇。</description>
+    </item>
     
     <item>
       <title>Create a Hugo Site</title>
