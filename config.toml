@@ -6,7 +6,6 @@ hasCJKLanguage = true
 enableEmoji = true
 
 
-
 [permalinks]
     posts = "/posts/:year/:month/:day/:slug/"
 
