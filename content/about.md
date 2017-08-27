@@ -1,5 +1,5 @@
 ---
-title: 'About me'
+title: 'About Me'
 ---
 
 >我就是我，颜色不一样的烟火。

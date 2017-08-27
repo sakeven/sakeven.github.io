@@ -7,7 +7,7 @@ enableEmoji = true
 
 
 [permalinks]
-    posts = "/posts/:year/:month/:day/:slug/"
+    posts = "/:year/:month/:day/:slug/"
 
 [[menu.main]]
     name = "Home"
@@ -27,4 +27,4 @@ enableEmoji = true
     weight = 4
 
 [params]
-    footer = "&copy; [Sakven Jiang](mailto:sakeven.jiang@gmail.com) 2017 | [Github](https://github.com/sakeven)"
+    footer = "&copy; [Sakven Jiang](mailto:sakeven.jiang@gmail.com) 2017 | [GitHub](https://github.com/sakeven)"
