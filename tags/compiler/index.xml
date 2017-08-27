@@ -13,10 +13,10 @@
     
     <item>
       <title>Start of Hello World</title>
-      <link>https://sakeven.me/posts/2014/11/30/start-of-hello-world/</link>
+      <link>https://sakeven.me/2014/11/30/start-of-hello-world/</link>
       <pubDate>Sun, 30 Nov 2014 23:50:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/posts/2014/11/30/start-of-hello-world/</guid>
+      <guid>https://sakeven.me/2014/11/30/start-of-hello-world/</guid>
       <description>#include &amp;lt;stdio.h&amp;gt; static __attribute__((constructor)) void before() { printf(&amp;quot;Hello&amp;quot;); } static __attribute__((destructor)) void after() { printf(&amp;quot; World!\n&amp;quot;); } int main(int args, char ** argv) { return 0; } 主函数没有任何函数调用，但是输出了 &amp;ldquo;Hello World!&amp;rdquo; 。Why? Answer: 最近去看了下 printf 函数的定义，在 macOS 10.10 中是</description>
     </item>
     

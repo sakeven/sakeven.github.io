@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kubernetes QoS | Sakeven&#39;s Blog</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">Kubernetes QoS</span></h1>
+
+<h2 class="date">2017/07/30</h2>
+
+<p class="terms">
+  
+  
+  Categories: <a href="/categories/orchestration">Orchestration</a> 
+  
+  
+  
+  Tags: <a href="/tags/container">container</a> <a href="/tags/qos">qos</a> 
+  
+  
+</p>
+</div>
+
+<main>
+
+
+<p>Pod 的 QoS 分为三个级别：Guaranteed、Burstable、BestEffort。</p>
+
+<p><img src="/img/qos.png" alt="QoS" /></p>
+
+<p>其等级划分与 Pod 的资源（CPU、内存）要求有关：</p>
+
+<h2 id="besteffort">BestEffort</h2>
+
+<p>当 Pod 中的所有容器都没有设置 limits 和 requests 时。</p>
+
+<pre><code class="language-yaml">containers:
+  name: foo
+    resources:
+  name: bar
+    resources:
+</code></pre>
+
+<h2 id="guaranteed">Guaranteed</h2>
+
+<p>Pod 中的每个容器都需要声明资源（CPU、内存）的 limit。当 Pod 内每个容器的对应资源 limits 与 requests 相等时。注意：某个容器资源的 requests 没有设置时，默认与其 limit 值相同。</p>
+
+<p>例如：
+只有 limit 的 Pod：</p>
+
+<pre><code class="language-yaml">containers:
+  name: foo
+    resources:
+      limits:
+        cpu: 10m
+        memory: 1Gi
+  name: bar
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100Mi
+</code></pre>
+
+<p>有 limit 与 request 的 Pod：</p>
+
+<pre><code class="language-yaml">containers:
+  name: foo
+    resources:
+      limits:
+        cpu: 10m
+        memory: 1Gi
+      requests:
+        cpu: 10m
+        memory: 1Gi
+
+  name: bar
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100Mi
+      requests:
+        cpu: 100m
+        memory: 100Mi
+</code></pre>
+
+<h2 id="burstable">Burstable</h2>
+
+<p>除 BestEffort 与 Guaranteed 之外的情况。</p>
+
+<pre><code class="language-yaml">containers:
+  name: foo
+    resources:
+      limits:
+        cpu: 10m
+        memory: 1Gi
+      requests:
+        cpu: 10m
+        memory: 1Gi
+
+  name: bar
+</code></pre>
+
+</main>
+
+  <footer>
+  <script>
+(function() {
+    var i, text, code, codes = document.getElementsByTagName('code');
+    for (i = 0; i < codes.length;) {
+      code = codes[i];
+      if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\$[^$]/.test(text) && /[^$]\$$/.test(text)) {
+          text = text.replace(/^\$/, '\\(').replace(/\$$/, '\\)');
+          code.textContent = text;
+        }
+        if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+            /^\$(.|\s)+\$$/.test(text) ||
+            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+          code.outerHTML = code.innerHTML;  
+          continue;
+        }
+      }
+      i++;
+    }
+  })();  
+</script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/go.min.js"></script>
+<script>
+hljs.initHighlightingOnLoad();
+</script>
+  
+  <hr/>
+  &copy; <a href="mailto:sakeven.jiang@gmail.com">Sakven Jiang</a> 2017 | <a href="https://github.com/sakeven">GitHub</a>
+  
+  </footer>
+  </body>
+</html>
+

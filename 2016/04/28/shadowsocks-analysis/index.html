@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ShadowSocks Analysis | Sakeven&#39;s Blog</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">ShadowSocks Analysis</span></h1>
+
+<h2 class="date">2016/04/28</h2>
+
+<p class="terms">
+  
+  
+  Categories: <a href="/categories/network">Network</a> 
+  
+  
+  
+  Tags: <a href="/tags/tcp">tcp</a> 
+  
+  
+</p>
+</div>
+
+<main>
+
+
+<h2 id="socks5-协议">Socks5 协议</h2>
+
+<p>Socks5 是一种代理协议，常见的还有 http/https、socks4 代理。支持 TCP/UDP。</p>
+
+<h3 id="基于-tcp-的-socks5">基于 TCP 的 socks5</h3>
+
+<h4 id="1-客户端向代理发送请求进行协商认证">1. 客户端向代理发送请求进行协商认证：</h4>
+
+<table>
+<thead>
+<tr>
+<th>VER</th>
+<th>NMETHODS</th>
+<th>METHODS</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1-255</td>
+</tr>
+</tbody>
+</table>
+
+<ol>
+<li>VER：协议的版本号，0x05</li>
+<li>NMETHODS：METHODS 部分的长度</li>
+<li>METHODS：客户端支持的认证方式列表:
+<code>
+0x00 不需要认证
+0x01 GSSAPI
+0x02 用户名、密码认证
+0x03 - 0x7F 由 IANA 分配（保留）
+0x80 - 0xFE 为私人方法保留
+0xFF 无可接受的方法
+</code></li>
+</ol>
+
+<h4 id="2-代理从客户端提供的认证方式中选择一个-并返回给客户端">2. 代理从客户端提供的认证方式中选择一个，并返回给客户端</h4>
+
+<table>
+<thead>
+<tr>
+<th>VER</th>
+<th>METHOD</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="3-认证结束后-客户端与代理进行正常通信">3. 认证结束后，客户端与代理进行正常通信：</h4>
+
+<p>客户端请求格式：</p>
+
+<table>
+<thead>
+<tr>
+<th>VER</th>
+<th>CMD</th>
+<th>RSV</th>
+<th>ATYP</th>
+<th>DST ADDR</th>
+<th>DST PORT</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0x00</td>
+<td>1</td>
+<td>动态</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+
+<ol>
+<li>CMD：命令码，0x01（CONNECT请求），0x02（BIND请求），0x03（UDP转发）</li>
+<li>RSV：保留字段，0x00</li>
+<li>ATYP “DST ADDR”：根据 ATYP 的不同，DST ADDR（目的地址）长度也不一样
+<code>
+0x01 IPv4 地址，DST ADDR 部分 4 字节长度
+0x03 域名，DST ADDR 第一个字节为域名长度，DST ADDR 剩余的内容为域名，没有\0结尾。
+0x04 IPv6 地址，16 个字节长度。
+</code></li>
+<li>DST PORT：目的地址的端口（网络字节序，大端）</li>
+</ol>
+
+<p>代理响应格式：</p>
+
+<table>
+<thead>
+<tr>
+<th>VER</th>
+<th>REP</th>
+<th>RSV</th>
+<th>ATYP</th>
+<th>BND ADDR</th>
+<th>BND PORT</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0x00</td>
+<td>1</td>
+<td>动态</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+
+<ol>
+<li>REP：响应状态
+<code>
+0x00 表示成功
+0x01 普通SOCKS服务器连接失败
+0x02 现有规则不允许连接
+0x03 网络不可达
+0x04 主机不可达
+0x05 连接被拒
+0x06 TTL超时
+0x07 不支持的命令
+0x08 不支持的地址类型
+0x09 - 0xFF 未定义
+</code></li>
+<li>ATYP “BND ADDR”：同 ATYP “DST ADDR”</li>
+<li>BND PORT：代理服务器使用的端口（网络字节序，大端），BND PORT 和 BND PORT 最好应该返回 DST ADDR 和 DST PORT。</li>
+</ol>
+
+<p>CONNECT</p>
+
+<h3 id="udp-associate">UDP ASSOCIATE</h3>
+
+<p>基于 UDP 的 socks5</p>
+
+<h2 id="shadowsocks-协议">ShadowSocks 协议</h2>
+
+<p>与 socks 协议相比，shadowsocks 协议没有握手过程，不需要对第一次请求进行确认。</p>
+
+<h3 id="1-第一次请求格式">1. 第一次请求格式</h3>
+
+<table>
+<thead>
+<tr>
+<th>IV</th>
+<th>ATYP</th>
+<th>DST ADDR</th>
+<th>DST PORT</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>动态</td>
+<td>1</td>
+<td>动态</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+
+<ol>
+<li>IV：Initialization Vector 初始化向量，长度与加密方法有关，用于解密后面的数据。</li>
+<li>后三个 ATYP，DST ADDR，DST PORT 和 socks5 代理中的一样。</li>
+</ol>
+
+<p>加密：</p>
+
+</main>
+
+  <footer>
+  <script>
+(function() {
+    var i, text, code, codes = document.getElementsByTagName('code');
+    for (i = 0; i < codes.length;) {
+      code = codes[i];
+      if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\$[^$]/.test(text) && /[^$]\$$/.test(text)) {
+          text = text.replace(/^\$/, '\\(').replace(/\$$/, '\\)');
+          code.textContent = text;
+        }
+        if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+            /^\$(.|\s)+\$$/.test(text) ||
+            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+          code.outerHTML = code.innerHTML;  
+          continue;
+        }
+      }
+      i++;
+    }
+  })();  
+</script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/go.min.js"></script>
+<script>
+hljs.initHighlightingOnLoad();
+</script>
+  
+  <hr/>
+  &copy; <a href="mailto:sakeven.jiang@gmail.com">Sakven Jiang</a> 2017 | <a href="https://github.com/sakeven">GitHub</a>
+  
+  </footer>
+  </body>
+</html>
+

@@ -13,19 +13,19 @@
     
     <item>
       <title>Kubernetes Scheduler</title>
-      <link>https://sakeven.me/posts/2017/08/02/kubernetes-scheduler/</link>
+      <link>https://sakeven.me/2017/08/02/kubernetes-scheduler/</link>
       <pubDate>Wed, 02 Aug 2017 18:10:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/posts/2017/08/02/kubernetes-scheduler/</guid>
+      <guid>https://sakeven.me/2017/08/02/kubernetes-scheduler/</guid>
       <description>目标 公平：如何保证每个节点都能被分配资源 资源高效利用：集群所有资源最大化使用 效率：调度的性能要好，能够尽快地对大批量的 Pod 完成调度工作 灵活：允</description>
     </item>
     
     <item>
       <title>Kubernetes QoS</title>
-      <link>https://sakeven.me/posts/2017/07/30/kubernetes-qos/</link>
+      <link>https://sakeven.me/2017/07/30/kubernetes-qos/</link>
       <pubDate>Sun, 30 Jul 2017 18:10:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/posts/2017/07/30/kubernetes-qos/</guid>
+      <guid>https://sakeven.me/2017/07/30/kubernetes-qos/</guid>
       <description>Pod 的 QoS 分为三个级别：Guaranteed、Burstable、BestEffort。 其等级划分与 Pod 的资源（CPU、内存）要求有关： BestEffort 当 Pod 中的</description>
     </item>
     

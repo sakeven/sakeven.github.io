@@ -13,10 +13,10 @@
     
     <item>
       <title>Go Style Guide</title>
-      <link>https://sakeven.me/posts/2014/10/19/go-style-guide/</link>
+      <link>https://sakeven.me/2014/10/19/go-style-guide/</link>
       <pubDate>Sun, 19 Oct 2014 19:00:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/posts/2014/10/19/go-style-guide/</guid>
+      <guid>https://sakeven.me/2014/10/19/go-style-guide/</guid>
       <description>本篇讲的是 Go 代码风格，翻译自 CodeReviewComments。 版权 如何在程序中使用 GNU 许可证 无论使用哪种许可证，使用时需要在每个程序的源文</description>
     </item>
     
