@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web on Sakeven&#39;s Blog</title>
+    <link>https://sakeven.me/tags/web/</link>
+    <description>Recent content in Web on Sakeven&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 27 Aug 2017 14:58:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://sakeven.me/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Create a Hugo Site</title>
+      <link>https://sakeven.me/posts/2017/08/27/create-a-hugo-site/</link>
+      <pubDate>Sun, 27 Aug 2017 14:58:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/posts/2017/08/27/create-a-hugo-site/</guid>
+      <description>最近觉得把工作、学习、生活中的一些事情记录下来比较好，于是昨天花了一个下午搭个人博客。 用的 Hugo，这篇记录下过程。 安装 官方教程提供的是 brew install</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -118,7 +118,7 @@ int check_prime()
 <h3 id="费马小定里">费马小定里</h3>
 
 <blockquote>
-<p>若 n 是一个素数，且 a 与 n 互质, 那么 \(a^{n-1} \equiv 1 (mod n) \)</p>
+<p>若 n 是一个素数，且 a 与 n 互质, 那么 \(a^{n-1} \equiv 1 (mod\ n) \)</p>
 </blockquote>
 
 <p>费马小定理只是个必要条件, 符合费马小定理而非素数的数叫做 Carmichael。前 3 个 Carmichael 数是 561, 1105, 1729。Carmichael 数是非常少的。 在 1~100000000 范围内的整数中，只有 255 个 Carmichael 数。</p>
@@ -128,7 +128,7 @@ int check_prime()
 <h3 id="二次探测定理">二次探测定理</h3>
 
 <blockquote>
-<p>如果 p 是一个素数，\(0&lt;x&lt;p\)，则方程 \(x^2 \equiv 1(mod p)\) 的解为 \(x=1, x=p-1\)</p>
+<p>如果 p 是一个素数，\(0&lt;x&lt;p\)，则方程 \(x^2 \equiv 1(mod\ p)\) 的解为 \(x=1, x=p-1\)</p>
 </blockquote>
 
 <p>根据以上两个定理，得到 Miller-Rabin 算法的一般步骤：</p>
@@ -136,12 +136,12 @@ int check_prime()
 <ol>
 <li>先计算出 m、j，使得 \(n-1=m*2^j\)，其中 m 是正奇数，j 是非负整数</li>
 <li>随机取一个 b，\(b \ge 2 \)</li>
-<li>计算 \( v=b^m mod n \)</li>
+<li>计算 \( v=b^m mod\ n \)</li>
 <li>如果 v==1，通过测试，返回</li>
 <li>令 i=1</li>
 <li>如果 v==n-1，通过测试，返回</li>
 <li>如果 i==j，非素数，结束</li>
-<li>\(v=v^2 mod n \)，\(i=i+1\)</li>
+<li>\(v=v^2 mod\ n \)，\(i=i+1\)</li>
 <li>循环到 5</li>
 </ol>
 

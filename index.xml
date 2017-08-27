@@ -6,10 +6,19 @@
     <description>Recent content on Sakeven&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 02 Aug 2017 18:10:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 27 Aug 2017 14:58:00 +0800</lastBuildDate>
     
 	<atom:link href="https://sakeven.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Create a Hugo Site</title>
+      <link>https://sakeven.me/posts/2017/08/27/create-a-hugo-site/</link>
+      <pubDate>Sun, 27 Aug 2017 14:58:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/posts/2017/08/27/create-a-hugo-site/</guid>
+      <description>最近觉得把工作、学习、生活中的一些事情记录下来比较好，于是昨天花了一个下午搭个人博客。 用的 Hugo，这篇记录下过程。 安装 官方教程提供的是 brew install</description>
+    </item>
     
     <item>
       <title>Kubernetes Scheduler</title>
