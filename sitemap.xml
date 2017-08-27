@@ -43,6 +43,11 @@
   </url>
   
   <url>
+    <loc>https://sakeven.me/posts/2014/10/19/go-style-guide/</loc>
+    <lastmod>2014-10-19T19:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sakeven.me/posts/2014/04/06/bitwise/</loc>
     <lastmod>2014-04-06T19:17:00+08:00</lastmod>
   </url>
@@ -101,6 +106,12 @@
   <url>
     <loc>https://sakeven.me/tags/exploitation/</loc>
     <lastmod>2016-05-10T22:37:04+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sakeven.me/tags/go/</loc>
+    <lastmod>2014-10-19T19:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   

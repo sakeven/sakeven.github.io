@@ -20,5 +20,14 @@
       <description>定义 函数指针是指向函数的指针。 函数指针的声明方法为： 返回值类型 ( * 指针变量名) ([形参列表]); 如： int (*proc)(int); // 声明函数指针 proc 使用 #include &amp;lt;stdio.h&amp;gt; int add(int, int); // 函数</description>
     </item>
     
+    <item>
+      <title>Go Style Guide</title>
+      <link>https://sakeven.me/posts/2014/10/19/go-style-guide/</link>
+      <pubDate>Sun, 19 Oct 2014 19:00:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/posts/2014/10/19/go-style-guide/</guid>
+      <description>本篇讲的是 Go 代码风格，翻译自 CodeReviewComments。 版权 如何在程序中使用 GNU 许可证 无论使用哪种许可证，使用时需要在每个程序的源文</description>
+    </item>
+    
   </channel>
 </rss>
