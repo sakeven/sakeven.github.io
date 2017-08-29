@@ -6,10 +6,19 @@
     <description>Recent content in Graph Theory on Sakeven&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 07 Nov 2014 19:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 07 Nov 2014 19:01:00 +0800</lastBuildDate>
     
 	<atom:link href="https://sakeven.me/tags/graph-theory/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Search in Graph Theory</title>
+      <link>https://sakeven.me/2014/11/07/search-in-graph-theory/</link>
+      <pubDate>Fri, 07 Nov 2014 19:01:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/2014/11/07/search-in-graph-theory/</guid>
+      <description>搜索在图论中有着广泛的应用。许多图的问题需要遍历整个图，才能获得最优解。 深度优先搜索和广度优先搜索是图论中最常用的两种搜索技巧。 深度优先搜索</description>
+    </item>
     
     <item>
       <title>Basic Concept of Graph Theory</title>
