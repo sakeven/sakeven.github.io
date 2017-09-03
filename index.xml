@@ -84,6 +84,24 @@
     </item>
     
     <item>
+      <title>Linux Command</title>
+      <link>https://sakeven.me/2015/08/28/linux-command/</link>
+      <pubDate>Fri, 28 Aug 2015 19:00:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/2015/08/28/linux-command/</guid>
+      <description>echo： 输出一段字符串 与通配符使用可以输出当前目录下的制定文件 find： 查找文件，基本格式 find [目录] [选项] [操作]，如 find . -name &#39;*.go&#39;</description>
+    </item>
+    
+    <item>
+      <title>File Stat</title>
+      <link>https://sakeven.me/2015/06/25/file-stat/</link>
+      <pubDate>Thu, 25 Jun 2015 19:00:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/2015/06/25/file-stat/</guid>
+      <description>查看文件信息 #include &amp;lt;sys/stat.h&amp;gt; int fstat(int filedes, struct stat *buf)); int lstat(const char *pathname, struct stat *buf); int stat(const char *pathname, struct stat *buf); st_mode，文件模式字。 文件类型（S_IFMT）： 普通文件 S_ISREG(m) 目录文件 S_ISDIR(m) 块特殊文件</description>
+    </item>
+    
+    <item>
       <title>Start of Hello World</title>
       <link>https://sakeven.me/2014/11/30/start-of-hello-world/</link>
       <pubDate>Sun, 30 Nov 2014 23:50:00 +0800</pubDate>

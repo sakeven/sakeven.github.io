@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>File Stat | Sakeven&#39;s Blog</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">File Stat</span></h1>
+
+<h2 class="date">2015/06/25</h2>
+
+<p class="terms">
+  
+  
+  Categories: <a href="/categories/unix">Unix</a> <a href="/categories/program">Program</a> 
+  
+  
+  
+  Tags: <a href="/tags/apue">apue</a> <a href="/tags/unix">unix</a> 
+  
+  
+</p>
+</div>
+
+<main>
+<p>查看文件信息</p>
+
+<pre><code class="language-c">#include &lt;sys/stat.h&gt;
+int fstat(int filedes, struct stat *buf));
+int lstat(const char *pathname, struct stat *buf);
+int stat(const char *pathname, struct stat *buf);
+</code></pre>
+
+<p>st_mode，文件模式字。
+文件类型（S_IFMT）：</p>
+
+<ul>
+<li>普通文件  <code>S_ISREG(m)</code></li>
+<li>目录文件  <code>S_ISDIR(m)</code></li>
+<li>块特殊文件  <code>S_ISBLK(m)</code></li>
+<li>字符特殊文件  <code>S_ISCHR(m)</code></li>
+<li>FIFO  <code>S_ISFIFO(m)</code></li>
+<li>套接字（socket） <code>S_ISSOCK(m)</code></li>
+<li>符号链接  <code>S_ISLNK(m)</code></li>
+</ul>
+
+<p>S_ISXXX 宏的实现： <code>#define     S_ISBLK(m) (((m) &amp; S_IFMT) == S_IFBLK)</code></p>
+
+<p>每个文件有 9 个访问权限位：</p>
+
+<pre><code class="language-c">/* Read, write, execute/search by owner */
+#define S_IRWXU 0000700 /* [XSI] RWX mask for owner */
+#define S_IRUSR 0000400 /* [XSI] R for owner */
+#define S_IWUSR 0000200 /* [XSI] W for owner */
+#define S_IXUSR 0000100 /* [XSI] X for owner */
+/* Read, write, execute/search by group */
+#define S_IRWXG 0000070 /* [XSI] RWX mask for group */
+#define S_IRGRP 0000040 /* [XSI] R for group */
+#define S_IWGRP 0000020 /* [XSI] W for group */
+#define S_IXGRP 0000010 /* [XSI] X for group */
+/* Read, write, execute/search by others */
+#define S_IRWXO 0000007 /* [XSI] RWX mask for other */
+#define S_IROTH 0000004 /* [XSI] R for other */
+#define S_IWOTH 0000002 /* [XSI] W for other */
+#define S_IXOTH 0000001 /* [XSI] X for other */
+</code></pre>
+
+<p>目录的读和执行权限是不一样的：读权限允许我们获得该目录下的所有文件名列表，而执行权限则允许我们进入、通过这个目录。</p>
+
+<p>进程每次打开、创建或删除一个文件时，内核就进行文件访问权限测试。</p>
+
+<p>access 函数：访问权限测试函数</p>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+int access(const char *pathname, int mode);
+</code></pre>
+
+<p>mode 有四种取值：</p>
+
+<pre><code class="language-c">#define F_OK 0 /* test for existence of file */
+#define X_OK (1&lt;&lt;0) /* test for execute or search permission */
+#define W_OK (1&lt;&lt;1) /* test for write permission */
+#define R_OK (1&lt;&lt;2) /* test for read permission */
+</code></pre>
+
+<p>umask 函数：权限掩码，设置文件模式创建屏蔽位，即在创建某个文件的时候，屏蔽掉哪些权限。</p>
+
+<pre><code class="language-c">#include &lt;sys/stat.h&gt;
+mode_t umask(mode_t mode);
+</code></pre>
+
+<p>更改文件的访问权限：</p>
+
+<pre><code class="language-c">int chmod(const char *pathname, mode_t mode);
+int fchmod(int filedes, mode_t mode);
+</code></pre>
+
+</main>
+
+  <footer>
+  <script>
+(function() {
+    var i, text, code, codes = document.getElementsByTagName('code');
+    for (i = 0; i < codes.length;) {
+      code = codes[i];
+      if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\$[^$]/.test(text) && /[^$]\$$/.test(text)) {
+          text = text.replace(/^\$/, '\\(').replace(/\$$/, '\\)');
+          code.textContent = text;
+        }
+        if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+            /^\$(.|\s)+\$$/.test(text) ||
+            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+          code.outerHTML = code.innerHTML;  
+          continue;
+        }
+      }
+      i++;
+    }
+  })();  
+</script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/go.min.js"></script>
+<script>
+hljs.initHighlightingOnLoad();
+</script>
+  
+  <hr/>
+  &copy; <a href="mailto:sakeven.jiang@gmail.com">Sakven Jiang</a> 2017 | <a href="https://github.com/sakeven">GitHub</a>
+  
+  </footer>
+  </body>
+</html>
+

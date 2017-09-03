@@ -30,6 +30,24 @@
     </item>
     
     <item>
+      <title>Apue</title>
+      <link>https://sakeven.me/tags/apue/</link>
+      <pubDate>Thu, 25 Jun 2015 19:00:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/tags/apue/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bash</title>
+      <link>https://sakeven.me/tags/bash/</link>
+      <pubDate>Fri, 28 Aug 2015 19:00:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/tags/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Bitwise</title>
       <link>https://sakeven.me/tags/bitwise/</link>
       <pubDate>Sun, 06 Apr 2014 19:17:00 +0800</pubDate>
@@ -102,6 +120,15 @@
     </item>
     
     <item>
+      <title>Linux</title>
+      <link>https://sakeven.me/tags/linux/</link>
+      <pubDate>Fri, 28 Aug 2015 19:00:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Number Theory</title>
       <link>https://sakeven.me/tags/number-theory/</link>
       <pubDate>Thu, 24 Oct 2013 19:00:00 +0800</pubDate>
@@ -143,6 +170,15 @@
       <pubDate>Thu, 28 Apr 2016 21:32:52 +0800</pubDate>
       
       <guid>https://sakeven.me/tags/tcp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Unix</title>
+      <link>https://sakeven.me/tags/unix/</link>
+      <pubDate>Thu, 25 Jun 2015 19:00:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/tags/unix/</guid>
       <description></description>
     </item>
     

@@ -6,10 +6,19 @@
     <description>Recent content in Program on Sakeven&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 30 Nov 2014 23:50:00 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 25 Jun 2015 19:00:00 +0800</lastBuildDate>
     
 	<atom:link href="https://sakeven.me/categories/program/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>File Stat</title>
+      <link>https://sakeven.me/2015/06/25/file-stat/</link>
+      <pubDate>Thu, 25 Jun 2015 19:00:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/2015/06/25/file-stat/</guid>
+      <description>查看文件信息 #include &amp;lt;sys/stat.h&amp;gt; int fstat(int filedes, struct stat *buf)); int lstat(const char *pathname, struct stat *buf); int stat(const char *pathname, struct stat *buf); st_mode，文件模式字。 文件类型（S_IFMT）： 普通文件 S_ISREG(m) 目录文件 S_ISDIR(m) 块特殊文件</description>
+    </item>
     
     <item>
       <title>Start of Hello World</title>

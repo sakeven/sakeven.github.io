@@ -43,6 +43,16 @@
   </url>
   
   <url>
+    <loc>https://sakeven.me/2015/08/28/linux-command/</loc>
+    <lastmod>2015-08-28T19:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sakeven.me/2015/06/25/file-stat/</loc>
+    <lastmod>2015-06-25T19:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sakeven.me/2014/11/30/start-of-hello-world/</loc>
     <lastmod>2014-11-30T23:50:00+08:00</lastmod>
   </url>
@@ -96,6 +106,18 @@
   <url>
     <loc>https://sakeven.me/tags/api/</loc>
     <lastmod>2017-08-27T22:42:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sakeven.me/tags/apue/</loc>
+    <lastmod>2015-06-25T19:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sakeven.me/tags/bash/</loc>
+    <lastmod>2015-08-28T19:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -154,6 +176,12 @@
   </url>
   
   <url>
+    <loc>https://sakeven.me/tags/linux/</loc>
+    <lastmod>2015-08-28T19:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://sakeven.me/categories/linux/</loc>
     <lastmod>2016-05-10T22:37:04+08:00</lastmod>
     <priority>0</priority>
@@ -191,7 +219,7 @@
   
   <url>
     <loc>https://sakeven.me/categories/program/</loc>
-    <lastmod>2014-11-30T23:50:00+08:00</lastmod>
+    <lastmod>2015-06-25T19:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -222,6 +250,18 @@
   <url>
     <loc>https://sakeven.me/tags/tcp/</loc>
     <lastmod>2016-04-28T21:32:52+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sakeven.me/tags/unix/</loc>
+    <lastmod>2015-06-25T19:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sakeven.me/categories/unix/</loc>
+    <lastmod>2015-06-25T19:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   

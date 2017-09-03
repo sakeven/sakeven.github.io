@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on Sakeven&#39;s Blog</title>
+    <link>https://sakeven.me/tags/linux/</link>
+    <description>Recent content in Linux on Sakeven&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 28 Aug 2015 19:00:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://sakeven.me/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Linux Command</title>
+      <link>https://sakeven.me/2015/08/28/linux-command/</link>
+      <pubDate>Fri, 28 Aug 2015 19:00:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/2015/08/28/linux-command/</guid>
+      <description>echo： 输出一段字符串 与通配符使用可以输出当前目录下的制定文件 find： 查找文件，基本格式 find [目录] [选项] [操作]，如 find . -name &#39;*.go&#39;</description>
+    </item>
+    
+  </channel>
+</rss>
