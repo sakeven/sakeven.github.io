@@ -43,6 +43,11 @@
   </url>
   
   <url>
+    <loc>https://sakeven.me/2015/10/29/cfs-scheduler-%E8%AF%91/</loc>
+    <lastmod>2015-10-29T19:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sakeven.me/2015/08/28/linux-command/</loc>
     <lastmod>2015-08-28T19:00:00+08:00</lastmod>
   </url>
@@ -176,14 +181,20 @@
   </url>
   
   <url>
-    <loc>https://sakeven.me/tags/linux/</loc>
-    <lastmod>2015-08-28T19:00:00+08:00</lastmod>
+    <loc>https://sakeven.me/tags/kernel/</loc>
+    <lastmod>2015-10-29T19:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://sakeven.me/categories/linux/</loc>
     <lastmod>2016-05-10T22:37:04+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sakeven.me/tags/linux/</loc>
+    <lastmod>2015-08-28T19:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -254,25 +265,25 @@
   </url>
   
   <url>
-    <loc>https://sakeven.me/tags/unix/</loc>
-    <lastmod>2015-06-25T19:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://sakeven.me/categories/unix/</loc>
     <lastmod>2015-06-25T19:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://sakeven.me/tags/web/</loc>
-    <lastmod>2017-08-27T22:42:00+08:00</lastmod>
+    <loc>https://sakeven.me/tags/unix/</loc>
+    <lastmod>2015-06-25T19:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://sakeven.me/categories/web/</loc>
+    <lastmod>2017-08-27T22:42:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sakeven.me/tags/web/</loc>
     <lastmod>2017-08-27T22:42:00+08:00</lastmod>
     <priority>0</priority>
   </url>

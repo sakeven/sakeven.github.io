@@ -84,6 +84,15 @@
     </item>
     
     <item>
+      <title>CFS Scheduler [译]</title>
+      <link>https://sakeven.me/2015/10/29/cfs-scheduler-%E8%AF%91/</link>
+      <pubDate>Thu, 29 Oct 2015 19:00:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/2015/10/29/cfs-scheduler-%E8%AF%91/</guid>
+      <description>原文：CFS Scheduler 1. 概览 CFS 意为 “完全公平调度器”，是一种新的“桌面”进程调度器，由 Ingo Molnar 实现，在 linux 2.6.23 中并入内核。 它是对之前的 vanilla 调度器的分时调度策略</description>
+    </item>
+    
+    <item>
       <title>Linux Command</title>
       <link>https://sakeven.me/2015/08/28/linux-command/</link>
       <pubDate>Fri, 28 Aug 2015 19:00:00 +0800</pubDate>

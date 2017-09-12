@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CFS Scheduler [译] | Sakeven&#39;s Blog</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">CFS Scheduler [译]</span></h1>
+
+<h2 class="date">2015/10/29</h2>
+
+<p class="terms">
+  
+  
+  Categories: <a href="/categories/linux">Linux</a> 
+  
+  
+  
+  Tags: <a href="/tags/kernel">kernel</a> <a href="/tags/scheduler">scheduler</a> 
+  
+  
+</p>
+</div>
+
+<main>
+
+
+<p>原文：<a href="https://github.com/torvalds/linux/blob/v3.18/Documentation/scheduler/sched-design-CFS.txt">CFS Scheduler</a></p>
+
+<h2 id="1-概览">1.  概览</h2>
+
+<p>CFS 意为 “完全公平调度器”，是一种新的“桌面”进程调度器，由 Ingo Molnar 实现，在 linux 2.6.23 中并入内核。
+它是对之前的 vanilla 调度器的分时调度策略的替代。</p>
+
+<p>80% 的 CFS 设计可以被总结为一句话：CFS 从根本上模仿一种在真实硬件上的“理想的精确的多任务 CPU ”。</p>
+
+<p>“理想多任务 CPU ”是一种拥有 100% 物理能力的（不存在的 :-) ）的 CPU ，在它上面运行的每个任务都有着精确相同的速度，并且是并行的。
+例如：如果这个 CPU 上运行着 2 个任务，那么每个任务都使用 50% 的物理能力等&hellip;确实并行地运行。</p>
+
+<p>在真实的硬件上，我们仅仅只能一次运行一个任务，所以我们需要介绍下“虚拟运行时”的概念。
+在上述的理想多任务 CPU 上，一个任务的虚拟运行时说明了该任务的下一个时间片将要开始执行的时间。
+在实践中，一个任务的虚拟运行时等于它的真实运行时均分到所有的正在运行的任务。</p>
+
+<h2 id="2-少数实现细节">2. 少数实现细节</h2>
+
+<p>在 CFS 中虚拟运行时由每个任务的 <code>p-&gt;se.vruntime</code>（单位：纳秒）表述和记录。
+这样，它就有可能精确的标记和衡量一个任务应该要得到的“期望 CPU 时间”。</p>
+
+<p>［小细节：在“理想”硬件上，在任何时间所有任务都应当拥有相同的 <code>p-&gt;se.vruntime</code> 值－－例如，所有任务都同时地执行并且没有任务会从 CPU 时间的理想分享中得到“超出均衡”这一信息。］</p>
+
+<p>CFS 的任务挑选逻辑是基于 <code>p-&gt;se.vruntime</code>值的，因此这个逻辑很简单：它总是尝试运行具有最小的 <code>p-&gt;se.vruntime</code> 的任务（例如：到目前为止最少执行的任务）。
+CFS 总是试着在可运行任务间分割 CPU 时间，使之尽可能接近“理想多任务硬件”。</p>
+
+<p>其余的 CFS 设计大部分仅仅脱离这个非常简单的概念，加入了一些附加的修饰如优先级，多进程和用于识别休眠任务的不同算法变体。</p>
+
+<h2 id="3-红黑树">3. 红黑树</h2>
+
+<p>CFS 在设计上非常彻底：它不在运行队列中使用旧的结构，而是使用一个时序的红黑树来构建一个未来任务执行的时间线，因此没有“队列切换”这种原始结构（一个影响了之前的 vanilla 调度器和 RSDL/SD 的东西）。</p>
+
+<p>CFS 也维护着 <code>rq-&gt;cfs.min_vruntime</code> 值，这个值是单调递增的，追踪了在运行队列中的所有任务中最小的 vruntime 值。
+我们用 <code>min_vruntime</code> 追踪系统完成的工作总量；这个值用于尽可能把新的活跃实体放置在这棵树的左侧。</p>
+
+<p>我们用 <code>rq-&gt;cfs.load</code> 计算运行队列中所有正在运行的任务总数，这个值等于队列中所有任务的权值之和。</p>
+
+<p>CFS 维护着一棵时序的红黑树，即所有可运行的任务按照 <code>p-&gt;se.vruntime</code> 排序。
+CFS 从这棵树挑选最左侧的任务并附着在这个任务上。
+随着系统的运行，执行过的任务被扔到这棵树里，更多地移动到树的右侧－－慢慢并肯定地给予了每个任务成为“最左侧任务”的机会，因此能在一个确定的时间内使用 CPU 。</p>
+
+<p>综上所述，CFS 这样工作：它运行一个任务一小会儿，并且当这个任务调度（或者一个调度器嘀嗒发生）时，它的 CPU 使用量通过这样计算：
+把它刚刚使用物理 CPU 的（小的）时间加到 <code>p-&gt;se.vruntime</code> 上。
+当 <code>p-&gt;se.vruntime</code> 变得足够高，以至于另外的任务成为由这个值维护的时序红黑树的“最左端”任务，（加上一个小的与最左侧任务相关的一个“间隔”距离量，因此我们不至于过度调度任务和损坏缓存)，然后最新的最左侧任务被选中，接着取代当前的任务。</p>
+
+<h2 id="4-cfs-的一些特性">4. CFS 的一些特性</h2>
+
+<p>CFS 使用纳秒粒度进行计算，并且不依赖任何时钟周期和其他赫兹细节。
+因此，CFS 调度器没有任何之前调度器所有的“时间片”概念，并且没有任何的启发式算法。
+这里仅有一个可配置中心（你必须打开 <code>CONFIG_SCHED_DEBUG</code>）：</p>
+
+<pre><code>/proc/sys/kernel/sched_min_granularity_ns
+</code></pre>
+
+<p>这个可以用于把调度器从“桌面级”（例如低延迟）负荷调整到“服务器级”（例如良好的批处理）负荷。
+<code>SCHED_BATCH</code> 也是由 CFS 调度器模块处理的。</p>
+
+<p>由于 CFS 调度器的设计，它不会使任何现在用于对付旧的调度器的启发式策略的“攻击”变得容易：<code>fiftyp.c</code>，<code>thud.c</code>，<code>chew.c</code>，<code>ring-test.c</code>，<code>massive_intr.c</code> 都能很好地工作，交互上没有任何影响，产生的都是可预期的行为。</p>
+
+<p>CFS 调度器有着比之前 vanilla 调度器更强壮的对优先级和 <code>SCHED_BATCH</code> 的处理能力：两种负荷都是更加强烈独立的。</p>
+
+<p>SMP 负载均衡已经被重构：运行队列步进假设现在已经从负载均衡代码中移除，并且使用了调度模块的迭代器。
+最终负载均衡代码变的更加简洁。</p>
+
+<h2 id="5-调度策略">5. 调度策略</h2>
+
+<p>CFS 实现了三种调度策略：</p>
+
+<ul>
+<li><p><code>SCHED_NORMAL</code> （传统上被称为 <code>SCHED_OTHER</code> ）：这个调度策略用于普通任务。</p></li>
+
+<li><p><code>SCHED_BATCH</code> ：没有像普通任务那样经常的抢占，由此可以让任务运行更长，能够更好地使用缓存，但会损失交互能力。这能很好地适应批处理任务。</p></li>
+
+<li><p><code>SCHED_IDLE</code> ：这个甚至比优先级 19 更弱，但是为了避免陷入产生死锁的优先级逆序问题，这个并不是一个真正理想的时间调度器。</p></li>
+</ul>
+
+<p><code>SCHED_FIFO/_RR</code> 在 <code>sched/rt.c</code> 中实现，并且符合 POSIX 。</p>
+
+<p>来自 util-linux-ng 2.13.1.1 的 chrt 命令可以设置除了 <code>SCHED_IDLE</code> 之外的所有这些调度策略。</p>
+
+<h2 id="6-调度类">6. 调度类</h2>
+
+<p>新的 CFS 调度器被设计成如此,从而引进了“调度类”，调度器模块的一个可扩展层次。
+这些模块封装了调度策略细节，并由调度器核心处理，不需要核心代码对它们负担太多。</p>
+
+<p><code>sched/fair.c</code> 实现了上述的 CFS 调度器。</p>
+
+<p><code>sched/rt.c</code> 用一个比之前 vanilla 调度器更简单的方式实现了 <code>SCHED_FIFO</code> 和 <code>SCHED_RR</code>。
+它使用 100 个运行队列（对于所有 100 运行时优先等级，而不是之前的调度器中的 140 个），并且它不需要过时的数组。</p>
+
+<p>调度类通过 <code>sched_class</code> 结构实现，这个结构包含了在任何时候一个感兴趣的事件发生时所必需的钩子函数。</p>
+
+<p>这里列出了（一部分）钩子函数：</p>
+
+<ul>
+<li><code>enqueue_task(...)</code></li>
+</ul>
+
+<p>当一个任务进入到可运行状态时调用。
+它把一个调度实体（任务）放入红黑树，并且增加 <code>nr_running</code> 这个变量。</p>
+
+<ul>
+<li><code>dequeue_task(...)</code></li>
+</ul>
+
+<p>当一个任务不再可运行，这个函数将被调用，用于把对应的调度实体移出红黑树。
+它会减小 <code>nr_running</code> 变量。</p>
+
+<ul>
+<li><code>yield_task(...)</code></li>
+</ul>
+
+<p>这个函数基本上就是一个出队紧跟着一个入队，除非 <code>sysctl</code> 的 <code>compat_yield</code> 打开；在这种情况下，它把调度实体放置到红黑树的最右侧。</p>
+
+<ul>
+<li><code>check_preempt_curr(...)</code></li>
+</ul>
+
+<p>这个函数检查一个已经进入可运行状态的任务是否应该抢占当前运行的任务。</p>
+
+<ul>
+<li><code>pick_next_task(...)</code></li>
+</ul>
+
+<p>这个函数选择最合适的任务用于接下来的运行。</p>
+
+<ul>
+<li><code>set_curr_task(...)</code></li>
+</ul>
+
+<p>当一个任务改变了它的调度类或者改变了它的任务组，这个函数将被调用。</p>
+
+<ul>
+<li><code>task_tick(...)</code></li>
+</ul>
+
+<p>这个函数大部分由时间嘀嗒函数调用；它可能导致进程切换。它驱动着运行抢占。</p>
+
+<h2 id="7-cfs-的组调度器扩展">7.  CFS 的组调度器扩展</h2>
+
+<p>通常，调度器操作单独的任务，力图为每个任务提供公平的 CPU 时间。一些时候，这对组任务可能也是可取的，为每个任务组提供公平的 CPU  时间。
+例如，我们可能希望它能先为系统里的每个用户提供公平的 CPU 时间，然后为这个用户的每个任务提供。</p>
+
+<p><code>CONFIG_CGROUP_SCHED</code> 力图完全实现这个。
+它让任务分组并且将 CPU 时间公平地分配给每个组。</p>
+
+<p><code>CONFIG_RT_GROUP_SCHED</code> 缺省为组实时（例如，<code>SCHED_FIFO</code> 和 <code>SCHED_RR</code>）任务。</p>
+
+<p><code>CONFIG_FAIR_GROUP_SCHED</code> 缺省为组 CFS（例如，<code>SCHED_NORMAL</code> 和 <code>SCHED_BATCH</code>）任务。</p>
+
+<p>这些选项需要先定义 <code>CONFIG_CGROUPS</code>，并且让管理员用&rdquo; CGROUP &ldquo;伪文件系统创建随机任务组。
+关于这个文件系统的更多信息，请看 Documentation/cgroups/cgroups.txt。</p>
+
+<p>当定义 <code>CONFIG_FAIR_GROUP_SCHED</code> 后，将会为用这个伪文件系统创建的每个组创建一个“ cpu.shares ”文件。
+请看以下例子关于如何用“ CGROUPS ”伪文件系统创建任务组和修改它们的 CPU 共享。</p>
+
+<pre><code class="language-bash"># mount -t tmpfs cgroup_root /sys/fs/cgroup
+# mkdir /sys/fs/cgroup/cpu
+# mount -t cgroup -ocpu none /sys/fs/cgroup/cpu
+# cd /sys/fs/cgroup/cpu
+
+# mkdir multimedia	# create &quot;multimedia&quot; group of tasks
+# mkdir browser		# create &quot;browser&quot; group of tasks
+
+# #Configure the multimedia group to receive twice the CPU bandwidth
+# #that of browser group
+
+# echo 2048 &gt; multimedia/cpu.shares
+# echo 1024 &gt; browser/cpu.shares
+
+# firefox &amp;	# Launch firefox and move it to &quot;browser&quot; group
+# echo &lt;firefox_pid&gt; &gt; browser/tasks
+
+# #Launch gmplayer (or your favourite movie player)
+# echo &lt;movie_player_pid&gt; &gt; multimedia/tasks
+</code></pre>
+
+</main>
+
+  <footer>
+  <script>
+(function() {
+    var i, text, code, codes = document.getElementsByTagName('code');
+    for (i = 0; i < codes.length;) {
+      code = codes[i];
+      if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\$[^$]/.test(text) && /[^$]\$$/.test(text)) {
+          text = text.replace(/^\$/, '\\(').replace(/\$$/, '\\)');
+          code.textContent = text;
+        }
+        if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+            /^\$(.|\s)+\$$/.test(text) ||
+            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+          code.outerHTML = code.innerHTML;  
+          continue;
+        }
+      }
+      i++;
+    }
+  })();  
+</script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/go.min.js"></script>
+<script>
+hljs.initHighlightingOnLoad();
+</script>
+  
+  <hr/>
+  &copy; <a href="mailto:sakeven.jiang@gmail.com">Sakven Jiang</a> 2017 | <a href="https://github.com/sakeven">GitHub</a>
+  
+  </footer>
+  </body>
+</html>
+
