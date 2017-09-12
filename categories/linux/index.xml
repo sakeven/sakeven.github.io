@@ -48,6 +48,15 @@
     </item>
     
     <item>
+      <title>Sched Nice Design[译]</title>
+      <link>https://sakeven.me/2015/10/29/sched-nice-design%E8%AF%91/</link>
+      <pubDate>Thu, 29 Oct 2015 19:00:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/2015/10/29/sched-nice-design%E8%AF%91/</guid>
+      <description>原文： Sched Nice Design 这份文档解释了在新的 Linux 调度器中更新和改善的优先级实现思想。 优先级曾经在 Linux 上一直非常薄弱，人们一直地纠缠我们，让我们实现优先级 +19 的</description>
+    </item>
+    
+    <item>
       <title>Linux Command</title>
       <link>https://sakeven.me/2015/08/28/linux-command/</link>
       <pubDate>Fri, 28 Aug 2015 19:00:00 +0800</pubDate>

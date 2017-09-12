@@ -29,5 +29,14 @@
       <description>原文：CFS Scheduler 1. 概览 CFS 意为 “完全公平调度器”，是一种新的“桌面”进程调度器，由 Ingo Molnar 实现，在 linux 2.6.23 中并入内核。 它是对之前的 vanilla 调度器的分时调度策略</description>
     </item>
     
+    <item>
+      <title>Sched Nice Design[译]</title>
+      <link>https://sakeven.me/2015/10/29/sched-nice-design%E8%AF%91/</link>
+      <pubDate>Thu, 29 Oct 2015 19:00:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/2015/10/29/sched-nice-design%E8%AF%91/</guid>
+      <description>原文： Sched Nice Design 这份文档解释了在新的 Linux 调度器中更新和改善的优先级实现思想。 优先级曾经在 Linux 上一直非常薄弱，人们一直地纠缠我们，让我们实现优先级 +19 的</description>
+    </item>
+    
   </channel>
 </rss>
