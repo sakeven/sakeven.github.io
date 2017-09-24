@@ -17,7 +17,7 @@
       <pubDate>Sun, 24 Sep 2017 17:00:00 +0800</pubDate>
       
       <guid>https://sakeven.me/2017/09/24/flannel-network-practice/</guid>
-      <description>Flannel 是 coreos 公司针对 docker 和 kubernetes 设计的一个网络工具。本篇主要介绍 docker 环境下如何使用 flannel。 编译 flannel 没有提供二进制包，所以需要自己编译。有两个选择： 在</description>
+      <description>Flannel 是 coreos 公司针对 docker 和 kubernetes 设计的一个网络工具。本篇主要介绍 docker 环境下如何使用 flannel。 以下都基于 v0.9.0 版本的 flannel。 编译 flannel 没有提供二进制包</description>
     </item>
     
   </channel>
