@@ -3,7 +3,7 @@ title = "Flannel Network Practice"
 date = "2017-09-24T17:00:00+08:00"
 tags = ["network", "docker", "flannel"]
 categories = ["Network", "Docker"]
-draft = true
+draft = false
 +++
 
 Flannel 是 coreos 公司针对 docker 和 kubernetes 设计的一个网络工具。本篇主要介绍 docker 环境下如何使用 flannel。
