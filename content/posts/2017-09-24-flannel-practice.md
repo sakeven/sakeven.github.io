@@ -7,8 +7,10 @@ draft = false
 +++
 
 Flannel 是 coreos 公司针对 docker 和 kubernetes 设计的一个网络工具。本篇主要介绍 docker 环境下如何使用 flannel。
+以下都基于 v0.9.0 版本的 flannel。 
 
 ## 编译
+
 flannel 没有提供二进制包，所以需要自己编译。有两个选择：
 
 1. 在docker 容器内编译：`make dist/flanneld-amd64`。编译完成后 dist/ 目录下，会生成 flanneld-amd64。
@@ -21,7 +23,9 @@ flannel 没有提供二进制包，所以需要自己编译。有两个选择：
 我们会在 host1 上运行 etcd。Host2 和 host3 则运行 flanneld，这两台主机之间会创建一个虚拟网络 `10.2.0.0/16`，host2 上会分配到 `10.2.x.0/24` 的子网，host3 则分配到 `10.2.y.0/24` 的子网。
 
 ## 运行
+
 ### etcd
+
 首先在 host1 上启动 v2 的 etcd：
 
 ```bash
@@ -47,6 +51,7 @@ flannel.json 内容如下：
 ```
 
 ### flanneld
+
 在 host2 上启动 flanneld：
 
 ```bash
