@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flannel Network Practice | Sakeven&#39;s Blog</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">Flannel Network Practice</span></h1>
+
+<h2 class="date">2017/09/24</h2>
+
+<p class="terms">
+  
+  
+  Categories: <a href="/categories/network">Network</a> <a href="/categories/docker">Docker</a> 
+  
+  
+  
+  Tags: <a href="/tags/network">network</a> <a href="/tags/docker">docker</a> <a href="/tags/flannel">flannel</a> 
+  
+  
+</p>
+</div>
+
+<main>
+
+
+<p>Flannel 是 coreos 公司针对 docker 和 kubernetes 设计的一个网络工具。本篇主要介绍 docker 环境下如何使用 flannel。</p>
+
+<h2 id="编译">编译</h2>
+
+<p>flannel 没有提供二进制包，所以需要自己编译。有两个选择：</p>
+
+<ol>
+<li>在docker 容器内编译：<code>make dist/flanneld-amd64</code>。编译完成后 dist/ 目录下，会生成 flanneld-amd64。</li>
+<li>手动编译： <code>cd flannel; CGO_ENABLED=1 make dist/flanneld</code>。同样在 dist/ 目录下，会生成 flanneld。</li>
+</ol>
+
+<h2 id="架构规划">架构规划</h2>
+
+<p><img src="/img/flannel/flannel-netwok-1.png" alt="flannel" /></p>
+
+<p>我们会在 host1 上运行 etcd。Host2 和 host3 则运行 flanneld，这两台主机之间会创建一个虚拟网络 <code>10.2.0.0/16</code>，host2 上会分配到 <code>10.2.x.0/24</code> 的子网，host3 则分配到 <code>10.2.y.0/24</code> 的子网。</p>
+
+<h2 id="运行">运行</h2>
+
+<h3 id="etcd">etcd</h3>
+
+<p>首先在 host1 上启动 v2 的 etcd：</p>
+
+<pre><code class="language-bash">etcd --listen-client-urls http://0.0.0.0:2379  --advertise-client-urls http://0.0.0.0:2379
+</code></pre>
+
+<p>然后向 etcd 写入配置，键地址必须为 {prefix}/config：</p>
+
+<pre><code class="language-bash">etcdctl set /docker/network/config &lt; flannel.json
+</code></pre>
+
+<p>flannel.json 内容如下：</p>
+
+<pre><code class="language-json">{
+  &quot;Network&quot;: &quot;10.2.0.0/16&quot;,
+  &quot;SubnetLen&quot;: 24,
+  &quot;Backend&quot;: {
+     &quot;Type&quot;: &quot;vxlan&quot;
+  }
+}
+</code></pre>
+
+<h3 id="flanneld">flanneld</h3>
+
+<p>在 host2 上启动 flanneld：</p>
+
+<pre><code class="language-bash">./flanneld -etcd-endpoints=http://172.16.41.130:2379 -iface=ens33 \ 
+  -etcd-prefix=/docker/network
+</code></pre>
+
+<p><code>-etcd-prefix</code> 就是上面通过 etcd 配置虚拟网络时，用到的键前缀。</p>
+
+<p><img src="/img/flannel/flanneld.png" alt="flanneld" /></p>
+
+<p>分配了 <code>10.2.71.0/24</code> 这个子网给 host2，同时将子网信息保存到 <code>/run/flannel/subnet.env</code>，如下：</p>
+
+<p><img src="/img/flannel/flannel-env.png" alt="subnet.env" /></p>
+
+<p>这时通过 <code>ip link</code>，可以发现多了个设备 <code>flannel.1</code>。</p>
+
+<p><img src="/img/flannel/flannel-ip-link.png" alt="ip link" /></p>
+
+<p><code>ip addr show flannel.1</code>，可以看到其 ip 地址信息，为该子网的第一个地址。</p>
+
+<p><img src="/img/flannel/flanneld-ip-addr.png" alt="ip addr" /></p>
+
+<h3 id="docker">docker</h3>
+
+<p>配置 host2 的 docker，修改 <code>/lib/systemd/system/docker.service</code>，在 docker 启动参数上加上：
+<code>--bip= ${FLANNEL_SUBNET} --mtu=${FLANNEL_MTU}</code>，如下图：</p>
+
+<p><img src="/img/flannel/docker-service.png" alt="docker.service" /></p>
+
+<p>重启 docker，<code>systemctl daemon-reload</code>，<code>systemctl restart docker.service</code>。</p>
+
+<p>可以发现 docker0 网桥的地址变为 <code>10.2.71.1/24</code>。</p>
+
+<p><img src="/img/flannel/docker0.png" alt="docker0" /></p>
+
+<p>Host3 同样配置一下 flanneld 和 docker，其 subnet 为 <code>10.2.41.0/24</code>。</p>
+
+<p>最后在 host2 上，通过 <code>ip route</code> 观察其路由：</p>
+
+<p><img src="/img/flannel/flannel-ip-route.png" alt="ip route" /></p>
+
+<p>红框第一条表示，所有目的地址为 <code>10.2.41.0/24</code> 的数据包，都通过 <code>flannel.1</code> 接口发出，下一跳的地址为 <code>10.2.41.0</code>。简单来说，就是本机通往 host3 subnet 的数据包都要经过本机的 <code>flannel.1</code> 接口，然后到达 host3 的 <code>flannel.1</code> 。</p>
+
+<p>第二条为，目的地址为 <code>10.2.71.0/24</code> 的数据包，都要经过 <code>docker0</code> 接口，并且将包的源地址设置为 <code>10.2.71.1</code>。即发往本机 subnet 的数据包，是要经过 <code>docker0</code>，然后转换源地址为 <code>docker0</code> 的地址。</p>
+
+<h2 id="验证">验证</h2>
+
+<p>在 host2 和 host3 分别运行一个容器，任意一个容器都能 ping 通另一个容器的 ip 地址。</p>
+
+<h2 id="docker-新版本问题">docker 新版本问题</h2>
+
+<p>从 docker 1.13 起，docker 主动关闭了 iptables 的 FORWARD 链，导致虚拟网络不通，不能转发数据包。</p>
+
+<p>可以通过 <code>iptables -P FORWARD ACCEPT</code> 解决。</p>
+
+</main>
+
+  <footer>
+  <script>
+(function() {
+    var i, text, code, codes = document.getElementsByTagName('code');
+    for (i = 0; i < codes.length;) {
+      code = codes[i];
+      if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\$[^$]/.test(text) && /[^$]\$$/.test(text)) {
+          text = text.replace(/^\$/, '\\(').replace(/\$$/, '\\)');
+          code.textContent = text;
+        }
+        if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+            /^\$(.|\s)+\$$/.test(text) ||
+            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+          code.outerHTML = code.innerHTML;  
+          continue;
+        }
+      }
+      i++;
+    }
+  })();  
+</script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/go.min.js"></script>
+<script>
+hljs.initHighlightingOnLoad();
+</script>
+  
+  <hr/>
+  &copy; <a href="mailto:sakeven.jiang@gmail.com">Sakven Jiang</a> 2017 | <a href="https://github.com/sakeven">GitHub</a>
+  
+  </footer>
+  </body>
+</html>
+

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Network on Sakeven&#39;s Blog</title>
-    <link>https://sakeven.me/categories/network/</link>
-    <description>Recent content in Network on Sakeven&#39;s Blog</description>
+    <title>Flannel on Sakeven&#39;s Blog</title>
+    <link>https://sakeven.me/tags/flannel/</link>
+    <description>Recent content in Flannel on Sakeven&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 24 Sep 2017 17:00:00 +0800</lastBuildDate>
     
-	<atom:link href="https://sakeven.me/categories/network/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://sakeven.me/tags/flannel/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>https://sakeven.me/2017/09/24/flannel-network-practice/</guid>
       <description>Flannel 是 coreos 公司针对 docker 和 kubernetes 设计的一个网络工具。本篇主要介绍 docker 环境下如何使用 flannel。 编译 flannel 没有提供二进制包，所以需要自己编译。有两个选择： 在</description>
-    </item>
-    
-    <item>
-      <title>ShadowSocks Analysis</title>
-      <link>https://sakeven.me/2016/04/28/shadowsocks-analysis/</link>
-      <pubDate>Thu, 28 Apr 2016 21:32:52 +0800</pubDate>
-      
-      <guid>https://sakeven.me/2016/04/28/shadowsocks-analysis/</guid>
-      <description>Socks5 协议 Socks5 是一种代理协议，常见的还有 http/https、socks4 代理。支持 TCP/UDP。 基于 TCP 的 socks5 1. 客户端向代理发送请求进行协商认证：</description>
     </item>
     
   </channel>
