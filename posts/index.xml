@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Sakeven&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 24 Sep 2017 17:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 15 Oct 2017 20:00:00 +0800</lastBuildDate>
     
 	<atom:link href="https://sakeven.me/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Flannel Code</title>
+      <link>https://sakeven.me/2017/10/15/flannel-code/</link>
+      <pubDate>Sun, 15 Oct 2017 20:00:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/2017/10/15/flannel-code/</guid>
+      <description>Flannel 是 CoreOS 公司针对 docker 和 kubernetes 设计的一个网络工具。本篇主要针对 flannel 源码分析。 以下都基于 v0.9.0 版本的 flannel。 目录结构 Documentation 中是 flannel 相关的文档。 backend 则是 flannel 后端网</description>
+    </item>
     
     <item>
       <title>Flannel Network Practice</title>
