@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://sakeven.me/2017/10/21/etcd-and-raft/</loc>
+    <lastmod>2017-10-21T12:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sakeven.me/2017/10/15/flannel-code/</loc>
     <lastmod>2017-10-15T20:00:00+08:00</lastmod>
   </url>
@@ -166,6 +171,12 @@
   </url>
   
   <url>
+    <loc>https://sakeven.me/categories/consensus/</loc>
+    <lastmod>2017-10-21T12:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://sakeven.me/tags/container/</loc>
     <lastmod>2017-08-02T18:10:00+08:00</lastmod>
     <priority>0</priority>
@@ -178,6 +189,12 @@
   </url>
   
   <url>
+    <loc>https://sakeven.me/categories/distribution-system/</loc>
+    <lastmod>2017-10-21T12:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://sakeven.me/tags/docker/</loc>
     <lastmod>2017-10-15T20:00:00+08:00</lastmod>
     <priority>0</priority>
@@ -186,6 +203,12 @@
   <url>
     <loc>https://sakeven.me/categories/docker/</loc>
     <lastmod>2017-10-15T20:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sakeven.me/tags/etcd/</loc>
+    <lastmod>2017-10-21T12:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -263,7 +286,7 @@
   
   <url>
     <loc>https://sakeven.me/posts/</loc>
-    <lastmod>2017-10-15T20:00:00+08:00</lastmod>
+    <lastmod>2017-10-21T12:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -280,8 +303,14 @@
   </url>
   
   <url>
+    <loc>https://sakeven.me/tags/raft/</loc>
+    <lastmod>2017-10-21T12:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://sakeven.me/</loc>
-    <lastmod>2017-10-15T20:00:00+08:00</lastmod>
+    <lastmod>2017-10-21T12:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   

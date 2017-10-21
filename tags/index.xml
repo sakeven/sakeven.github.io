@@ -102,6 +102,15 @@
     </item>
     
     <item>
+      <title>Etcd</title>
+      <link>https://sakeven.me/tags/etcd/</link>
+      <pubDate>Sat, 21 Oct 2017 12:00:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/tags/etcd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Exploitation</title>
       <link>https://sakeven.me/tags/exploitation/</link>
       <pubDate>Tue, 10 May 2016 22:37:04 +0800</pubDate>
@@ -188,6 +197,15 @@
       <pubDate>Sun, 30 Jul 2017 18:10:00 +0800</pubDate>
       
       <guid>https://sakeven.me/tags/qos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Raft</title>
+      <link>https://sakeven.me/tags/raft/</link>
+      <pubDate>Sat, 21 Oct 2017 12:00:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/tags/raft/</guid>
       <description></description>
     </item>
     
