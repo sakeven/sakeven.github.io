@@ -3,7 +3,7 @@
 msg="$@"
 
 git add .
-git commit -m "$msg"
+git commit -m "$msg" --amend
 git push origin code
 
 
