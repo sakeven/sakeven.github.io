@@ -12,11 +12,11 @@
     
     
     <item>
-      <title>Linux Command</title>
-      <link>https://sakeven.me/2015/08/28/linux-command/</link>
+      <title>Linux 命令行</title>
+      <link>https://sakeven.me/2015/08/28/linux-%E5%91%BD%E4%BB%A4%E8%A1%8C/</link>
       <pubDate>Fri, 28 Aug 2015 19:00:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2015/08/28/linux-command/</guid>
+      <guid>https://sakeven.me/2015/08/28/linux-%E5%91%BD%E4%BB%A4%E8%A1%8C/</guid>
       <description>echo： 输出一段字符串 与通配符使用可以输出当前目录下的制定文件 find： 查找文件，基本格式 find [目录] [选项] [操作]，如 find . -name &#39;*.go&#39;</description>
     </item>
     

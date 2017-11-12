@@ -12,29 +12,29 @@
     
     
     <item>
-      <title>Start of Hello World</title>
-      <link>https://sakeven.me/2014/11/30/start-of-hello-world/</link>
+      <title>从 Hello World 说起</title>
+      <link>https://sakeven.me/2014/11/30/%E4%BB%8E-hello-world-%E8%AF%B4%E8%B5%B7/</link>
       <pubDate>Sun, 30 Nov 2014 23:50:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2014/11/30/start-of-hello-world/</guid>
+      <guid>https://sakeven.me/2014/11/30/%E4%BB%8E-hello-world-%E8%AF%B4%E8%B5%B7/</guid>
       <description>#include &amp;lt;stdio.h&amp;gt; static __attribute__((constructor)) void before() { printf(&amp;quot;Hello&amp;quot;); } static __attribute__((destructor)) void after() { printf(&amp;quot; World!\n&amp;quot;); } int main(int args, char ** argv) { return 0; } 主函数没有任何函数调用，但是输出了 &amp;ldquo;Hello World!&amp;rdquo; 。Why? Answer: 最近去看了下 printf 函数的定义，在 macOS 10.10 中是</description>
     </item>
     
     <item>
-      <title>Function Pointer</title>
-      <link>https://sakeven.me/2014/11/08/function-pointer/</link>
+      <title>函数指针</title>
+      <link>https://sakeven.me/2014/11/08/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/</link>
       <pubDate>Sat, 08 Nov 2014 21:00:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2014/11/08/function-pointer/</guid>
+      <guid>https://sakeven.me/2014/11/08/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/</guid>
       <description>定义 函数指针是指向函数的指针。 函数指针的声明方法为： 返回值类型 ( * 指针变量名) ([形参列表]); 如： int (*proc)(int); // 声明函数指针 proc 使用 #include &amp;lt;stdio.h&amp;gt; int add(int, int); // 函数</description>
     </item>
     
     <item>
-      <title>Bitwise</title>
-      <link>https://sakeven.me/2014/04/06/bitwise/</link>
+      <title>位运算</title>
+      <link>https://sakeven.me/2014/04/06/%E4%BD%8D%E8%BF%90%E7%AE%97/</link>
       <pubDate>Sun, 06 Apr 2014 19:17:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2014/04/06/bitwise/</guid>
+      <guid>https://sakeven.me/2014/04/06/%E4%BD%8D%E8%BF%90%E7%AE%97/</guid>
       <description>大小写互相转换 如果仔细观察 ASCII 码表的话，就可以发现大小写字母的二进制表示中第 5 位相差一个 1 。于是大小写转换可以写成如下： void ch(char *c) { *c = (*c) ^ (1&amp;lt;&amp;lt;5); } 计</description>
     </item>
     

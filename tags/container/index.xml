@@ -12,11 +12,11 @@
     
     
     <item>
-      <title>Kubernetes Scheduler</title>
-      <link>https://sakeven.me/2017/08/02/kubernetes-scheduler/</link>
+      <title>Kubernetes 调度器</title>
+      <link>https://sakeven.me/2017/08/02/kubernetes-%E8%B0%83%E5%BA%A6%E5%99%A8/</link>
       <pubDate>Wed, 02 Aug 2017 18:10:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2017/08/02/kubernetes-scheduler/</guid>
+      <guid>https://sakeven.me/2017/08/02/kubernetes-%E8%B0%83%E5%BA%A6%E5%99%A8/</guid>
       <description>目标 公平：如何保证每个节点都能被分配资源 资源高效利用：集群所有资源最大化使用 效率：调度的性能要好，能够尽快地对大批量的 Pod 完成调度工作 灵活：允</description>
     </item>
     

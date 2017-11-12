@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Linux 命令行 | Sakeven&#39;s Blog</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">Linux 命令行</span></h1>
+
+<h2 class="date">2015/08/28</h2>
+
+<p class="terms">
+  
+  
+  Categories: <a href="/categories/linux">Linux</a> 
+  
+  
+  
+  Tags: <a href="/tags/bash">bash</a> <a href="/tags/linux">linux</a> 
+  
+  
+</p>
+</div>
+
+<main>
+<p>echo：</p>
+
+<ul>
+<li>输出一段字符串</li>
+<li>与通配符使用可以输出当前目录下的制定文件</li>
+</ul>
+
+<p>find：
+      查找文件，基本格式 find [目录] [选项] [操作]，如 <code>find . -name '*.go'</code>，在当前目录查找所有后缀为 <code>.go</code> 的文件</p>
+
+<p>tee：
+     把输入复制到多个地方，并复制到标准输出，如 <code>ls | tee /dve/tty out | wc -l</code></p>
+
+<p>sort：
+     对输入按行排序</p>
+
+<p>例：
+把 .zsh_history 所有含有字符 md5 的行删除</p>
+
+<pre><code class="language-bash">grep &quot;md5&quot; -n .zsh_history | awk  -F : '{printf(&quot;%sd\n&quot;), $1}'| \ 
+  sort -r | xargs -I % sed -i &quot;.bak&quot; % .zsh_history
+</code></pre>
+
+<p>首先找到所有有 md5 的行</p>
+
+<pre><code class="language-bash">grep &quot;md5&quot; -n .zsh_history
+</code></pre>
+
+<p>结果是这样的：</p>
+
+<pre><code>10110:: 1440752051:0;grep &quot;md5&quot; -n .zsh_history
+</code></pre>
+
+<p>然后把行号提取出来，并在每个行号加上字符 d，字符 d 在 sed 命令中表示删除行：</p>
+
+<pre><code class="language-bash">awk  -F : '{printf(&quot;%sd\n&quot;), $1}'
+</code></pre>
+
+<p>这样行号就可以按顺序的打印出来：</p>
+
+<pre><code>10110d
+10111d
+10112d
+</code></pre>
+
+<p>但是这时候不能直接一行一行删，因为删了第一个后面的行号会变！所以需要行号从大到小删！</p>
+
+<pre><code class="language-bash">sort -r
+</code></pre>
+
+<p>这个就能逆序了。
+最后就是删除指定行了</p>
+
+<pre><code class="language-bash">xargs -I % sed -i &quot;.bak&quot; % .zsh_history
+</code></pre>
+
+<p>这里有必要解释下 xargs：
+     -I 参数需要跟一个替换符，这个替换符可以把之后命令中的替换符用 stdin 替换。</p>
+
+</main>
+
+  <footer>
+  <script>
+(function() {
+    var i, text, code, codes = document.getElementsByTagName('code');
+    for (i = 0; i < codes.length;) {
+      code = codes[i];
+      if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\$[^$]/.test(text) && /[^$]\$$/.test(text)) {
+          text = text.replace(/^\$/, '\\(').replace(/\$$/, '\\)');
+          code.textContent = text;
+        }
+        if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+            /^\$(.|\s)+\$$/.test(text) ||
+            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+          code.outerHTML = code.innerHTML;  
+          continue;
+        }
+      }
+      i++;
+    }
+  })();  
+</script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/go.min.js"></script>
+<script>
+hljs.initHighlightingOnLoad();
+</script>
+  
+  <hr/>
+  &copy; <a href="mailto:sakeven.jiang@gmail.com">Sakven Jiang</a> 2017 | <a href="https://github.com/sakeven">GitHub</a>
+  
+  </footer>
+  </body>
+</html>
+

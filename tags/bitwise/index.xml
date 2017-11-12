@@ -12,11 +12,11 @@
     
     
     <item>
-      <title>Bitwise</title>
-      <link>https://sakeven.me/2014/04/06/bitwise/</link>
+      <title>位运算</title>
+      <link>https://sakeven.me/2014/04/06/%E4%BD%8D%E8%BF%90%E7%AE%97/</link>
       <pubDate>Sun, 06 Apr 2014 19:17:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2014/04/06/bitwise/</guid>
+      <guid>https://sakeven.me/2014/04/06/%E4%BD%8D%E8%BF%90%E7%AE%97/</guid>
       <description>大小写互相转换 如果仔细观察 ASCII 码表的话，就可以发现大小写字母的二进制表示中第 5 位相差一个 1 。于是大小写转换可以写成如下： void ch(char *c) { *c = (*c) ^ (1&amp;lt;&amp;lt;5); } 计</description>
     </item>
     
