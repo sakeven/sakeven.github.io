@@ -22,7 +22,7 @@ docker pull golang:1.9.2
 
 在 Linux 系统的就会拉取到一个可以在 Linux 上运行的 `golang` 镜像，而在 Windows 上则是一个大小与 `golang:1.9.2-windowsservercore` 相同（实际上就是同一个）的镜像。除此之外，我们还能在 `ppc64le`、`s390x`、`arm64`、`arm` 架构 Linux 拉取到对应平台的镜像。一行命令走天下，很不错吧！
 
-###群体
+### 群体
 
 今年 9 月份，[Docker 正式宣布官方镜像是多平台的](https://blog.docker.com/2017/09/docker-official-images-now-multi-platform/)。谁会使用这个呢？很少有最终用户会直接创建多架构标签的镜像，因为一般一个业务要么是 Windows 平台，要么是 Linux 平台，谁会闲着在不同平台上，构建一个相同功能的应用呢？
 
@@ -95,7 +95,7 @@ docker pull golang@sha256:3011b5966a3d52b64433af0a784f09d12d7f245e7a2e6b93edab38
 docker pull microsoft/dotnet
 ```
 
- 或者 
+或者
 
 ````bash
 docker pull \
