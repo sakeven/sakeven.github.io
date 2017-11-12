@@ -1,5 +1,5 @@
 +++
-title = "Search in Graph Theory"
+title = "图论之搜索"
 date = "2014-11-07T19:01:00+08:00"
 tags = ["acm", "graph theory"]
 categories = ["Algorithm"]

@@ -1,5 +1,5 @@
 +++
-title = "Flannel Network Practice"
+title = "Flannel 网络实践"
 date = "2017-09-24T17:00:00+08:00"
 tags = ["network", "docker", "flannel"]
 categories = ["Network", "Docker"]

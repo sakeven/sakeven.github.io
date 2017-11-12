@@ -1,5 +1,5 @@
 +++
-title = "Kubernetes Scheduler"
+title = "Kubernetes 调度器"
 date = "2017-08-02T18:10:00+08:00"
 tags = ["container", "scheduler"]
 categories = ["Orchestration"]

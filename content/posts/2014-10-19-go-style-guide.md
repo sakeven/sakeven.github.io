@@ -1,5 +1,5 @@
 +++
-title = "Go Style Guide"
+title = "Go 风格指南"
 date = "2014-10-19T19:00:00+08:00"
 tags = ["go"]
 categories = ["Program"]

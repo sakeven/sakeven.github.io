@@ -1,5 +1,5 @@
 +++
-title = "Start of Hello World"
+title = "从 Hello World 说起"
 date = "2014-11-30T23:50:00+08:00"
 tags = ["c", "compiler"]
 categories = ["Program"]

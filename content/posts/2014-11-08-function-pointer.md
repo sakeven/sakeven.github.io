@@ -1,5 +1,5 @@
 +++
-title = "Function Pointer"
+title = "函数指针"
 date = "2014-11-08T21:00:00+08:00"
 tags = ["c"]
 categories = ["Program"]

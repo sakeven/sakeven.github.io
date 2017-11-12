@@ -1,5 +1,5 @@
 +++
-title = "Qemu Install"
+title = "Qemu 安装"
 date = "2016-04-29T15:08:36+08:00"
 tags = ["os"]
 categories = ["Linux"]
