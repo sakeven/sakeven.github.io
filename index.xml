@@ -6,10 +6,19 @@
     <description>Recent content on Sakeven&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 21 Oct 2017 12:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 13 Nov 2017 01:06:00 +0800</lastBuildDate>
     
 	<atom:link href="https://sakeven.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>多架构 Docker 镜像</title>
+      <link>https://sakeven.me/2017/11/13/%E5%A4%9A%E6%9E%B6%E6%9E%84-docker-%E9%95%9C%E5%83%8F/</link>
+      <pubDate>Mon, 13 Nov 2017 01:06:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/2017/11/13/%E5%A4%9A%E6%9E%B6%E6%9E%84-docker-%E9%95%9C%E5%83%8F/</guid>
+      <description>目前，docker 有两“多”经常会被看到。 一是多阶段构建（multi-stage build），这个功能是在今年年初提议，5 月份正式在 docker 17.05.0-ce 中发</description>
+    </item>
     
     <item>
       <title>Etcd 与 Raft</title>
