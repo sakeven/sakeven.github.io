@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://sakeven.me/2018/03/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8/</loc>
+    <lastmod>2018-03-17T21:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sakeven.me/2017/11/13/%E5%A4%9A%E6%9E%B6%E6%9E%84-docker-%E9%95%9C%E5%83%8F/</loc>
     <lastmod>2017-11-13T01:06:00+08:00</lastmod>
   </url>
@@ -291,13 +296,19 @@
   
   <url>
     <loc>https://sakeven.me/tags/os/</loc>
-    <lastmod>2016-04-29T15:08:36+08:00</lastmod>
+    <lastmod>2018-03-17T21:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sakeven.me/categories/os/</loc>
+    <lastmod>2018-03-17T21:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://sakeven.me/posts/</loc>
-    <lastmod>2017-11-13T01:06:00+08:00</lastmod>
+    <lastmod>2018-03-17T21:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -321,7 +332,7 @@
   
   <url>
     <loc>https://sakeven.me/</loc>
-    <lastmod>2017-11-13T01:06:00+08:00</lastmod>
+    <lastmod>2018-03-17T21:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   

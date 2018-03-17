@@ -2,13 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Os on Sakeven&#39;s Blog</title>
-    <link>https://sakeven.me/tags/os/</link>
+    <link>https://sakeven.me/categories/os/</link>
     <description>Recent content in Os on Sakeven&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 17 Mar 2018 21:00:00 +0800</lastBuildDate>
     
-	<atom:link href="https://sakeven.me/tags/os/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://sakeven.me/categories/os/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>https://sakeven.me/2018/03/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8/</guid>
       <description>最近在看 6.828 这门课，学习了下 boot/boot.S 的逻辑。这里只设计从实模式切换到保护模式，16 位模式切换到 32 位模式。 #include &amp;lt;inc/mmu.h&amp;gt; # Start the CPU: switch to 32-bit protected mode, jump into C. # The BIOS loads this code from the</description>
-    </item>
-    
-    <item>
-      <title>Qemu 安装</title>
-      <link>https://sakeven.me/2016/04/29/qemu-%E5%AE%89%E8%A3%85/</link>
-      <pubDate>Fri, 29 Apr 2016 15:08:36 +0800</pubDate>
-      
-      <guid>https://sakeven.me/2016/04/29/qemu-%E5%AE%89%E8%A3%85/</guid>
-      <description>qemu 在 ubuntu 14.04 下安装 qemu 的 README.md 写的安装方式过于简略。实际上 qemu 的编译安装比较麻烦，需要下载一些依赖。 以下是安装依赖，并配置编译安装 qemu 到 /usr/local/bin wget http://wiki.qemu-project.org/download/qemu-2.6.0-rc3.tar.bz2 tar jxvf qemu-2.6.0-rc3.tar.bz2 cd qemu-2.6.0-rc3/ sudo</description>
     </item>
     
   </channel>
