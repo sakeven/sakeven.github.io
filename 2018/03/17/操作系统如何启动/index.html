@@ -72,8 +72,7 @@ start:
   // 在实模式下，CPU总是进行16位的跳转，即当它在解析跳转的目标时，总是读取内存中的16位的值作为跳转目标。
   // 为此，汇编器要配合CPU，产生这种用16位表示偏移量的代码。
   .code16                     # Assemble for 16-bit mode
-  // 设置数据段地址时，需要 CLI，禁止中断。
-  // 如果允许中断，可能只设置了部分数据段，就调到别处执行，导致错误。
+  // CLI，禁止中断，Bootloader 执行过程中不响应中断。
   cli                         # Disable interrupts
   // CLD 与 STD 是用来操作方向标志位 DF（Direction Flag）。
   // CLD 使 DF 复位，即 DF=0，STD 使 DF 置位，即 DF=1。用于串操作指令中。

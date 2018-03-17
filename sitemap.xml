@@ -205,13 +205,13 @@
   </url>
   
   <url>
-    <loc>https://sakeven.me/tags/docker/</loc>
+    <loc>https://sakeven.me/categories/docker/</loc>
     <lastmod>2017-11-13T01:06:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://sakeven.me/categories/docker/</loc>
+    <loc>https://sakeven.me/tags/docker/</loc>
     <lastmod>2017-11-13T01:06:00+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -259,25 +259,25 @@
   </url>
   
   <url>
-    <loc>https://sakeven.me/tags/linux/</loc>
-    <lastmod>2015-08-28T19:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://sakeven.me/categories/linux/</loc>
     <lastmod>2016-05-10T22:37:04+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://sakeven.me/tags/network/</loc>
-    <lastmod>2017-10-15T20:00:00+08:00</lastmod>
+    <loc>https://sakeven.me/tags/linux/</loc>
+    <lastmod>2015-08-28T19:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://sakeven.me/categories/network/</loc>
+    <lastmod>2017-10-15T20:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sakeven.me/tags/network/</loc>
     <lastmod>2017-10-15T20:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -295,13 +295,13 @@
   </url>
   
   <url>
-    <loc>https://sakeven.me/tags/os/</loc>
+    <loc>https://sakeven.me/categories/os/</loc>
     <lastmod>2018-03-17T21:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://sakeven.me/categories/os/</loc>
+    <loc>https://sakeven.me/tags/os/</loc>
     <lastmod>2018-03-17T21:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -355,25 +355,25 @@
   </url>
   
   <url>
-    <loc>https://sakeven.me/tags/unix/</loc>
-    <lastmod>2015-06-25T19:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://sakeven.me/categories/unix/</loc>
     <lastmod>2015-06-25T19:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://sakeven.me/tags/web/</loc>
-    <lastmod>2017-08-27T22:42:00+08:00</lastmod>
+    <loc>https://sakeven.me/tags/unix/</loc>
+    <lastmod>2015-06-25T19:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://sakeven.me/categories/web/</loc>
+    <lastmod>2017-08-27T22:42:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sakeven.me/tags/web/</loc>
     <lastmod>2017-08-27T22:42:00+08:00</lastmod>
     <priority>0</priority>
   </url>
