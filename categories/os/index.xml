@@ -17,7 +17,7 @@
       <pubDate>Sat, 17 Mar 2018 21:00:00 +0800</pubDate>
       
       <guid>https://sakeven.me/2018/03/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8/</guid>
-      <description>最近在看 6.828 这门课，学习了下 boot/boot.S 的逻辑。这里只设计从实模式切换到保护模式，16 位模式切换到 32 位模式。 #include &amp;lt;inc/mmu.h&amp;gt; # Start the CPU: switch to 32-bit protected mode, jump into C. # The BIOS loads this code from the</description>
+      <description>最近在看 6.828 这门课，学习了下 boot/boot.S 的逻辑。这里只设计从实模式切换到保护模式，16 位模式切换到 32 位模式。 源码阅读 #include &amp;lt;inc/mmu.h&amp;gt; # Start the CPU: switch to 32-bit protected mode, jump into C. # The BIOS loads</description>
     </item>
     
   </channel>
