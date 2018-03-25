@@ -1,20 +1,25 @@
 {{ partial "header.html" . }}
 <div class="article-meta">
-<h1><span class="title">{{ .Title }}</span></h1>
-{{ with .Params.author }}<h2 class="author">{{ . }}</h2>{{ end }}
-{{ if .Params.date }}<h2 class="date">{{ .Date.Format "2006/01/02" }}</h2>{{ end }}
+  <h1>
+    <span class="title">{{ .Title }}</span>
+  </h1>
+  {{ with .Params.author }}
+  <h2 class="author">{{ . }}</h2>{{ end }} 
+  {{ if eq .Title "About Me" }}
+  {{ else }}
+  {{ if .Params.date }}
+  <h2 class="date">{{ .Date.Format "2006/01/02" }}</h2>
+  {{ end }}
+  {{ end }}
 
-<p class="terms">
-  {{ range $i := (slice "categories" "tags") }}
-  {{ with ($.Param $i) }}
-  {{ $i | title }}: {{ range $k := . }}<a href="{{ relURL (print "/" $i "/" $k | urlize) }}">{{$k}}</a> {{ end }}
-  {{ end }}
-  {{ end }}
-</p>
+  <p class="terms">
+    {{ range $i := (slice "categories" "tags") }} {{ with ($.Param $i) }} {{ $i | title }}: {{ range $k := . }}
+    <a href="{{ relURL (print " / " $i "/ " $k | urlize) }}">{{$k}}</a> {{ end }} {{ end }} {{ end }}
+  </p>
 </div>
 
 <main>
-{{ .Content }}
+  {{ .Content }}
 </main>
 
 {{ partial "footer.html" . }}
