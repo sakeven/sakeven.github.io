@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://sakeven.me/2018/03/25/x86-32-%E4%BD%8D%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84%E5%88%86%E9%A1%B5/</loc>
+    <lastmod>2018-03-25T15:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sakeven.me/2018/03/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8/</loc>
     <lastmod>2018-03-17T21:00:00+08:00</lastmod>
   </url>
@@ -205,13 +210,13 @@
   </url>
   
   <url>
-    <loc>https://sakeven.me/tags/docker/</loc>
+    <loc>https://sakeven.me/categories/docker/</loc>
     <lastmod>2017-11-13T01:06:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://sakeven.me/categories/docker/</loc>
+    <loc>https://sakeven.me/tags/docker/</loc>
     <lastmod>2017-11-13T01:06:00+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -259,25 +264,25 @@
   </url>
   
   <url>
-    <loc>https://sakeven.me/tags/linux/</loc>
-    <lastmod>2015-08-28T19:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://sakeven.me/categories/linux/</loc>
     <lastmod>2016-05-10T22:37:04+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://sakeven.me/tags/network/</loc>
-    <lastmod>2017-10-15T20:00:00+08:00</lastmod>
+    <loc>https://sakeven.me/tags/linux/</loc>
+    <lastmod>2015-08-28T19:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://sakeven.me/categories/network/</loc>
+    <lastmod>2017-10-15T20:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sakeven.me/tags/network/</loc>
     <lastmod>2017-10-15T20:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -295,20 +300,20 @@
   </url>
   
   <url>
-    <loc>https://sakeven.me/tags/os/</loc>
-    <lastmod>2018-03-17T21:00:00+08:00</lastmod>
+    <loc>https://sakeven.me/categories/os/</loc>
+    <lastmod>2018-03-25T15:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://sakeven.me/categories/os/</loc>
-    <lastmod>2018-03-17T21:00:00+08:00</lastmod>
+    <loc>https://sakeven.me/tags/os/</loc>
+    <lastmod>2018-03-25T15:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://sakeven.me/posts/</loc>
-    <lastmod>2018-03-17T21:00:00+08:00</lastmod>
+    <lastmod>2018-03-25T15:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -332,7 +337,7 @@
   
   <url>
     <loc>https://sakeven.me/</loc>
-    <lastmod>2018-03-17T21:00:00+08:00</lastmod>
+    <lastmod>2018-03-25T15:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -355,25 +360,25 @@
   </url>
   
   <url>
-    <loc>https://sakeven.me/tags/unix/</loc>
-    <lastmod>2015-06-25T19:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://sakeven.me/categories/unix/</loc>
     <lastmod>2015-06-25T19:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://sakeven.me/tags/web/</loc>
-    <lastmod>2017-08-27T22:42:00+08:00</lastmod>
+    <loc>https://sakeven.me/tags/unix/</loc>
+    <lastmod>2015-06-25T19:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://sakeven.me/categories/web/</loc>
+    <lastmod>2017-08-27T22:42:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sakeven.me/tags/web/</loc>
     <lastmod>2017-08-27T22:42:00+08:00</lastmod>
     <priority>0</priority>
   </url>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>x86 32 位系统下的分页 | Sakeven&#39;s Blog</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+  <h1>
+    <span class="title">x86 32 位系统下的分页</span>
+  </h1>
+   
+  
+  
+  <h2 class="date">2018/03/25</h2>
+  
+  
+
+  <p class="terms">
+      Categories: 
+    <a href="/-categories/-os">OS</a>     Tags: 
+    <a href="/-tags/-os">os</a>   
+  </p>
+</div>
+
+<main>
+  
+
+<p>分页是操作系统内存管理的重要方式。</p>
+
+<p>在操作系统启动过程中，首先需要从实模式（real mode）进入到保护模式（protect mode）。这时使用的内存管理方式只有段翻译（segment translation）。之后需要开启分页（Page translation）。</p>
+
+<h2 id="段翻译">段翻译</h2>
+
+<p>在仅启用段翻译下，逻辑地址（logical addresses）经过段选择子，翻译到线性地址（linear address），此时线性地址与物理地址（physical address）是一致的。</p>
+
+<ol>
+<li>也正是由于线性地址与物理地址是一致的，限制了并行进程（任务）数。在同段下，一个进程的链接地址（link address）与逻辑地址的偏移地址 （offset）是相同的，多个进程同时运行，可能就会互相覆盖，因为你并不知道编译器是如何设置代码的链接地址。</li>
+<li>采用分段管理时，需要为进程分配出一段大块的连续内存。只有当进程退出时，这些内存才会释放。某些未分配内存由于太小，长时间无法被分配出去，就成了内存碎片，导致内存利用率低。</li>
+</ol>
+
+<h2 id="分页">分页</h2>
+
+<p>分页就是为了解决上面的问题的一种方式。在 x86 32 位 CPU 上，我们一般采用二级分页来管理内存。</p>
+
+<p>在分页下，同样需要段翻译。</p>
+
+<h3 id="各种地址">各种地址</h3>
+
+<p><strong>逻辑地址</strong>由 <a href="selector:offset">selector:offset</a>  组成，比如 cs:eip 。<strong>偏移地址（offset）一般等于编译器产生的链接地址</strong>。</p>
+
+<p><strong>线性地址</strong>由  dir:page:offset 组成，dir 和 page 都占 10 位，offset 占 12 位。</p>
+
+<p>逻辑地址的段选择子（selector）通过段翻译机制得到段起始地址，加上逻辑地址的偏移得到线性地址。</p>
+
+<p>这里段翻译与描述符表有关，可以看上篇源码中有关 GDT 的内容。一般选择子经过翻译后，得到的段起始地址都是 0x0，所以，</p>
+
+<p>$$ 线性地址 == 链接地址 $$</p>
+
+<p><strong>物理地址</strong>由线性地址经过页翻译得到。</p>
+
+<p>地址之间的转换如下图：</p>
+
+<p><img src="/img/page.png" alt="mage-20180325150547" /></p>
+
+<h3 id="结构">结构</h3>
+
+<p>页目录（page directory），与页表（page table）的条目结构是相同的，如下图。</p>
+
+<p><img src="/img/pte.png" alt="mage-20180325151649" /></p>
+
+<p>在页目录里，page frame address 是页表首地址；在页表中，则是物理地址上页帧的首地址。</p>
+
+<p>与书本是不是很相似？</p>
+
+<h3 id="多任务">多任务</h3>
+
+<p>因为线性地址是等于链接地址的，如果页目录仍相同，那么不同任务经历页翻译后，其物理地址很可能相同，导致互相覆盖。</p>
+
+<p>所以需要使用不同的页目录与页表，即不同的书，才能保证看到的内容不同。这就是 <strong>cr3 寄存器</strong>的功能，保存当前任务下的页目录，告诉 CPU 现在看的是什么书。</p>
+
+<h3 id="页保护">页保护</h3>
+
+<p>仔细看 Figure5-10 这张图，每个页条目都相应的权限位。</p>
+
+<ol>
+<li><strong>P 位</strong>表示该条目是否存在，如果通过索引拿到的这个条目 P 位为 0，就表示这个条目是空白的，什么内容都没有。</li>
+<li><strong>R/W</strong> 位表示该条目对应的页表或者内存是否可写。1 表示可写。</li>
+<li><strong>U/S</strong> 位表示该条目对应的内容，普通用户是否有权限。</li>
+</ol>
+
+<p>R/W 与 U/S 结合：</p>
+
+<ol>
+<li>U/S 位为 0 时，表示超级用户才能访问对应内存。</li>
+<li>U/S 位为 1 时，如果 R/W 为 0，则普通用户只能读；R/W 为 1时，普通用户可读可写。</li>
+</ol>
+
+</main>
+
+  <footer>
+  <script>
+(function() {
+    var i, text, code, codes = document.getElementsByTagName('code');
+    for (i = 0; i < codes.length;) {
+      code = codes[i];
+      if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\$[^$]/.test(text) && /[^$]\$$/.test(text)) {
+          text = text.replace(/^\$/, '\\(').replace(/\$$/, '\\)');
+          code.textContent = text;
+        }
+        if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+            /^\$(.|\s)+\$$/.test(text) ||
+            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+          code.outerHTML = code.innerHTML;  
+          continue;
+        }
+      }
+      i++;
+    }
+  })();  
+</script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/go.min.js"></script>
+<script>
+hljs.initHighlightingOnLoad();
+</script>
+  
+  <hr/>
+  &copy; <a href="mailto:sakeven.jiang@gmail.com">Sakven Jiang</a> 2017-2018 | <a href="https://github.com/sakeven">GitHub</a>
+  
+  </footer>
+  </body>
+</html>
+
