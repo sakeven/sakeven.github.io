@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>/proc/locks | Sakeven&#39;s Blog</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+  <h1>
+    <span class="title">/proc/locks</span>
+  </h1>
+   
+  
+  
+  <h2 class="date">2018/04/21</h2>
+  
+  
+
+  <p class="terms">
+      Categories: 
+    <a href="/-categories/-os">OS</a> 
+    <a href="/-categories/-linux">Linux</a>     Tags: 
+    <a href="/-tags/-linux">linux</a> 
+    <a href="/-tags/-/proc">/proc</a>   
+  </p>
+</div>
+
+<main>
+  
+
+<p>/proc 是由 Linux 内核提供的伪文件系统。</p>
+
+<p>其中 <code>/proc/locks</code> 则是保存当前由内核锁定的文件的相关信息。</p>
+
+<h1 id="详解">详解</h1>
+
+<pre><code class="language-bash">$ cat /proc/locks
+1: POSIX  ADVISORY  READ  4255 08:01:395841 128 128
+2: POSIX  ADVISORY  READ  4255 08:01:395663 1073741826 1073742335
+3: OFDLCK ADVISORY  WRITE 4254 08:01:395845 0 0
+4: POSIX  ADVISORY  READ  4220 08:01:395841 128 128
+5: POSIX  ADVISORY  READ  4220 08:01:395663 1073741826 1073742335
+6: FLOCK  ADVISORY  WRITE 1291 00:1a:6 0 EOF
+7: POSIX  ADVISORY  READ  2124 08:01:395841 128 128
+8: POSIX  ADVISORY  READ  2124 08:01:395663 1073741826 1073742335
+9: POSIX  ADVISORY  READ  4254 08:01:395841 128 128
+10: POSIX  ADVISORY  READ  4254 08:01:395663 1073741826 1073742335
+11: POSIX  ADVISORY  READ  4244 08:01:395841 128 128
+12: POSIX  ADVISORY  READ  4244 08:01:395663 1073741826 1073742335
+13: POSIX  ADVISORY  WRITE 857 00:17:584 0 EOF
+14: FLOCK  ADVISORY  WRITE 861 00:17:576 0 EOF
+</code></pre>
+
+<p><code>/proc/locks</code> 是一个只读文件，通过 cat 等命令可以读取内容。</p>
+
+<p>第一列，为一个序号，表示第几个锁。</p>
+
+<p>第二列，表示锁的类型，包括 POSIX，OFDLCK，FLOCK 等。</p>
+
+<p>第三列，有两种值，分别为 <code>ADVISORY</code> 和 <code>MANDATORY</code>，表示建议锁，或者强制锁。</p>
+
+<p>第四列，被锁定的文件的权限，表示锁的持有者是只能读文件还是可以写文件。</p>
+
+<p>第五列，表示<strong>锁的创建者的进程 ID</strong>，需要注意的是，这里并非是锁的持有者。</p>
+
+<ol>
+<li>这个锁即使被创建者的子进程继承，这里也只会列出创建者的 Pid。</li>
+<li>这个锁的创建者即使已经退出，只要这个锁还被其他进程继承，仍会显示创建者的 Pid。</li>
+</ol>
+
+<p>第六列，表示文件 ID，格式为 MAJOR-DEVICE:MINOR-DEVICE:INODE-NUMBER。</p>
+
+<p>第七、八列，分别表示文件被锁定的范围起始位置和终止位置。EOF 就表示为文件末尾。</p>
+
+<h1 id="注意点">注意点</h1>
+
+<h2 id="pid">Pid</h2>
+
+<p>我们先创建一个文件锁。</p>
+
+<p>flock 命令可以用来创建文件锁。</p>
+
+<p>如下，-x 表示这是一个独享锁，test 表示我们要锁定的文件，后面跟一个成功锁定文件后执行的命令。</p>
+
+<pre><code class="language-bash">$ flock -x test  sleep 100 &amp;
+[1] 93131
+$ ps aux | grep -v &quot;grep&quot;| grep sleep
+sake      93131  0.0  0.0  18600   752 pts/3    S    04:46   0:00 flock -x test sleep 100
+sake      93132  0.0  0.0  14356   648 pts/3    S    04:46   0:00 sleep 100
+</code></pre>
+
+<p>上面我们可以看到，flock 和 sleep 进程的 Pid 分别为，93131 和 93132。</p>
+
+<p>接着，我们看下 <code>/proc/locks</code> 的内容，有 93131（flock）进程但是无 93132（sleep）进程。</p>
+
+<pre><code class="language-bash">$ grep 93131 /proc/locks
+7: FLOCK  ADVISORY  WRITE 93131 08:01:396420 0 EOF
+$ grep 93132 /proc/locks
+$
+</code></pre>
+
+<p>最后我们 kill 掉 flock 进程，看看 <code>/proc/locks</code> 的内容。</p>
+
+<pre><code class="language-bash">$ kill 93131
+$ ps aux  | grep -v &quot;grep&quot; | grep sleep
+sake      93132  0.0  0.0  14356   648 pts/3    S    04:46   0:00 sleep 100
+[1]+  Terminated              flock -x test sleep 100
+$ grep 93131 /proc/locks
+7: FLOCK  ADVISORY  WRITE 93131 08:01:396420 0 EOF
+$ grep 93132 /proc/locks
+$
+</code></pre>
+
+<p>此时我们去拿锁，发现锁还被占着，因为 sleep 进程继承了 flock 持有的 test 文件的文件描述符，所以 sleep 进程拥有这把锁。</p>
+
+<pre><code class="language-bash">$ flock -nx test ls
+$ echo $?
+1
+</code></pre>
+
+<h2 id="toc_3">-&gt;</h2>
+
+<pre><code class="language-bash">$cat /proc/locks
+1: FLOCK  ADVISORY  WRITE 93268 08:01:396420 0 EOF
+1: -&gt; FLOCK  ADVISORY  WRITE 93270 08:01:396420 0 EOF
+</code></pre>
+
+<p>某些时候，看到 <code>/proc/locks</code> 内容是这样的，有一个 <code>-&gt;</code> 符号。
+表示某个进程正在等待某个文件锁。</p>
+
+<p>这里就是 1 号锁目前被 93268 进程持有，而进程 93270 只能被阻塞。</p>
+
+<h1 id="综述">综述</h1>
+
+<p>在文件锁造成死锁的场景下，可以通过  <code>/proc/locks</code> 来判断，但是无法确切地知道某个文件锁到底被哪些进程持有。</p>
+
+</main>
+
+  <footer>
+  <script>
+(function() {
+    var i, text, code, codes = document.getElementsByTagName('code');
+    for (i = 0; i < codes.length;) {
+      code = codes[i];
+      if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\$[^$]/.test(text) && /[^$]\$$/.test(text)) {
+          text = text.replace(/^\$/, '\\(').replace(/\$$/, '\\)');
+          code.textContent = text;
+        }
+        if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+            /^\$(.|\s)+\$$/.test(text) ||
+            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+          code.outerHTML = code.innerHTML;  
+          continue;
+        }
+      }
+      i++;
+    }
+  })();  
+</script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/go.min.js"></script>
+<script>
+hljs.initHighlightingOnLoad();
+</script>
+  
+  <hr/>
+  &copy; <a href="mailto:sakeven.jiang@gmail.com">Sakven Jiang</a> 2017-2018 | <a href="https://github.com/sakeven">GitHub</a>
+  
+  </footer>
+  </body>
+</html>
+

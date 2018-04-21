@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Sakeven&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 07 Nov 2014 19:01:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 21 Apr 2018 20:00:00 +0800</lastBuildDate>
     
 	<atom:link href="https://sakeven.me/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>/Proc</title>
+      <link>https://sakeven.me/tags/proc/</link>
+      <pubDate>Sat, 21 Apr 2018 20:00:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/tags/proc/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Acm</title>
@@ -167,7 +176,7 @@
     <item>
       <title>Linux</title>
       <link>https://sakeven.me/tags/linux/</link>
-      <pubDate>Fri, 28 Aug 2015 19:00:00 +0800</pubDate>
+      <pubDate>Sat, 21 Apr 2018 20:00:00 +0800</pubDate>
       
       <guid>https://sakeven.me/tags/linux/</guid>
       <description></description>

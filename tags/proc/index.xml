@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Linux on Sakeven&#39;s Blog</title>
-    <link>https://sakeven.me/tags/linux/</link>
-    <description>Recent content in Linux on Sakeven&#39;s Blog</description>
+    <title>/Proc on Sakeven&#39;s Blog</title>
+    <link>https://sakeven.me/tags/proc/</link>
+    <description>Recent content in /Proc on Sakeven&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 21 Apr 2018 20:00:00 +0800</lastBuildDate>
     
-	<atom:link href="https://sakeven.me/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://sakeven.me/tags/proc/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>https://sakeven.me/2018/04/21/proc/locks/</guid>
       <description>/proc 是由 Linux 内核提供的伪文件系统。 其中 /proc/locks 则是保存当前由内核锁定的文件的相关信息。 详解 $ cat /proc/locks 1: POSIX ADVISORY READ 4255 08:01:395841 128 128 2: POSIX ADVISORY READ 4255 08:01:395663 1073741826 1073742335 3: OFDLCK ADVISORY WRITE 4254 08:01:395845 0 0 4: POSIX ADVISORY</description>
-    </item>
-    
-    <item>
-      <title>Linux 命令行</title>
-      <link>https://sakeven.me/2015/08/28/linux-%E5%91%BD%E4%BB%A4%E8%A1%8C/</link>
-      <pubDate>Fri, 28 Aug 2015 19:00:00 +0800</pubDate>
-      
-      <guid>https://sakeven.me/2015/08/28/linux-%E5%91%BD%E4%BB%A4%E8%A1%8C/</guid>
-      <description>echo： 输出一段字符串 与通配符使用可以输出当前目录下的制定文件 find： 查找文件，基本格式 find [目录] [选项] [操作]，如 find . -name &#39;*.go&#39;</description>
     </item>
     
   </channel>

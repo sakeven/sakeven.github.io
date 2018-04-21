@@ -6,10 +6,19 @@
     <description>Recent content in Os on Sakeven&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 25 Mar 2018 15:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 21 Apr 2018 20:00:00 +0800</lastBuildDate>
     
 	<atom:link href="https://sakeven.me/categories/os/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>/proc/locks</title>
+      <link>https://sakeven.me/2018/04/21/proc/locks/</link>
+      <pubDate>Sat, 21 Apr 2018 20:00:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/2018/04/21/proc/locks/</guid>
+      <description>/proc 是由 Linux 内核提供的伪文件系统。 其中 /proc/locks 则是保存当前由内核锁定的文件的相关信息。 详解 $ cat /proc/locks 1: POSIX ADVISORY READ 4255 08:01:395841 128 128 2: POSIX ADVISORY READ 4255 08:01:395663 1073741826 1073742335 3: OFDLCK ADVISORY WRITE 4254 08:01:395845 0 0 4: POSIX ADVISORY</description>
+    </item>
     
     <item>
       <title>x86 32 位系统下的分页</title>
