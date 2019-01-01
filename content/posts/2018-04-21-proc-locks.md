@@ -1,7 +1,7 @@
 +++
 title = "/proc/locks"
 date = "2018-04-21T20:00:00+08:00"
-tags = ["linux", "/proc"]
+tags = ["linux", "/proc","lock"]
 categories = ["OS", "Linux"]
 draft = false
 +++
