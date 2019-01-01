@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Os on Sakeven&#39;s Blog</title>
-    <link>https://sakeven.me/categories/os/</link>
-    <description>Recent content in Os on Sakeven&#39;s Blog</description>
+    <title>Lock on Sakeven&#39;s Blog</title>
+    <link>https://sakeven.me/tags/lock/</link>
+    <description>Recent content in Lock on Sakeven&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 10 May 2018 20:00:00 +0800</lastBuildDate>
     
-	<atom:link href="https://sakeven.me/categories/os/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://sakeven.me/tags/lock/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -27,24 +27,6 @@
       
       <guid>https://sakeven.me/2018/04/21/proc/locks/</guid>
       <description>/proc 是由 Linux 内核提供的伪文件系统。 其中 /proc/locks 则是保存当前由内核锁定的文件的相关信息。 详解 $ cat /proc/locks 1: POSIX ADVISORY READ 4255 08:01:395841 128 128 2: POSIX ADVISORY READ 4255 08:01:395663 1073741826 1073742335 3: OFDLCK ADVISORY WRITE 4254 08:01:395845 0 0 4: POSIX ADVISORY</description>
-    </item>
-    
-    <item>
-      <title>x86 32 位系统下的分页</title>
-      <link>https://sakeven.me/2018/03/25/x86-32-%E4%BD%8D%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84%E5%88%86%E9%A1%B5/</link>
-      <pubDate>Sun, 25 Mar 2018 15:00:00 +0800</pubDate>
-      
-      <guid>https://sakeven.me/2018/03/25/x86-32-%E4%BD%8D%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84%E5%88%86%E9%A1%B5/</guid>
-      <description>分页是操作系统内存管理的重要方式。 在操作系统启动过程中，首先需要从实模式（real mode）进入到保护模式（protect mode）。这时使</description>
-    </item>
-    
-    <item>
-      <title>操作系统如何启动</title>
-      <link>https://sakeven.me/2018/03/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8/</link>
-      <pubDate>Sat, 17 Mar 2018 21:00:00 +0800</pubDate>
-      
-      <guid>https://sakeven.me/2018/03/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8/</guid>
-      <description>最近在看 6.828 这门课，学习了下 boot/boot.S 的逻辑。这里只设计从实模式切换到保护模式，16 位模式切换到 32 位模式。 源码阅读 #include &amp;lt;inc/mmu.h&amp;gt; # Start the CPU: switch to 32-bit protected mode, jump into C. # The BIOS loads</description>
     </item>
     
   </channel>

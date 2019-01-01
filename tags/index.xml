@@ -129,6 +129,15 @@
     </item>
     
     <item>
+      <title>Fcntl</title>
+      <link>https://sakeven.me/tags/fcntl/</link>
+      <pubDate>Thu, 10 May 2018 20:00:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/tags/fcntl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Flannel</title>
       <link>https://sakeven.me/tags/flannel/</link>
       <pubDate>Sun, 15 Oct 2017 20:00:00 +0800</pubDate>
@@ -176,9 +185,18 @@
     <item>
       <title>Linux</title>
       <link>https://sakeven.me/tags/linux/</link>
-      <pubDate>Sat, 21 Apr 2018 20:00:00 +0800</pubDate>
+      <pubDate>Thu, 10 May 2018 20:00:00 +0800</pubDate>
       
       <guid>https://sakeven.me/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Lock</title>
+      <link>https://sakeven.me/tags/lock/</link>
+      <pubDate>Thu, 10 May 2018 20:00:00 +0800</pubDate>
+      
+      <guid>https://sakeven.me/tags/lock/</guid>
       <description></description>
     </item>
     
