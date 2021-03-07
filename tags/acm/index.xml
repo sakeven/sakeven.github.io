@@ -1,40 +1,36 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Acm on Sakeven&#39;s Blog</title>
-    <link>https://sakeven.me/tags/acm/</link>
-    <description>Recent content in Acm on Sakeven&#39;s Blog</description>
+    <title>acm on Sakeven&#39;s Blog</title>
+    <link>https://chelin.life/tags/acm/</link>
+    <description>Recent content in acm on Sakeven&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 07 Nov 2014 19:01:00 +0800</lastBuildDate>
-    
-	<atom:link href="https://sakeven.me/tags/acm/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 07 Nov 2014 19:01:00 +0800</lastBuildDate><atom:link href="https://chelin.life/tags/acm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>图论之搜索</title>
-      <link>https://sakeven.me/2014/11/07/%E5%9B%BE%E8%AE%BA%E4%B9%8B%E6%90%9C%E7%B4%A2/</link>
+      <link>https://chelin.life/2014/11/07/%E5%9B%BE%E8%AE%BA%E4%B9%8B%E6%90%9C%E7%B4%A2/</link>
       <pubDate>Fri, 07 Nov 2014 19:01:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2014/11/07/%E5%9B%BE%E8%AE%BA%E4%B9%8B%E6%90%9C%E7%B4%A2/</guid>
+      <guid>https://chelin.life/2014/11/07/%E5%9B%BE%E8%AE%BA%E4%B9%8B%E6%90%9C%E7%B4%A2/</guid>
       <description>搜索在图论中有着广泛的应用。许多图的问题需要遍历整个图，才能获得最优解。 深度优先搜索和广度优先搜索是图论中最常用的两种搜索技巧。 深度优先搜索</description>
     </item>
     
     <item>
       <title>图论基础概念</title>
-      <link>https://sakeven.me/2014/11/07/%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</link>
+      <link>https://chelin.life/2014/11/07/%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</link>
       <pubDate>Fri, 07 Nov 2014 19:00:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2014/11/07/%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</guid>
+      <guid>https://chelin.life/2014/11/07/%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</guid>
       <description>1.1 什么是图 我们首先需要知道什么是图，才能开始讨论图的性质和算法。这里说的图是一幅像梵高画的《星空》那样的图画么？还是百度地图呢？都不是，那它</description>
     </item>
     
     <item>
       <title>素数</title>
-      <link>https://sakeven.me/2013/10/24/%E7%B4%A0%E6%95%B0/</link>
+      <link>https://chelin.life/2013/10/24/%E7%B4%A0%E6%95%B0/</link>
       <pubDate>Thu, 24 Oct 2013 19:00:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2013/10/24/%E7%B4%A0%E6%95%B0/</guid>
+      <guid>https://chelin.life/2013/10/24/%E7%B4%A0%E6%95%B0/</guid>
       <description>〇. 素数的性质 素数只能被 1 和它本身整除。 一. 素数的普通算法 最朴素的素数测试，试除法，依次检验 \( 1-\sqrt n \) 能否整除 n bool is_prime(int n) { if(n % 2== 0 &amp;amp;&amp;amp; n != 2) return false; for(int</description>
     </item>
     

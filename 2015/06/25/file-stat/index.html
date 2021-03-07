@@ -47,16 +47,12 @@
 
 <main>
   <p>查看文件信息</p>
-
-<pre><code class="language-c">#include &lt;sys/stat.h&gt;
-int fstat(int filedes, struct stat *buf));
-int lstat(const char *pathname, struct stat *buf);
-int stat(const char *pathname, struct stat *buf);
-</code></pre>
-
-<p>st_mode，文件模式字。
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;sys/stat.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">fstat</span>(<span style="color:#66d9ef">int</span> filedes, <span style="color:#66d9ef">struct</span> stat <span style="color:#f92672">*</span>buf));
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">lstat</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>pathname, <span style="color:#66d9ef">struct</span> stat <span style="color:#f92672">*</span>buf);
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">stat</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>pathname, <span style="color:#66d9ef">struct</span> stat <span style="color:#f92672">*</span>buf);
+</code></pre></div><p>st_mode，文件模式字。
 文件类型（S_IFMT）：</p>
-
 <ul>
 <li>普通文件  <code>S_ISREG(m)</code></li>
 <li>目录文件  <code>S_ISDIR(m)</code></li>
@@ -66,58 +62,40 @@ int stat(const char *pathname, struct stat *buf);
 <li>套接字（socket） <code>S_ISSOCK(m)</code></li>
 <li>符号链接  <code>S_ISLNK(m)</code></li>
 </ul>
-
 <p>S_ISXXX 宏的实现： <code>#define     S_ISBLK(m) (((m) &amp; S_IFMT) == S_IFBLK)</code></p>
-
 <p>每个文件有 9 个访问权限位：</p>
-
-<pre><code class="language-c">/* Read, write, execute/search by owner */
-#define S_IRWXU 0000700 /* [XSI] RWX mask for owner */
-#define S_IRUSR 0000400 /* [XSI] R for owner */
-#define S_IWUSR 0000200 /* [XSI] W for owner */
-#define S_IXUSR 0000100 /* [XSI] X for owner */
-/* Read, write, execute/search by group */
-#define S_IRWXG 0000070 /* [XSI] RWX mask for group */
-#define S_IRGRP 0000040 /* [XSI] R for group */
-#define S_IWGRP 0000020 /* [XSI] W for group */
-#define S_IXGRP 0000010 /* [XSI] X for group */
-/* Read, write, execute/search by others */
-#define S_IRWXO 0000007 /* [XSI] RWX mask for other */
-#define S_IROTH 0000004 /* [XSI] R for other */
-#define S_IWOTH 0000002 /* [XSI] W for other */
-#define S_IXOTH 0000001 /* [XSI] X for other */
-</code></pre>
-
-<p>目录的读和执行权限是不一样的：读权限允许我们获得该目录下的所有文件名列表，而执行权限则允许我们进入、通过这个目录。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">/* Read, write, execute/search by owner */</span>
+<span style="color:#75715e">#define S_IRWXU 0000700 </span><span style="color:#75715e">/* [XSI] RWX mask for owner */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define S_IRUSR 0000400 </span><span style="color:#75715e">/* [XSI] R for owner */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define S_IWUSR 0000200 </span><span style="color:#75715e">/* [XSI] W for owner */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define S_IXUSR 0000100 </span><span style="color:#75715e">/* [XSI] X for owner */</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#75715e">/* Read, write, execute/search by group */</span>
+<span style="color:#75715e">#define S_IRWXG 0000070 </span><span style="color:#75715e">/* [XSI] RWX mask for group */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define S_IRGRP 0000040 </span><span style="color:#75715e">/* [XSI] R for group */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define S_IWGRP 0000020 </span><span style="color:#75715e">/* [XSI] W for group */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define S_IXGRP 0000010 </span><span style="color:#75715e">/* [XSI] X for group */</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#75715e">/* Read, write, execute/search by others */</span>
+<span style="color:#75715e">#define S_IRWXO 0000007 </span><span style="color:#75715e">/* [XSI] RWX mask for other */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define S_IROTH 0000004 </span><span style="color:#75715e">/* [XSI] R for other */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define S_IWOTH 0000002 </span><span style="color:#75715e">/* [XSI] W for other */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define S_IXOTH 0000001 </span><span style="color:#75715e">/* [XSI] X for other */</span><span style="color:#75715e">
+</span></code></pre></div><p>目录的读和执行权限是不一样的：读权限允许我们获得该目录下的所有文件名列表，而执行权限则允许我们进入、通过这个目录。</p>
 <p>进程每次打开、创建或删除一个文件时，内核就进行文件访问权限测试。</p>
-
 <p>access 函数：访问权限测试函数</p>
-
-<pre><code class="language-c">#include &lt;unistd.h&gt;
-int access(const char *pathname, int mode);
-</code></pre>
-
-<p>mode 有四种取值：</p>
-
-<pre><code class="language-c">#define F_OK 0 /* test for existence of file */
-#define X_OK (1&lt;&lt;0) /* test for execute or search permission */
-#define W_OK (1&lt;&lt;1) /* test for write permission */
-#define R_OK (1&lt;&lt;2) /* test for read permission */
-</code></pre>
-
-<p>umask 函数：权限掩码，设置文件模式创建屏蔽位，即在创建某个文件的时候，屏蔽掉哪些权限。</p>
-
-<pre><code class="language-c">#include &lt;sys/stat.h&gt;
-mode_t umask(mode_t mode);
-</code></pre>
-
-<p>更改文件的访问权限：</p>
-
-<pre><code class="language-c">int chmod(const char *pathname, mode_t mode);
-int fchmod(int filedes, mode_t mode);
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">access</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>pathname, <span style="color:#66d9ef">int</span> mode);
+</code></pre></div><p>mode 有四种取值：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#define F_OK 0 </span><span style="color:#75715e">/* test for existence of file */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define X_OK (1&lt;&lt;0) </span><span style="color:#75715e">/* test for execute or search permission */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define W_OK (1&lt;&lt;1) </span><span style="color:#75715e">/* test for write permission */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define R_OK (1&lt;&lt;2) </span><span style="color:#75715e">/* test for read permission */</span><span style="color:#75715e">
+</span></code></pre></div><p>umask 函数：权限掩码，设置文件模式创建屏蔽位，即在创建某个文件的时候，屏蔽掉哪些权限。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;sys/stat.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>mode_t <span style="color:#a6e22e">umask</span>(mode_t mode);
+</code></pre></div><p>更改文件的访问权限：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">chmod</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>pathname, mode_t mode);
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">fchmod</span>(<span style="color:#66d9ef">int</span> filedes, mode_t mode);
+</code></pre></div>
 </main>
 
   <footer>
@@ -153,7 +131,7 @@ hljs.initHighlightingOnLoad();
 </script>
   
   <hr/>
-  &copy; <a href="mailto:sakeven.jiang@gmail.com">Sakven Jiang</a> 2017-2019 | <a href="https://github.com/sakeven">GitHub</a>
+  © <a href="mailto:sakeven.jiang@gmail.com">Sakven Jiang</a> 2017-2019 | <a href="https://github.com/sakeven">GitHub</a>
   
   </footer>
   </body>

@@ -44,13 +44,9 @@
 </div>
 
 <main>
-  
-
-<p>最近在看 <a href="https://pdos.csail.mit.edu/6.828/2017/schedule.html">6.828</a> 这门课，学习了下 boot/boot.S 的逻辑。这里只设计从实模式切换到保护模式，16 位模式切换到 32 位模式。</p>
-
+  <p>最近在看 <a href="https://pdos.csail.mit.edu/6.828/2017/schedule.html">6.828</a> 这门课，学习了下 boot/boot.S 的逻辑。这里只设计从实模式切换到保护模式，16 位模式切换到 32 位模式。</p>
 <h1 id="源码阅读">源码阅读</h1>
-
-<pre><code class="language-mips">#include &lt;inc/mmu.h&gt;
+<pre><code class="language-mips" data-lang="mips">#include &lt;inc/mmu.h&gt;
 
 # Start the CPU: switch to 32-bit protected mode, jump into C.
 # The BIOS loads this code from the first sector of the hard disk into
@@ -186,12 +182,8 @@ gdt:
 gdtdesc:
   .word   0x17                            # sizeof(gdt) - 1
   .long   gdt                             # address gdt
-</code></pre>
-
-<h1 id="链接地址">链接地址</h1>
-
+</code></pre><h1 id="链接地址">链接地址</h1>
 <p>The BIOS loads the boot sector into memory starting at address 0x7c00, so this is the boot sector&rsquo;s load address. This is also where the boot sector executes from, so this is also its link address. We set the link address by passing <code>-Ttext 0x7C00</code> to the linker in <code>boot/Makefrag</code>, so the linker will produce the correct memory addresses in the generated code.</p>
-
 <p>改变链接地址，导致 lgdt 时，gdtdesc 的地址出错。</p>
 
 </main>
@@ -229,7 +221,7 @@ hljs.initHighlightingOnLoad();
 </script>
   
   <hr/>
-  &copy; <a href="mailto:sakeven.jiang@gmail.com">Sakven Jiang</a> 2017-2019 | <a href="https://github.com/sakeven">GitHub</a>
+  © <a href="mailto:sakeven.jiang@gmail.com">Sakven Jiang</a> 2017-2019 | <a href="https://github.com/sakeven">GitHub</a>
   
   </footer>
   </body>

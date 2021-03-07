@@ -1,49 +1,45 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Program on Sakeven&#39;s Blog</title>
-    <link>https://sakeven.me/categories/program/</link>
+    <link>https://chelin.life/categories/program/</link>
     <description>Recent content in Program on Sakeven&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 25 Jun 2015 19:00:00 +0800</lastBuildDate>
-    
-	<atom:link href="https://sakeven.me/categories/program/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 25 Jun 2015 19:00:00 +0800</lastBuildDate><atom:link href="https://chelin.life/categories/program/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>File Stat</title>
-      <link>https://sakeven.me/2015/06/25/file-stat/</link>
+      <link>https://chelin.life/2015/06/25/file-stat/</link>
       <pubDate>Thu, 25 Jun 2015 19:00:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2015/06/25/file-stat/</guid>
-      <description>查看文件信息 #include &amp;lt;sys/stat.h&amp;gt; int fstat(int filedes, struct stat *buf)); int lstat(const char *pathname, struct stat *buf); int stat(const char *pathname, struct stat *buf); st_mode，文件模式字。 文件类型（S_IFMT）： 普通文件 S_ISREG(m) 目录文件 S_ISDIR(m) 块特殊文件</description>
+      <guid>https://chelin.life/2015/06/25/file-stat/</guid>
+      <description>查看文件信息 #include &amp;lt;sys/stat.h&amp;gt;int fstat(int filedes, struct stat *buf)); int lstat(const char *pathname, struct stat *buf); int stat(const char *pathname, struct stat *buf); st_mode，文件模式字。 文件类型（S_IFMT）： 普通文件 S_ISREG(m) 目录文件 S_ISDIR(m) 块特殊文件 S_ISBLK(m)</description>
     </item>
     
     <item>
       <title>从 Hello World 说起</title>
-      <link>https://sakeven.me/2014/11/30/%E4%BB%8E-hello-world-%E8%AF%B4%E8%B5%B7/</link>
+      <link>https://chelin.life/2014/11/30/%E4%BB%8E-hello-world-%E8%AF%B4%E8%B5%B7/</link>
       <pubDate>Sun, 30 Nov 2014 23:50:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2014/11/30/%E4%BB%8E-hello-world-%E8%AF%B4%E8%B5%B7/</guid>
-      <description>#include &amp;lt;stdio.h&amp;gt; static __attribute__((constructor)) void before() { printf(&amp;quot;Hello&amp;quot;); } static __attribute__((destructor)) void after() { printf(&amp;quot; World!\n&amp;quot;); } int main(int args, char ** argv) { return 0; } 主函数没有任何函数调用，但是输出了 &amp;ldquo;Hello World!&amp;rdquo; 。Why? Answer: 最近去看了下 printf 函数的定义，在 macOS 10.10 中是</description>
+      <guid>https://chelin.life/2014/11/30/%E4%BB%8E-hello-world-%E8%AF%B4%E8%B5%B7/</guid>
+      <description>#include &amp;lt;stdio.h&amp;gt; static __attribute__((constructor)) void before() { printf(&amp;#34;Hello&amp;#34;); } static __attribute__((destructor)) void after() { printf(&amp;#34; World!\n&amp;#34;); } int main(int args, char ** argv) { return 0; } 主函数没有任何函数调用，但是输出了 &amp;ldquo;Hello World!&amp;rdquo; 。Why? Answer: 最近去看了下 printf 函数的定义，在 macOS 10.10 &amp;lt;stdio.h&amp;gt; 中</description>
     </item>
     
     <item>
       <title>函数指针</title>
-      <link>https://sakeven.me/2014/11/08/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/</link>
+      <link>https://chelin.life/2014/11/08/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/</link>
       <pubDate>Sat, 08 Nov 2014 21:00:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2014/11/08/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/</guid>
+      <guid>https://chelin.life/2014/11/08/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/</guid>
       <description>定义 函数指针是指向函数的指针。 函数指针的声明方法为： 返回值类型 ( * 指针变量名) ([形参列表]); 如： int (*proc)(int); // 声明函数指针 proc 使用 #include &amp;lt;stdio.h&amp;gt; int add(int, int); // 函数</description>
     </item>
     
     <item>
       <title>Go 风格指南</title>
-      <link>https://sakeven.me/2014/10/19/go-%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97/</link>
+      <link>https://chelin.life/2014/10/19/go-%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97/</link>
       <pubDate>Sun, 19 Oct 2014 19:00:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2014/10/19/go-%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97/</guid>
+      <guid>https://chelin.life/2014/10/19/go-%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97/</guid>
       <description>本篇讲的是 Go 代码风格，翻译自 CodeReviewComments。 版权 如何在程序中使用 GNU 许可证 无论使用哪种许可证，使用时需要在每个程序的源文</description>
     </item>
     

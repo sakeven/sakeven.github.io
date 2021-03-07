@@ -44,17 +44,10 @@
 </div>
 
 <main>
-  
-
-<h2 id="设置-intel-格式汇编">设置 intel 格式汇编</h2>
-
+  <h2 id="设置-intel-格式汇编">设置 intel 格式汇编</h2>
 <p>在 <code>~/.gdbinit</code>中：</p>
-
 <pre><code>set disassembly intel 
-</code></pre>
-
-<h2 id="查看寄存器">查看寄存器</h2>
-
+</code></pre><h2 id="查看寄存器">查看寄存器</h2>
 <pre><code>(gdb) i r
 rax            0x4005a5	4195749
 rbx            0x0	0
@@ -82,15 +75,13 @@ fs             0x0	0
 gs             0x0	0
 (gdb) i r rip
 rip            0x4005a9	0x4005a9 &lt;main+4&gt;
-</code></pre>
-
-<h2 id="查看内存">查看内存</h2>
-
+</code></pre><h2 id="查看内存">查看内存</h2>
 <ol>
-<li><p>command <code>x</code>, short for examine.</p></li>
-
-<li><p>格式化字符</p>
-
+<li>
+<p>command <code>x</code>, short for examine.</p>
+</li>
+<li>
+<p>格式化字符</p>
 <pre><code>o Display in octal.
 x Display in hexadecimal.
 u Display in unsigned, standard base-10 decimal.
@@ -99,29 +90,25 @@ t Display in binary.
 
 (gdb) x/2x $rip
 </code></pre></li>
-
-<li><p>数据长度字符</p>
-
+<li>
+<p>数据长度字符</p>
 <pre><code>b A single byte
 h A halfword, which is two bytes in size
 w A word, which is four bytes in size
 g A giant, which is eight bytes in size
-    
+   
 (gdb) x/4xb $rip
 </code></pre></li>
-
-<li><p>指令字符</p>
-
+<li>
+<p>指令字符</p>
 <p>i, short for instruction, to display the memory as disassembled assembly language instructions.</p>
-
 <pre><code>(gdb) x/3i $rip
 </code></pre></li>
-
-<li><p>其它格式化字符</p>
-
+<li>
+<p>其它格式化字符</p>
 <p>The c format letter can be used to automatically look up a byte on the ASCII table.</p>
-
-<p>The s format letter will display an entire string of character data.</p></li>
+<p>The s format letter will display an entire string of character data.</p>
+</li>
 </ol>
 
 </main>
@@ -159,7 +146,7 @@ hljs.initHighlightingOnLoad();
 </script>
   
   <hr/>
-  &copy; <a href="mailto:sakeven.jiang@gmail.com">Sakven Jiang</a> 2017-2019 | <a href="https://github.com/sakeven">GitHub</a>
+  © <a href="mailto:sakeven.jiang@gmail.com">Sakven Jiang</a> 2017-2019 | <a href="https://github.com/sakeven">GitHub</a>
   
   </footer>
   </body>

@@ -1,256 +1,252 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Sakeven&#39;s Blog</title>
-    <link>https://sakeven.me/posts/</link>
+    <link>https://chelin.life/posts/</link>
     <description>Recent content in Posts on Sakeven&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 10 May 2018 20:00:00 +0800</lastBuildDate>
-    
-	<atom:link href="https://sakeven.me/posts/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 10 May 2018 20:00:00 +0800</lastBuildDate><atom:link href="https://chelin.life/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>fcntl 锁在 Go 中通过 execve 之后不生效的问题</title>
-      <link>https://sakeven.me/2018/05/10/fcntl-%E9%94%81%E5%9C%A8-go-%E4%B8%AD%E9%80%9A%E8%BF%87-execve-%E4%B9%8B%E5%90%8E%E4%B8%8D%E7%94%9F%E6%95%88%E7%9A%84%E9%97%AE%E9%A2%98/</link>
+      <link>https://chelin.life/2018/05/10/fcntl-%E9%94%81%E5%9C%A8-go-%E4%B8%AD%E9%80%9A%E8%BF%87-execve-%E4%B9%8B%E5%90%8E%E4%B8%8D%E7%94%9F%E6%95%88%E7%9A%84%E9%97%AE%E9%A2%98/</link>
       <pubDate>Thu, 10 May 2018 20:00:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2018/05/10/fcntl-%E9%94%81%E5%9C%A8-go-%E4%B8%AD%E9%80%9A%E8%BF%87-execve-%E4%B9%8B%E5%90%8E%E4%B8%8D%E7%94%9F%E6%95%88%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
+      <guid>https://chelin.life/2018/05/10/fcntl-%E9%94%81%E5%9C%A8-go-%E4%B8%AD%E9%80%9A%E8%BF%87-execve-%E4%B9%8B%E5%90%8E%E4%B8%8D%E7%94%9F%E6%95%88%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
       <description>背景 man 2 fcntl Record locks are not inherited by a child created via fork(2), but are preserved across an execve(2). 看到 fcntl 的介绍，我们想当然地认为 fcntl 的记录锁在 execve 之后都是能够保留的。 在我们使用 Go 来实现的时候，很快就</description>
     </item>
     
     <item>
       <title>/proc/locks</title>
-      <link>https://sakeven.me/2018/04/21/proc/locks/</link>
+      <link>https://chelin.life/2018/04/21/proc/locks/</link>
       <pubDate>Sat, 21 Apr 2018 20:00:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2018/04/21/proc/locks/</guid>
+      <guid>https://chelin.life/2018/04/21/proc/locks/</guid>
       <description>/proc 是由 Linux 内核提供的伪文件系统。 其中 /proc/locks 则是保存当前由内核锁定的文件的相关信息。 详解 $ cat /proc/locks 1: POSIX ADVISORY READ 4255 08:01:395841 128 128 2: POSIX ADVISORY READ 4255 08:01:395663 1073741826 1073742335 3: OFDLCK ADVISORY WRITE 4254 08:01:395845 0 0 4: POSIX ADVISORY</description>
     </item>
     
     <item>
       <title>x86 32 位系统下的分页</title>
-      <link>https://sakeven.me/2018/03/25/x86-32-%E4%BD%8D%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84%E5%88%86%E9%A1%B5/</link>
+      <link>https://chelin.life/2018/03/25/x86-32-%E4%BD%8D%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84%E5%88%86%E9%A1%B5/</link>
       <pubDate>Sun, 25 Mar 2018 15:00:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2018/03/25/x86-32-%E4%BD%8D%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84%E5%88%86%E9%A1%B5/</guid>
+      <guid>https://chelin.life/2018/03/25/x86-32-%E4%BD%8D%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84%E5%88%86%E9%A1%B5/</guid>
       <description>分页是操作系统内存管理的重要方式。 在操作系统启动过程中，首先需要从实模式（real mode）进入到保护模式（protect mode）。这时使</description>
     </item>
     
     <item>
       <title>操作系统如何启动</title>
-      <link>https://sakeven.me/2018/03/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8/</link>
+      <link>https://chelin.life/2018/03/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8/</link>
       <pubDate>Sat, 17 Mar 2018 21:00:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2018/03/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8/</guid>
+      <guid>https://chelin.life/2018/03/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8/</guid>
       <description>最近在看 6.828 这门课，学习了下 boot/boot.S 的逻辑。这里只设计从实模式切换到保护模式，16 位模式切换到 32 位模式。 源码阅读 #include &amp;lt;inc/mmu.h&amp;gt; # Start the CPU: switch to 32-bit protected mode, jump into C. # The BIOS loads</description>
     </item>
     
     <item>
       <title>多架构 Docker 镜像</title>
-      <link>https://sakeven.me/2017/11/13/%E5%A4%9A%E6%9E%B6%E6%9E%84-docker-%E9%95%9C%E5%83%8F/</link>
+      <link>https://chelin.life/2017/11/13/%E5%A4%9A%E6%9E%B6%E6%9E%84-docker-%E9%95%9C%E5%83%8F/</link>
       <pubDate>Mon, 13 Nov 2017 01:06:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2017/11/13/%E5%A4%9A%E6%9E%B6%E6%9E%84-docker-%E9%95%9C%E5%83%8F/</guid>
+      <guid>https://chelin.life/2017/11/13/%E5%A4%9A%E6%9E%B6%E6%9E%84-docker-%E9%95%9C%E5%83%8F/</guid>
       <description>目前，docker 有两“多”经常会被看到。 一是多阶段构建（multi-stage build），这个功能是在今年年初提议，5 月份正式在 docker 17.05.0-ce 中发</description>
     </item>
     
     <item>
       <title>Etcd 与 Raft</title>
-      <link>https://sakeven.me/2017/10/21/etcd-%E4%B8%8E-raft/</link>
+      <link>https://chelin.life/2017/10/21/etcd-%E4%B8%8E-raft/</link>
       <pubDate>Sat, 21 Oct 2017 12:00:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2017/10/21/etcd-%E4%B8%8E-raft/</guid>
+      <guid>https://chelin.life/2017/10/21/etcd-%E4%B8%8E-raft/</guid>
       <description>Etcd Etcd 是一个分布式可靠的键值存储，用于分布式系统最关心的数据，主要关注于： 简单：定义良好的、面向用户的 API （gRPC） 安全：可选的客户端证书认证</description>
     </item>
     
     <item>
       <title>Flannel 源码分析</title>
-      <link>https://sakeven.me/2017/10/15/flannel-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</link>
+      <link>https://chelin.life/2017/10/15/flannel-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</link>
       <pubDate>Sun, 15 Oct 2017 20:00:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2017/10/15/flannel-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</guid>
+      <guid>https://chelin.life/2017/10/15/flannel-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</guid>
       <description>Flannel 是 CoreOS 公司针对 docker 和 kubernetes 设计的一个网络工具。本篇主要针对 flannel 源码分析。 以下都基于 v0.9.0 版本的 flannel。 目录结构 Documentation 中是 flannel 相关的文档。 backend 则是 flannel 后端网</description>
     </item>
     
     <item>
       <title>Flannel 网络实践</title>
-      <link>https://sakeven.me/2017/09/24/flannel-%E7%BD%91%E7%BB%9C%E5%AE%9E%E8%B7%B5/</link>
+      <link>https://chelin.life/2017/09/24/flannel-%E7%BD%91%E7%BB%9C%E5%AE%9E%E8%B7%B5/</link>
       <pubDate>Sun, 24 Sep 2017 17:00:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2017/09/24/flannel-%E7%BD%91%E7%BB%9C%E5%AE%9E%E8%B7%B5/</guid>
+      <guid>https://chelin.life/2017/09/24/flannel-%E7%BD%91%E7%BB%9C%E5%AE%9E%E8%B7%B5/</guid>
       <description>Flannel 是 coreos 公司针对 docker 和 kubernetes 设计的一个网络工具。本篇主要介绍 docker 环境下如何使用 flannel。 以下都基于 v0.9.0 版本的 flannel。 编译 flannel 没有提供二进制包</description>
     </item>
     
     <item>
       <title>RESTful API 设计</title>
-      <link>https://sakeven.me/2017/08/27/restful-api-%E8%AE%BE%E8%AE%A1/</link>
+      <link>https://chelin.life/2017/08/27/restful-api-%E8%AE%BE%E8%AE%A1/</link>
       <pubDate>Sun, 27 Aug 2017 22:42:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2017/08/27/restful-api-%E8%AE%BE%E8%AE%A1/</guid>
+      <guid>https://chelin.life/2017/08/27/restful-api-%E8%AE%BE%E8%AE%A1/</guid>
       <description>之前有过多次面试别人的经历，大多简历上会写上使用 RESTful API 进行设计或者对其熟悉。然而问下来，却一知半解。 如果有读者不了解 RESTful API，可以先看看这篇。</description>
     </item>
     
     <item>
       <title>创建一个 Hugo 网站</title>
-      <link>https://sakeven.me/2017/08/27/%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA-hugo-%E7%BD%91%E7%AB%99/</link>
+      <link>https://chelin.life/2017/08/27/%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA-hugo-%E7%BD%91%E7%AB%99/</link>
       <pubDate>Sun, 27 Aug 2017 14:58:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2017/08/27/%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA-hugo-%E7%BD%91%E7%AB%99/</guid>
+      <guid>https://chelin.life/2017/08/27/%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA-hugo-%E7%BD%91%E7%AB%99/</guid>
       <description>最近觉得把工作、学习、生活中的一些事情记录下来比较好，于是昨天花了一个下午搭个人博客。 用的 Hugo，这篇记录下过程。 安装 官方教程提供的是 brew install</description>
     </item>
     
     <item>
       <title>Kubernetes 调度器</title>
-      <link>https://sakeven.me/2017/08/02/kubernetes-%E8%B0%83%E5%BA%A6%E5%99%A8/</link>
+      <link>https://chelin.life/2017/08/02/kubernetes-%E8%B0%83%E5%BA%A6%E5%99%A8/</link>
       <pubDate>Wed, 02 Aug 2017 18:10:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2017/08/02/kubernetes-%E8%B0%83%E5%BA%A6%E5%99%A8/</guid>
+      <guid>https://chelin.life/2017/08/02/kubernetes-%E8%B0%83%E5%BA%A6%E5%99%A8/</guid>
       <description>目标 公平：如何保证每个节点都能被分配资源 资源高效利用：集群所有资源最大化使用 效率：调度的性能要好，能够尽快地对大批量的 Pod 完成调度工作 灵活：允</description>
     </item>
     
     <item>
       <title>Kubernetes QoS</title>
-      <link>https://sakeven.me/2017/07/30/kubernetes-qos/</link>
+      <link>https://chelin.life/2017/07/30/kubernetes-qos/</link>
       <pubDate>Sun, 30 Jul 2017 18:10:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2017/07/30/kubernetes-qos/</guid>
+      <guid>https://chelin.life/2017/07/30/kubernetes-qos/</guid>
       <description>Pod 的 QoS 分为三个级别：Guaranteed、Burstable、BestEffort。 其等级划分与 Pod 的资源（CPU、内存）要求有关： BestEffort 当 Pod 中的</description>
     </item>
     
     <item>
       <title>The Art of Exploitation</title>
-      <link>https://sakeven.me/2016/05/10/the-art-of-exploitation/</link>
+      <link>https://chelin.life/2016/05/10/the-art-of-exploitation/</link>
       <pubDate>Tue, 10 May 2016 22:37:04 +0800</pubDate>
       
-      <guid>https://sakeven.me/2016/05/10/the-art-of-exploitation/</guid>
+      <guid>https://chelin.life/2016/05/10/the-art-of-exploitation/</guid>
       <description>1. 栈保护 在函数内有这样一段汇编： 0x000000000040055d &amp;lt;+0&amp;gt;: push rbp 0x000000000040055e &amp;lt;+1&amp;gt;: mov rbp,rsp 0x0000000000400561 &amp;lt;+4&amp;gt;: sub rsp,0x50 . . . 0x0000000000400575 &amp;lt;+24&amp;gt;: mov rax,QWORD PTR fs:0x28 0x000000000040057e &amp;lt;+33&amp;gt;: mov QWORD PTR [rbp-0x8],rax . . . 0x000000000040058f &amp;lt;+50&amp;gt;: mov rax,QWORD PTR [rbp-0x8] 0x0000000000400593 &amp;lt;+54&amp;gt;: xor rax,QWORD PTR fs:0x28 0x000000000040059c &amp;lt;+63&amp;gt;: je 0x4005a3 &amp;lt;test_function+70&amp;gt; 0x000000000040059e &amp;lt;+65&amp;gt;: call 0x400440 &amp;lt;__stack_chk_fail@plt&amp;gt; 0x00000000004005a3 &amp;lt;+70&amp;gt;:</description>
     </item>
     
     <item>
       <title>GDB</title>
-      <link>https://sakeven.me/2016/05/09/gdb/</link>
+      <link>https://chelin.life/2016/05/09/gdb/</link>
       <pubDate>Mon, 09 May 2016 15:18:01 +0800</pubDate>
       
-      <guid>https://sakeven.me/2016/05/09/gdb/</guid>
+      <guid>https://chelin.life/2016/05/09/gdb/</guid>
       <description>设置 intel 格式汇编 在 ~/.gdbinit中： set disassembly intel 查看寄存器 (gdb) i r rax 0x4005a5 4195749 rbx 0x0 0 rcx 0x0 0 rdx 0x7fffffffe628 140737488348712 rsi 0x7fffffffe618 140737488348696 rdi 0x1 1 rbp 0x7fffffffe530 0x7fffffffe530 rsp 0x7fffffffe530 0x7fffffffe530 r8 0x7ffff7dd4e80 140737351863936 r9 0x7ffff7dea560 140737351951712 r10 0x7fffffffe3c0 140737488348096 r11 0x7ffff7a36dd0 140737348070864 r12 0x400470 4195440</description>
     </item>
     
     <item>
       <title>Qemu 安装</title>
-      <link>https://sakeven.me/2016/04/29/qemu-%E5%AE%89%E8%A3%85/</link>
+      <link>https://chelin.life/2016/04/29/qemu-%E5%AE%89%E8%A3%85/</link>
       <pubDate>Fri, 29 Apr 2016 15:08:36 +0800</pubDate>
       
-      <guid>https://sakeven.me/2016/04/29/qemu-%E5%AE%89%E8%A3%85/</guid>
+      <guid>https://chelin.life/2016/04/29/qemu-%E5%AE%89%E8%A3%85/</guid>
       <description>qemu 在 ubuntu 14.04 下安装 qemu 的 README.md 写的安装方式过于简略。实际上 qemu 的编译安装比较麻烦，需要下载一些依赖。 以下是安装依赖，并配置编译安装 qemu 到 /usr/local/bin wget http://wiki.qemu-project.org/download/qemu-2.6.0-rc3.tar.bz2 tar jxvf qemu-2.6.0-rc3.tar.bz2 cd qemu-2.6.0-rc3/ sudo</description>
     </item>
     
     <item>
       <title>ShadowSocks 分析</title>
-      <link>https://sakeven.me/2016/04/28/shadowsocks-%E5%88%86%E6%9E%90/</link>
+      <link>https://chelin.life/2016/04/28/shadowsocks-%E5%88%86%E6%9E%90/</link>
       <pubDate>Thu, 28 Apr 2016 21:32:52 +0800</pubDate>
       
-      <guid>https://sakeven.me/2016/04/28/shadowsocks-%E5%88%86%E6%9E%90/</guid>
+      <guid>https://chelin.life/2016/04/28/shadowsocks-%E5%88%86%E6%9E%90/</guid>
       <description>Socks5 协议 Socks5 是一种代理协议，常见的还有 http/https、socks4 代理。支持 TCP/UDP。 基于 TCP 的 socks5 1. 客户端向代理发送请求进行协商认证：</description>
     </item>
     
     <item>
       <title>CFS Scheduler [译]</title>
-      <link>https://sakeven.me/2015/10/29/cfs-scheduler-%E8%AF%91/</link>
+      <link>https://chelin.life/2015/10/29/cfs-scheduler-%E8%AF%91/</link>
       <pubDate>Thu, 29 Oct 2015 19:00:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2015/10/29/cfs-scheduler-%E8%AF%91/</guid>
+      <guid>https://chelin.life/2015/10/29/cfs-scheduler-%E8%AF%91/</guid>
       <description>原文：CFS Scheduler 1. 概览 CFS 意为 “完全公平调度器”，是一种新的“桌面”进程调度器，由 Ingo Molnar 实现，在 linux 2.6.23 中并入内核。 它是对之前的 vanilla 调度器的分时调度策略</description>
     </item>
     
     <item>
       <title>Sched Nice Design[译]</title>
-      <link>https://sakeven.me/2015/10/29/sched-nice-design%E8%AF%91/</link>
+      <link>https://chelin.life/2015/10/29/sched-nice-design%E8%AF%91/</link>
       <pubDate>Thu, 29 Oct 2015 19:00:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2015/10/29/sched-nice-design%E8%AF%91/</guid>
+      <guid>https://chelin.life/2015/10/29/sched-nice-design%E8%AF%91/</guid>
       <description>原文： Sched Nice Design 这份文档解释了在新的 Linux 调度器中更新和改善的优先级实现思想。 优先级曾经在 Linux 上一直非常薄弱，人们一直地纠缠我们，让我们实现优先级 +19 的</description>
     </item>
     
     <item>
       <title>Linux 命令行</title>
-      <link>https://sakeven.me/2015/08/28/linux-%E5%91%BD%E4%BB%A4%E8%A1%8C/</link>
+      <link>https://chelin.life/2015/08/28/linux-%E5%91%BD%E4%BB%A4%E8%A1%8C/</link>
       <pubDate>Fri, 28 Aug 2015 19:00:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2015/08/28/linux-%E5%91%BD%E4%BB%A4%E8%A1%8C/</guid>
+      <guid>https://chelin.life/2015/08/28/linux-%E5%91%BD%E4%BB%A4%E8%A1%8C/</guid>
       <description>echo： 输出一段字符串 与通配符使用可以输出当前目录下的制定文件 find： 查找文件，基本格式 find [目录] [选项] [操作]，如 find . -name &#39;*.go&#39;</description>
     </item>
     
     <item>
       <title>File Stat</title>
-      <link>https://sakeven.me/2015/06/25/file-stat/</link>
+      <link>https://chelin.life/2015/06/25/file-stat/</link>
       <pubDate>Thu, 25 Jun 2015 19:00:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2015/06/25/file-stat/</guid>
-      <description>查看文件信息 #include &amp;lt;sys/stat.h&amp;gt; int fstat(int filedes, struct stat *buf)); int lstat(const char *pathname, struct stat *buf); int stat(const char *pathname, struct stat *buf); st_mode，文件模式字。 文件类型（S_IFMT）： 普通文件 S_ISREG(m) 目录文件 S_ISDIR(m) 块特殊文件</description>
+      <guid>https://chelin.life/2015/06/25/file-stat/</guid>
+      <description>查看文件信息 #include &amp;lt;sys/stat.h&amp;gt;int fstat(int filedes, struct stat *buf)); int lstat(const char *pathname, struct stat *buf); int stat(const char *pathname, struct stat *buf); st_mode，文件模式字。 文件类型（S_IFMT）： 普通文件 S_ISREG(m) 目录文件 S_ISDIR(m) 块特殊文件 S_ISBLK(m)</description>
     </item>
     
     <item>
       <title>从 Hello World 说起</title>
-      <link>https://sakeven.me/2014/11/30/%E4%BB%8E-hello-world-%E8%AF%B4%E8%B5%B7/</link>
+      <link>https://chelin.life/2014/11/30/%E4%BB%8E-hello-world-%E8%AF%B4%E8%B5%B7/</link>
       <pubDate>Sun, 30 Nov 2014 23:50:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2014/11/30/%E4%BB%8E-hello-world-%E8%AF%B4%E8%B5%B7/</guid>
-      <description>#include &amp;lt;stdio.h&amp;gt; static __attribute__((constructor)) void before() { printf(&amp;quot;Hello&amp;quot;); } static __attribute__((destructor)) void after() { printf(&amp;quot; World!\n&amp;quot;); } int main(int args, char ** argv) { return 0; } 主函数没有任何函数调用，但是输出了 &amp;ldquo;Hello World!&amp;rdquo; 。Why? Answer: 最近去看了下 printf 函数的定义，在 macOS 10.10 中是</description>
+      <guid>https://chelin.life/2014/11/30/%E4%BB%8E-hello-world-%E8%AF%B4%E8%B5%B7/</guid>
+      <description>#include &amp;lt;stdio.h&amp;gt; static __attribute__((constructor)) void before() { printf(&amp;#34;Hello&amp;#34;); } static __attribute__((destructor)) void after() { printf(&amp;#34; World!\n&amp;#34;); } int main(int args, char ** argv) { return 0; } 主函数没有任何函数调用，但是输出了 &amp;ldquo;Hello World!&amp;rdquo; 。Why? Answer: 最近去看了下 printf 函数的定义，在 macOS 10.10 &amp;lt;stdio.h&amp;gt; 中</description>
     </item>
     
     <item>
       <title>函数指针</title>
-      <link>https://sakeven.me/2014/11/08/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/</link>
+      <link>https://chelin.life/2014/11/08/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/</link>
       <pubDate>Sat, 08 Nov 2014 21:00:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2014/11/08/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/</guid>
+      <guid>https://chelin.life/2014/11/08/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/</guid>
       <description>定义 函数指针是指向函数的指针。 函数指针的声明方法为： 返回值类型 ( * 指针变量名) ([形参列表]); 如： int (*proc)(int); // 声明函数指针 proc 使用 #include &amp;lt;stdio.h&amp;gt; int add(int, int); // 函数</description>
     </item>
     
     <item>
       <title>图论之搜索</title>
-      <link>https://sakeven.me/2014/11/07/%E5%9B%BE%E8%AE%BA%E4%B9%8B%E6%90%9C%E7%B4%A2/</link>
+      <link>https://chelin.life/2014/11/07/%E5%9B%BE%E8%AE%BA%E4%B9%8B%E6%90%9C%E7%B4%A2/</link>
       <pubDate>Fri, 07 Nov 2014 19:01:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2014/11/07/%E5%9B%BE%E8%AE%BA%E4%B9%8B%E6%90%9C%E7%B4%A2/</guid>
+      <guid>https://chelin.life/2014/11/07/%E5%9B%BE%E8%AE%BA%E4%B9%8B%E6%90%9C%E7%B4%A2/</guid>
       <description>搜索在图论中有着广泛的应用。许多图的问题需要遍历整个图，才能获得最优解。 深度优先搜索和广度优先搜索是图论中最常用的两种搜索技巧。 深度优先搜索</description>
     </item>
     
     <item>
       <title>图论基础概念</title>
-      <link>https://sakeven.me/2014/11/07/%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</link>
+      <link>https://chelin.life/2014/11/07/%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</link>
       <pubDate>Fri, 07 Nov 2014 19:00:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2014/11/07/%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</guid>
+      <guid>https://chelin.life/2014/11/07/%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</guid>
       <description>1.1 什么是图 我们首先需要知道什么是图，才能开始讨论图的性质和算法。这里说的图是一幅像梵高画的《星空》那样的图画么？还是百度地图呢？都不是，那它</description>
     </item>
     
     <item>
       <title>Go 风格指南</title>
-      <link>https://sakeven.me/2014/10/19/go-%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97/</link>
+      <link>https://chelin.life/2014/10/19/go-%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97/</link>
       <pubDate>Sun, 19 Oct 2014 19:00:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2014/10/19/go-%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97/</guid>
+      <guid>https://chelin.life/2014/10/19/go-%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97/</guid>
       <description>本篇讲的是 Go 代码风格，翻译自 CodeReviewComments。 版权 如何在程序中使用 GNU 许可证 无论使用哪种许可证，使用时需要在每个程序的源文</description>
     </item>
     
     <item>
       <title>位运算</title>
-      <link>https://sakeven.me/2014/04/06/%E4%BD%8D%E8%BF%90%E7%AE%97/</link>
+      <link>https://chelin.life/2014/04/06/%E4%BD%8D%E8%BF%90%E7%AE%97/</link>
       <pubDate>Sun, 06 Apr 2014 19:17:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2014/04/06/%E4%BD%8D%E8%BF%90%E7%AE%97/</guid>
+      <guid>https://chelin.life/2014/04/06/%E4%BD%8D%E8%BF%90%E7%AE%97/</guid>
       <description>大小写互相转换 如果仔细观察 ASCII 码表的话，就可以发现大小写字母的二进制表示中第 5 位相差一个 1 。于是大小写转换可以写成如下： void ch(char *c) { *c = (*c) ^ (1&amp;lt;&amp;lt;5); } 计</description>
     </item>
     
     <item>
       <title>素数</title>
-      <link>https://sakeven.me/2013/10/24/%E7%B4%A0%E6%95%B0/</link>
+      <link>https://chelin.life/2013/10/24/%E7%B4%A0%E6%95%B0/</link>
       <pubDate>Thu, 24 Oct 2013 19:00:00 +0800</pubDate>
       
-      <guid>https://sakeven.me/2013/10/24/%E7%B4%A0%E6%95%B0/</guid>
+      <guid>https://chelin.life/2013/10/24/%E7%B4%A0%E6%95%B0/</guid>
       <description>〇. 素数的性质 素数只能被 1 和它本身整除。 一. 素数的普通算法 最朴素的素数测试，试除法，依次检验 \( 1-\sqrt n \) 能否整除 n bool is_prime(int n) { if(n % 2== 0 &amp;amp;&amp;amp; n != 2) return false; for(int</description>
     </item>
     
