@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>compiler on Sakeven&#39;s Blog</title>
-    <link>https://chelin.life/tags/compiler/</link>
+    <link>https://sakeven.github.io/tags/compiler/</link>
     <description>Recent content in compiler on Sakeven&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 30 Nov 2014 23:50:00 +0800</lastBuildDate><atom:link href="https://chelin.life/tags/compiler/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 30 Nov 2014 23:50:00 +0800</lastBuildDate><atom:link href="https://sakeven.github.io/tags/compiler/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>从 Hello World 说起</title>
-      <link>https://chelin.life/2014/11/30/%E4%BB%8E-hello-world-%E8%AF%B4%E8%B5%B7/</link>
+      <link>https://sakeven.github.io/2014/11/30/%E4%BB%8E-hello-world-%E8%AF%B4%E8%B5%B7/</link>
       <pubDate>Sun, 30 Nov 2014 23:50:00 +0800</pubDate>
       
-      <guid>https://chelin.life/2014/11/30/%E4%BB%8E-hello-world-%E8%AF%B4%E8%B5%B7/</guid>
+      <guid>https://sakeven.github.io/2014/11/30/%E4%BB%8E-hello-world-%E8%AF%B4%E8%B5%B7/</guid>
       <description>#include &amp;lt;stdio.h&amp;gt; static __attribute__((constructor)) void before() { printf(&amp;#34;Hello&amp;#34;); } static __attribute__((destructor)) void after() { printf(&amp;#34; World!\n&amp;#34;); } int main(int args, char ** argv) { return 0; } 主函数没有任何函数调用，但是输出了 &amp;ldquo;Hello World!&amp;rdquo; 。Why? Answer: 最近去看了下 printf 函数的定义，在 macOS 10.10 &amp;lt;stdio.h&amp;gt; 中</description>
     </item>
     

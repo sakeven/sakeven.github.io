@@ -2,35 +2,35 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>linux on Sakeven&#39;s Blog</title>
-    <link>https://chelin.life/tags/linux/</link>
+    <link>https://sakeven.github.io/tags/linux/</link>
     <description>Recent content in linux on Sakeven&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 10 May 2018 20:00:00 +0800</lastBuildDate><atom:link href="https://chelin.life/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 10 May 2018 20:00:00 +0800</lastBuildDate><atom:link href="https://sakeven.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>fcntl 锁在 Go 中通过 execve 之后不生效的问题</title>
-      <link>https://chelin.life/2018/05/10/fcntl-%E9%94%81%E5%9C%A8-go-%E4%B8%AD%E9%80%9A%E8%BF%87-execve-%E4%B9%8B%E5%90%8E%E4%B8%8D%E7%94%9F%E6%95%88%E7%9A%84%E9%97%AE%E9%A2%98/</link>
+      <link>https://sakeven.github.io/2018/05/10/fcntl-%E9%94%81%E5%9C%A8-go-%E4%B8%AD%E9%80%9A%E8%BF%87-execve-%E4%B9%8B%E5%90%8E%E4%B8%8D%E7%94%9F%E6%95%88%E7%9A%84%E9%97%AE%E9%A2%98/</link>
       <pubDate>Thu, 10 May 2018 20:00:00 +0800</pubDate>
       
-      <guid>https://chelin.life/2018/05/10/fcntl-%E9%94%81%E5%9C%A8-go-%E4%B8%AD%E9%80%9A%E8%BF%87-execve-%E4%B9%8B%E5%90%8E%E4%B8%8D%E7%94%9F%E6%95%88%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
+      <guid>https://sakeven.github.io/2018/05/10/fcntl-%E9%94%81%E5%9C%A8-go-%E4%B8%AD%E9%80%9A%E8%BF%87-execve-%E4%B9%8B%E5%90%8E%E4%B8%8D%E7%94%9F%E6%95%88%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
       <description>背景 man 2 fcntl Record locks are not inherited by a child created via fork(2), but are preserved across an execve(2). 看到 fcntl 的介绍，我们想当然地认为 fcntl 的记录锁在 execve 之后都是能够保留的。 在我们使用 Go 来实现的时候，很快就</description>
     </item>
     
     <item>
       <title>/proc/locks</title>
-      <link>https://chelin.life/2018/04/21/proc/locks/</link>
+      <link>https://sakeven.github.io/2018/04/21/proc/locks/</link>
       <pubDate>Sat, 21 Apr 2018 20:00:00 +0800</pubDate>
       
-      <guid>https://chelin.life/2018/04/21/proc/locks/</guid>
+      <guid>https://sakeven.github.io/2018/04/21/proc/locks/</guid>
       <description>/proc 是由 Linux 内核提供的伪文件系统。 其中 /proc/locks 则是保存当前由内核锁定的文件的相关信息。 详解 $ cat /proc/locks 1: POSIX ADVISORY READ 4255 08:01:395841 128 128 2: POSIX ADVISORY READ 4255 08:01:395663 1073741826 1073742335 3: OFDLCK ADVISORY WRITE 4254 08:01:395845 0 0 4: POSIX ADVISORY</description>
     </item>
     
     <item>
       <title>Linux 命令行</title>
-      <link>https://chelin.life/2015/08/28/linux-%E5%91%BD%E4%BB%A4%E8%A1%8C/</link>
+      <link>https://sakeven.github.io/2015/08/28/linux-%E5%91%BD%E4%BB%A4%E8%A1%8C/</link>
       <pubDate>Fri, 28 Aug 2015 19:00:00 +0800</pubDate>
       
-      <guid>https://chelin.life/2015/08/28/linux-%E5%91%BD%E4%BB%A4%E8%A1%8C/</guid>
+      <guid>https://sakeven.github.io/2015/08/28/linux-%E5%91%BD%E4%BB%A4%E8%A1%8C/</guid>
       <description>echo： 输出一段字符串 与通配符使用可以输出当前目录下的制定文件 find： 查找文件，基本格式 find [目录] [选项] [操作]，如 find . -name &#39;*.go&#39;</description>
     </item>
     

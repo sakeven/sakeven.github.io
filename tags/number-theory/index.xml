@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>number theory on Sakeven&#39;s Blog</title>
-    <link>https://chelin.life/tags/number-theory/</link>
+    <link>https://sakeven.github.io/tags/number-theory/</link>
     <description>Recent content in number theory on Sakeven&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 24 Oct 2013 19:00:00 +0800</lastBuildDate><atom:link href="https://chelin.life/tags/number-theory/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 24 Oct 2013 19:00:00 +0800</lastBuildDate><atom:link href="https://sakeven.github.io/tags/number-theory/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>素数</title>
-      <link>https://chelin.life/2013/10/24/%E7%B4%A0%E6%95%B0/</link>
+      <link>https://sakeven.github.io/2013/10/24/%E7%B4%A0%E6%95%B0/</link>
       <pubDate>Thu, 24 Oct 2013 19:00:00 +0800</pubDate>
       
-      <guid>https://chelin.life/2013/10/24/%E7%B4%A0%E6%95%B0/</guid>
+      <guid>https://sakeven.github.io/2013/10/24/%E7%B4%A0%E6%95%B0/</guid>
       <description>〇. 素数的性质 素数只能被 1 和它本身整除。 一. 素数的普通算法 最朴素的素数测试，试除法，依次检验 \( 1-\sqrt n \) 能否整除 n bool is_prime(int n) { if(n % 2== 0 &amp;amp;&amp;amp; n != 2) return false; for(int</description>
     </item>
     

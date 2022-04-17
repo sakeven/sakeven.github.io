@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Distribution System on Sakeven&#39;s Blog</title>
-    <link>https://chelin.life/categories/distribution-system/</link>
+    <link>https://sakeven.github.io/categories/distribution-system/</link>
     <description>Recent content in Distribution System on Sakeven&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 21 Oct 2017 12:00:00 +0800</lastBuildDate><atom:link href="https://chelin.life/categories/distribution-system/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 21 Oct 2017 12:00:00 +0800</lastBuildDate><atom:link href="https://sakeven.github.io/categories/distribution-system/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Etcd 与 Raft</title>
-      <link>https://chelin.life/2017/10/21/etcd-%E4%B8%8E-raft/</link>
+      <link>https://sakeven.github.io/2017/10/21/etcd-%E4%B8%8E-raft/</link>
       <pubDate>Sat, 21 Oct 2017 12:00:00 +0800</pubDate>
       
-      <guid>https://chelin.life/2017/10/21/etcd-%E4%B8%8E-raft/</guid>
+      <guid>https://sakeven.github.io/2017/10/21/etcd-%E4%B8%8E-raft/</guid>
       <description>Etcd Etcd 是一个分布式可靠的键值存储，用于分布式系统最关心的数据，主要关注于： 简单：定义良好的、面向用户的 API （gRPC） 安全：可选的客户端证书认证</description>
     </item>
     

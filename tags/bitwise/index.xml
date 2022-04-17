@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>bitwise on Sakeven&#39;s Blog</title>
-    <link>https://chelin.life/tags/bitwise/</link>
+    <link>https://sakeven.github.io/tags/bitwise/</link>
     <description>Recent content in bitwise on Sakeven&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 06 Apr 2014 19:17:00 +0800</lastBuildDate><atom:link href="https://chelin.life/tags/bitwise/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 06 Apr 2014 19:17:00 +0800</lastBuildDate><atom:link href="https://sakeven.github.io/tags/bitwise/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>位运算</title>
-      <link>https://chelin.life/2014/04/06/%E4%BD%8D%E8%BF%90%E7%AE%97/</link>
+      <link>https://sakeven.github.io/2014/04/06/%E4%BD%8D%E8%BF%90%E7%AE%97/</link>
       <pubDate>Sun, 06 Apr 2014 19:17:00 +0800</pubDate>
       
-      <guid>https://chelin.life/2014/04/06/%E4%BD%8D%E8%BF%90%E7%AE%97/</guid>
+      <guid>https://sakeven.github.io/2014/04/06/%E4%BD%8D%E8%BF%90%E7%AE%97/</guid>
       <description>大小写互相转换 如果仔细观察 ASCII 码表的话，就可以发现大小写字母的二进制表示中第 5 位相差一个 1 。于是大小写转换可以写成如下： void ch(char *c) { *c = (*c) ^ (1&amp;lt;&amp;lt;5); } 计</description>
     </item>
     

@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Orchestration on Sakeven&#39;s Blog</title>
-    <link>https://chelin.life/categories/orchestration/</link>
+    <link>https://sakeven.github.io/categories/orchestration/</link>
     <description>Recent content in Orchestration on Sakeven&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 02 Aug 2017 18:10:00 +0800</lastBuildDate><atom:link href="https://chelin.life/categories/orchestration/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 02 Aug 2017 18:10:00 +0800</lastBuildDate><atom:link href="https://sakeven.github.io/categories/orchestration/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kubernetes 调度器</title>
-      <link>https://chelin.life/2017/08/02/kubernetes-%E8%B0%83%E5%BA%A6%E5%99%A8/</link>
+      <link>https://sakeven.github.io/2017/08/02/kubernetes-%E8%B0%83%E5%BA%A6%E5%99%A8/</link>
       <pubDate>Wed, 02 Aug 2017 18:10:00 +0800</pubDate>
       
-      <guid>https://chelin.life/2017/08/02/kubernetes-%E8%B0%83%E5%BA%A6%E5%99%A8/</guid>
+      <guid>https://sakeven.github.io/2017/08/02/kubernetes-%E8%B0%83%E5%BA%A6%E5%99%A8/</guid>
       <description>目标 公平：如何保证每个节点都能被分配资源 资源高效利用：集群所有资源最大化使用 效率：调度的性能要好，能够尽快地对大批量的 Pod 完成调度工作 灵活：允</description>
     </item>
     
     <item>
       <title>Kubernetes QoS</title>
-      <link>https://chelin.life/2017/07/30/kubernetes-qos/</link>
+      <link>https://sakeven.github.io/2017/07/30/kubernetes-qos/</link>
       <pubDate>Sun, 30 Jul 2017 18:10:00 +0800</pubDate>
       
-      <guid>https://chelin.life/2017/07/30/kubernetes-qos/</guid>
+      <guid>https://sakeven.github.io/2017/07/30/kubernetes-qos/</guid>
       <description>Pod 的 QoS 分为三个级别：Guaranteed、Burstable、BestEffort。 其等级划分与 Pod 的资源（CPU、内存）要求有关： BestEffort 当 Pod 中的</description>
     </item>
     

@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>/proc on Sakeven&#39;s Blog</title>
-    <link>https://chelin.life/tags/proc/</link>
+    <link>https://sakeven.github.io/tags/proc/</link>
     <description>Recent content in /proc on Sakeven&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 21 Apr 2018 20:00:00 +0800</lastBuildDate><atom:link href="https://chelin.life/tags/proc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 21 Apr 2018 20:00:00 +0800</lastBuildDate><atom:link href="https://sakeven.github.io/tags/proc/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
