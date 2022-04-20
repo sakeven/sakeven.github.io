@@ -9,10 +9,10 @@
     <lastBuildDate>Thu, 28 Apr 2016 21:32:52 +0800</lastBuildDate><atom:link href="https://sakeven.github.io/tags/tcp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ShadowSocks 分析</title>
-      <link>https://sakeven.github.io/2016/04/28/shadowsocks-%E5%88%86%E6%9E%90/</link>
+      <link>https://sakeven.github.io/posts/2016-04-28-shadowsocks_analysis/</link>
       <pubDate>Thu, 28 Apr 2016 21:32:52 +0800</pubDate>
       
-      <guid>https://sakeven.github.io/2016/04/28/shadowsocks-%E5%88%86%E6%9E%90/</guid>
+      <guid>https://sakeven.github.io/posts/2016-04-28-shadowsocks_analysis/</guid>
       <description>Socks5 协议 Socks5 是一种代理协议，常见的还有 http/https、socks4 代理。支持 TCP/UDP。 基于 TCP 的 socks5 1. 客户端向代理发送请求进行协商认证：</description>
     </item>
     

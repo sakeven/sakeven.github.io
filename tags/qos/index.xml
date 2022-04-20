@@ -9,10 +9,10 @@
     <lastBuildDate>Sun, 30 Jul 2017 18:10:00 +0800</lastBuildDate><atom:link href="https://sakeven.github.io/tags/qos/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kubernetes QoS</title>
-      <link>https://sakeven.github.io/2017/07/30/kubernetes-qos/</link>
+      <link>https://sakeven.github.io/posts/2017-07-30-k8s-qos/</link>
       <pubDate>Sun, 30 Jul 2017 18:10:00 +0800</pubDate>
       
-      <guid>https://sakeven.github.io/2017/07/30/kubernetes-qos/</guid>
+      <guid>https://sakeven.github.io/posts/2017-07-30-k8s-qos/</guid>
       <description>Pod 的 QoS 分为三个级别：Guaranteed、Burstable、BestEffort。 其等级划分与 Pod 的资源（CPU、内存）要求有关： BestEffort 当 Pod 中的</description>
     </item>
     

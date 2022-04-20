@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GDB | Sakeven&#39;s Blog</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+  <h1>
+    <span class="title">GDB</span>
+  </h1>
+   
+  
+  
+  <h2 class="date">2016/05/09</h2>
+  
+  
+
+  <p class="terms">
+      Categories: 
+    <a href="/categories/linux">Linux</a>     Tags: 
+    <a href="/tags/debug">debug</a>   
+  </p>
+</div>
+
+<main>
+  <h2 id="设置-intel-格式汇编">设置 intel 格式汇编</h2>
+<p>在 <code>~/.gdbinit</code>中：</p>
+<pre><code>set disassembly intel 
+</code></pre><h2 id="查看寄存器">查看寄存器</h2>
+<pre><code>(gdb) i r
+rax            0x4005a5	4195749
+rbx            0x0	0
+rcx            0x0	0
+rdx            0x7fffffffe628	140737488348712
+rsi            0x7fffffffe618	140737488348696
+rdi            0x1	1
+rbp            0x7fffffffe530	0x7fffffffe530
+rsp            0x7fffffffe530	0x7fffffffe530
+r8             0x7ffff7dd4e80	140737351863936
+r9             0x7ffff7dea560	140737351951712
+r10            0x7fffffffe3c0	140737488348096
+r11            0x7ffff7a36dd0	140737348070864
+r12            0x400470	4195440
+r13            0x7fffffffe610	140737488348688
+r14            0x0	0
+r15            0x0	0
+rip            0x4005a9	0x4005a9 &lt;main+4&gt;
+eflags         0x246	[ PF ZF IF ]
+cs             0x33	51
+ss             0x2b	43
+ds             0x0	0
+es             0x0	0
+fs             0x0	0
+gs             0x0	0
+(gdb) i r rip
+rip            0x4005a9	0x4005a9 &lt;main+4&gt;
+</code></pre><h2 id="查看内存">查看内存</h2>
+<ol>
+<li>
+<p>command <code>x</code>, short for examine.</p>
+</li>
+<li>
+<p>格式化字符</p>
+<pre><code>o Display in octal.
+x Display in hexadecimal.
+u Display in unsigned, standard base-10 decimal.
+d Display in decimal
+t Display in binary.
+
+(gdb) x/2x $rip
+</code></pre></li>
+<li>
+<p>数据长度字符</p>
+<pre><code>b A single byte
+h A halfword, which is two bytes in size
+w A word, which is four bytes in size
+g A giant, which is eight bytes in size
+   
+(gdb) x/4xb $rip
+</code></pre></li>
+<li>
+<p>指令字符</p>
+<p>i, short for instruction, to display the memory as disassembled assembly language instructions.</p>
+<pre><code>(gdb) x/3i $rip
+</code></pre></li>
+<li>
+<p>其它格式化字符</p>
+<p>The c format letter can be used to automatically look up a byte on the ASCII table.</p>
+<p>The s format letter will display an entire string of character data.</p>
+</li>
+</ol>
+
+</main>
+
+  <footer>
+  <script>
+(function() {
+    var i, text, code, codes = document.getElementsByTagName('code');
+    for (i = 0; i < codes.length;) {
+      code = codes[i];
+      if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\$[^$]/.test(text) && /[^$]\$$/.test(text)) {
+          text = text.replace(/^\$/, '\\(').replace(/\$$/, '\\)');
+          code.textContent = text;
+        }
+        if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+            /^\$(.|\s)+\$$/.test(text) ||
+            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+          code.outerHTML = code.innerHTML;  
+          continue;
+        }
+      }
+      i++;
+    }
+  })();  
+</script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/go.min.js"></script>
+<script>
+hljs.initHighlightingOnLoad();
+</script>
+  
+  <hr/>
+  © <a href="mailto:sakeven.jiang@gmail.com">Sakven Jiang</a> 2017-2022 | <a href="https://github.com/sakeven">GitHub</a>
+  
+  </footer>
+  </body>
+</html>
+

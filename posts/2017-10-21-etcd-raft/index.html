@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Etcd 与 Raft | Sakeven&#39;s Blog</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+  <h1>
+    <span class="title">Etcd 与 Raft</span>
+  </h1>
+   
+  
+  
+  <h2 class="date">2017/10/21</h2>
+  
+  
+
+  <p class="terms">
+      Categories: 
+    <a href="/categories/distribution-system">Distribution System</a> 
+    <a href="/categories/consensus">Consensus</a>     Tags: 
+    <a href="/tags/etcd">etcd</a> 
+    <a href="/tags/raft">raft</a>   
+  </p>
+</div>
+
+<main>
+  <h1 id="etcd">Etcd</h1>
+<p>Etcd 是一个分布式可靠的键值存储，用于分布式系统最关心的数据，主要关注于：</p>
+<ol>
+<li>简单：定义良好的、面向用户的 API （gRPC）</li>
+<li>安全：可选的客户端证书认证的自动化 TLS</li>
+<li>快速：基准测试达到 10000 次每秒写入</li>
+<li>可靠：使用 Raft 充分实现的分布式</li>
+</ol>
+<p>场景：</p>
+<ol>
+<li>服务发现（主要是服务注册）、负载均衡</li>
+<li>消息发布与订阅，即共享配置，比如 flannel 的网络配置。</li>
+<li>发布式锁，（主从集群的实现，比如 kube-scheduler）</li>
+</ol>
+<h1 id="raft-协议">Raft 协议</h1>
+<p>主要包括以下 3 个方面：</p>
+<ol>
+<li>Leader 选举</li>
+<li>日志复制</li>
+<li>配置变更</li>
+</ol>
+<h2 id="leader-选举">Leader 选举</h2>
+<p>每个机器都拥有以下三种身份之一：</p>
+<ol>
+<li>Leader 领导</li>
+<li>Candidate 候选人</li>
+<li>Follower 跟随者</li>
+</ol>
+<p>要求：</p>
+<ol>
+<li>候选者拥有超过半数赞成票，即为 leader。</li>
+<li>每个选民都只投给第一个合法候选者，候选者只投给自己。</li>
+<li>对于选民来说，候选者的日志至少要与自己一样新，并且候选者的任期要比自己高，它才是合法的。</li>
+<li>如果选票被多个候选者瓜分，那么随机等待选举超时时间，然后开始下一轮选举，避免选票瓜分。</li>
+</ol>
+<p>另外：当 leader 收到任期更高的请求时，它会降级为 follower，并且更新自己的任期。</p>
+<h2 id="日志复制">日志复制</h2>
+<p>要求：</p>
+<ol>
+<li>日志只能从 leader 流向 follower，follower 收到 client 请求会重定向到 leader 上。</li>
+<li>leader 对自己的日志是不会删除或者覆盖的。</li>
+</ol>
+<p>步骤：</p>
+<ol>
+<li>leader 先将日志记录到自己，然后要求所有 follower 记录。</li>
+<li>只要超过半数的 follower 响应，表示自己已经记录该日志，那么日志实际上在集群中已经被提交，leader 这时才会将日志应用（apply）到自身的状态机。</li>
+<li>一旦日志提交，那么 leader 就会同时要求 follower 应用该日志，并且并行地返回给客户端结果。</li>
+</ol>
+<p>如何提交之前任期的日志？</p>
+<p><img src="/img/raft/commit_earlier_term_entry.png" alt="commit entry from earlier term"></p>
+<p>如图，当任期 4 时， leader S1 选出，它无法直接应用自己拥有的之前任期的日志（就是旧日志2），因为它无法断定该日志是否已经在绝大多数机器上。这时它也无法立即分发该日志到集群（如，复制日志2 到 S3），因为这条日志是旧，在分发后即使绝大多数机器拥有该日志，还有可能某台机器 S5 的日志比它新，在 S1 crash 后，S5 能在任期 5 根据之前的选举规则 3 仍然能够胜出。</p>
+<p>所以在任期 4，S1 必须通过提交当前任期的日志（日志4），来间接的提交旧日志。当 S1 复制日志 2、4 到 S3 时，我们可以看到 S1、S2、S3 都有了日志 2，但只有 S1 和 S3 拥有本任期内的日志 4，所以日志 4 没有被提交，日志 2 也就不会被应用到状态机中。这时候 S1 crash，S5 仍可以胜出（由 S2 S4 S5 的选票），即使日志 2 已经在绝大多数机器上，但是没关系，它没有被应用到状态机上，所以客户端观察不到日志 2 的结果。</p>
+<p><strong>因此称日志已经被提交，针对的是当前任期产生的日志已经复制到大多数机器上。</strong></p>
+<h2 id="配置变更">配置变更</h2>
+<p>配置变更指的是集群成员的配置变更，比如有新的机器加入，有旧的机器退出。</p>
+<p>配置变更必须要有恰当的策略，防止出现两个以上的 leader。（这里说的是，两个不同配置迁移时，有可能出现两个在不同配置下选出的 leader,如下图）。
+<img src="/img/raft/two_disjoint_majorities.png" alt="two disjoint majorities"></p>
+<p>假设 Old 集群目前的配置为 C_old，要变更配置为 C_new 成为 New 集群。</p>
+<p>要求：</p>
+<ol>
+<li>在配置 C_old 变更到配置 C_new 的过程中引入配置 C_old_new。配置也是一条日志。</li>
+<li>拥有配置 C_old_new 的 leader，提交某条日志时，必须被 Old 的绝大多数机器复制并且被 New 的绝大多数复制。</li>
+<li>同 2 类似的，一个拥有配置 C_old_new 的候选者，必须被 Old 的绝大多数机器同意并且被 New 的绝大多数同意。</li>
+</ol>
+<p>步骤：</p>
+<ol>
+<li>leader 收到变更请求后，它自身首先会拥有配置 C_old_new， 接着提交日志 C_old_new 时会根据要求 2 来进行。</li>
+<li>如果 leader 在步骤 1 crash，那么新的 leader，要么是 C_old 配置，要么是 C_old_new 配置的，而且只会选出一个 leader，这是由要求 3 约束着的。</li>
+<li>当日志 C_old_new 被提交时，说明 Old 的绝大多数，和 New 的绝大多数都在使用配置  C_old_new。那么此时机器在 Old 下无法不考虑 C_new 而单独做决定 。在 Old 集群中，首先，只拥有 C_old 配置的机器，肯定不能得到 Old 集群拥有 C_old_new 配置的机器的同意，因为 C_old 的日志更旧；其次，由于 C_old_new 的机器占绝大多数，所以 C_old 的机器不可能选举成功；因此只能 C_old_new 的机器参与选举，并能成功，C_old_new 又受要求 2、3 约束。所以此时仍然只会有一个 leader。</li>
+<li>在 C_old_new 被提交后，leader （肯定拥有 C_old_new 配置） 会提交 C_new 配置。提交过程中 leader crash，此时仍要只会选出一个 leader，要么是 C_new，要么 C_old_new，与过程 2 类似。</li>
+<li>最后 C_new 应用到绝大多数机器上，C_new 配置生效。不属于 New 集群的机器（包括 leader）会马上退出。</li>
+</ol>
+<p><img src="/img/raft/membership_change.png" alt="membership change"></p>
+
+</main>
+
+  <footer>
+  <script>
+(function() {
+    var i, text, code, codes = document.getElementsByTagName('code');
+    for (i = 0; i < codes.length;) {
+      code = codes[i];
+      if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\$[^$]/.test(text) && /[^$]\$$/.test(text)) {
+          text = text.replace(/^\$/, '\\(').replace(/\$$/, '\\)');
+          code.textContent = text;
+        }
+        if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+            /^\$(.|\s)+\$$/.test(text) ||
+            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+          code.outerHTML = code.innerHTML;  
+          continue;
+        }
+      }
+      i++;
+    }
+  })();  
+</script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/go.min.js"></script>
+<script>
+hljs.initHighlightingOnLoad();
+</script>
+  
+  <hr/>
+  © <a href="mailto:sakeven.jiang@gmail.com">Sakven Jiang</a> 2017-2022 | <a href="https://github.com/sakeven">GitHub</a>
+  
+  </footer>
+  </body>
+</html>
+

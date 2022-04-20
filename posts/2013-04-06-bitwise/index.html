@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>位运算 | Sakeven&#39;s Blog</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+  <h1>
+    <span class="title">位运算</span>
+  </h1>
+   
+  
+  
+  <h2 class="date">2014/04/06</h2>
+  
+  
+
+  <p class="terms">
+      Categories: 
+    <a href="/categories/algorithm">Algorithm</a>     Tags: 
+    <a href="/tags/bitwise">bitwise</a> 
+    <a href="/tags/c">c</a>   
+  </p>
+</div>
+
+<main>
+  <h2 id="大小写互相转换">大小写互相转换</h2>
+<p>如果仔细观察 ASCII 码表的话，就可以发现大小写字母的二进制表示中第 5 位相差一个 1 。于是大小写转换可以写成如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ch</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>c) {
+    <span style="color:#f92672">*</span>c <span style="color:#f92672">=</span> (<span style="color:#f92672">*</span>c) <span style="color:#f92672">^</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672">&lt;&lt;</span><span style="color:#ae81ff">5</span>);
+} 
+</code></pre></div><h2 id="计算二进制-x-中-1-的个数">计算二进制 x 中 1 的个数</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">one_count</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> x) {
+    x <span style="color:#f92672">=</span> (x<span style="color:#f92672">&amp;</span><span style="color:#ae81ff">0x55555555UL</span>) <span style="color:#f92672">+</span> ((x<span style="color:#f92672">&gt;&gt;</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">&amp;</span><span style="color:#ae81ff">0x55555555UL</span>);
+    x <span style="color:#f92672">=</span> (x<span style="color:#f92672">&amp;</span><span style="color:#ae81ff">0x33333333UL</span>) <span style="color:#f92672">+</span> ((x<span style="color:#f92672">&gt;&gt;</span><span style="color:#ae81ff">2</span>)<span style="color:#f92672">&amp;</span><span style="color:#ae81ff">0x33333333UL</span>);
+    x <span style="color:#f92672">=</span> (x<span style="color:#f92672">&amp;</span><span style="color:#ae81ff">0x0f0f0f0fUL</span>) <span style="color:#f92672">+</span> ((x<span style="color:#f92672">&gt;&gt;</span><span style="color:#ae81ff">4</span>)<span style="color:#f92672">&amp;</span><span style="color:#ae81ff">0x0f0f0f0fUL</span>);
+    x <span style="color:#f92672">=</span> (x<span style="color:#f92672">&amp;</span><span style="color:#ae81ff">0x00ff00ffUL</span>) <span style="color:#f92672">+</span> ((x<span style="color:#f92672">&gt;&gt;</span><span style="color:#ae81ff">8</span>)<span style="color:#f92672">&amp;</span><span style="color:#ae81ff">0x00ff00ffUL</span>);
+    x <span style="color:#f92672">=</span> (x<span style="color:#f92672">&amp;</span><span style="color:#ae81ff">0x0000ffffUL</span>) <span style="color:#f92672">+</span> ((x<span style="color:#f92672">&gt;&gt;</span><span style="color:#ae81ff">16</span>)<span style="color:#f92672">&amp;</span><span style="color:#ae81ff">0x0000ffffUL</span>);
+
+    <span style="color:#66d9ef">return</span> x;
+}
+</code></pre></div><h2 id="二进制-data-右侧开始第一个-1-的位置">二进制 data 右侧开始第一个 1 的位置</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">bs</span>(<span style="color:#66d9ef">int</span> data) {
+    <span style="color:#66d9ef">int</span> pos <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+
+    <span style="color:#66d9ef">if</span> ((data <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xFFFF</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+        data <span style="color:#f92672">&gt;&gt;=</span> <span style="color:#ae81ff">16</span>;
+        pos <span style="color:#f92672">+=</span> <span style="color:#ae81ff">16</span>;
+    }
+
+    <span style="color:#66d9ef">if</span> ((data <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xFF</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+        data <span style="color:#f92672">&gt;&gt;=</span> <span style="color:#ae81ff">8</span>;
+        pos <span style="color:#f92672">+=</span><span style="color:#ae81ff">8</span>;
+    }
+
+    <span style="color:#66d9ef">if</span> ((data <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xF</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+        data <span style="color:#f92672">&gt;&gt;=</span> <span style="color:#ae81ff">4</span>;
+        pos <span style="color:#f92672">+=</span> <span style="color:#ae81ff">4</span>;
+    }
+
+    <span style="color:#66d9ef">if</span> ((data <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0x3</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+        data <span style="color:#f92672">&gt;&gt;=</span> <span style="color:#ae81ff">2</span>;
+        pos <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span>;
+    }
+
+    <span style="color:#66d9ef">if</span> ((data <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0x1</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+        pos <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+
+    <span style="color:#66d9ef">return</span> pos;
+}
+</code></pre></div><h2 id="奇偶性判断">奇偶性判断</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">x<span style="color:#f92672">&amp;</span><span style="color:#ae81ff">1</span>
+</code></pre></div><p>0 表示偶数，1 表示奇数</p>
+<h2 id="二进制状态压缩">二进制状态压缩</h2>
+<p>常用于 \(n \le 15 \)的物品、位置等的状态枚举</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">
+<span style="color:#75715e">// i 的二进制表示一个状态，为 0 的位置表示不存在，1 表示存在
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">&lt;&lt;</span>(n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);i <span style="color:#f92672">++</span>) {    
+    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;j <span style="color:#f92672">&lt;=</span> n;j <span style="color:#f92672">++</span>)
+        <span style="color:#66d9ef">if</span>(i <span style="color:#f92672">&amp;</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672">&lt;&lt;</span>(j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>))) { <span style="color:#75715e">//如果第 j 个位置为 1
+</span><span style="color:#75715e"></span>            <span style="color:#75715e">// Todo
+</span><span style="color:#75715e"></span>        }
+}
+</code></pre></div>
+</main>
+
+  <footer>
+  <script>
+(function() {
+    var i, text, code, codes = document.getElementsByTagName('code');
+    for (i = 0; i < codes.length;) {
+      code = codes[i];
+      if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\$[^$]/.test(text) && /[^$]\$$/.test(text)) {
+          text = text.replace(/^\$/, '\\(').replace(/\$$/, '\\)');
+          code.textContent = text;
+        }
+        if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+            /^\$(.|\s)+\$$/.test(text) ||
+            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+          code.outerHTML = code.innerHTML;  
+          continue;
+        }
+      }
+      i++;
+    }
+  })();  
+</script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/go.min.js"></script>
+<script>
+hljs.initHighlightingOnLoad();
+</script>
+  
+  <hr/>
+  © <a href="mailto:sakeven.jiang@gmail.com">Sakven Jiang</a> 2017-2022 | <a href="https://github.com/sakeven">GitHub</a>
+  
+  </footer>
+  </body>
+</html>
+

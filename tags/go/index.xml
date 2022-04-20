@@ -9,10 +9,10 @@
     <lastBuildDate>Sun, 19 Oct 2014 19:00:00 +0800</lastBuildDate><atom:link href="https://sakeven.github.io/tags/go/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Go 风格指南</title>
-      <link>https://sakeven.github.io/2014/10/19/go-%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97/</link>
+      <link>https://sakeven.github.io/posts/2014-10-19-go-style-guide/</link>
       <pubDate>Sun, 19 Oct 2014 19:00:00 +0800</pubDate>
       
-      <guid>https://sakeven.github.io/2014/10/19/go-%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97/</guid>
+      <guid>https://sakeven.github.io/posts/2014-10-19-go-style-guide/</guid>
       <description>本篇讲的是 Go 代码风格，翻译自 CodeReviewComments。 版权 如何在程序中使用 GNU 许可证 无论使用哪种许可证，使用时需要在每个程序的源文</description>
     </item>
     

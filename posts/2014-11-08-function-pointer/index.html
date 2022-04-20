@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>函数指针 | Sakeven&#39;s Blog</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+  <h1>
+    <span class="title">函数指针</span>
+  </h1>
+   
+  
+  
+  <h2 class="date">2014/11/08</h2>
+  
+  
+
+  <p class="terms">
+      Categories: 
+    <a href="/categories/program">Program</a>     Tags: 
+    <a href="/tags/c">c</a>   
+  </p>
+</div>
+
+<main>
+  <h2 id="定义">定义</h2>
+<p>函数指针是指向函数的指针。
+函数指针的声明方法为：</p>
+<pre><code class="language-none" data-lang="none">返回值类型 ( * 指针变量名) ([形参列表]);
+</code></pre><p>如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> (<span style="color:#f92672">*</span>proc)(<span style="color:#66d9ef">int</span>); <span style="color:#75715e">// 声明函数指针 proc 
+</span></code></pre></div><h2 id="使用">使用</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">add</span>(<span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">int</span>); <span style="color:#75715e">// 函数 add 声明
+</span><span style="color:#75715e"></span> 
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#66d9ef">const</span> <span style="color:#f92672">*</span>argv[])
+{
+    <span style="color:#66d9ef">int</span> (<span style="color:#f92672">*</span>proc)(<span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">int</span>); <span style="color:#75715e">// 函数指针 proc 声明
+</span><span style="color:#75715e"></span>
+    proc <span style="color:#f92672">=</span> add;   <span style="color:#75715e">// 赋值
+</span><span style="color:#75715e"></span>    
+    proc(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>);    <span style="color:#75715e">// 输出 4
+</span><span style="color:#75715e"></span>    (<span style="color:#f92672">*</span>proc)(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>); <span style="color:#75715e">// 输出 3
+</span><span style="color:#75715e"></span>
+    add(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>);     <span style="color:#75715e">// 输出 5
+</span><span style="color:#75715e"></span>    (<span style="color:#f92672">*</span>add)(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>);  <span style="color:#75715e">// 输出 6
+</span><span style="color:#75715e"></span>
+    proc <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>add;  <span style="color:#75715e">// 赋值 
+</span><span style="color:#75715e"></span>    
+    proc(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">5</span>);    <span style="color:#75715e">// 输出 10
+</span><span style="color:#75715e"></span>    (<span style="color:#f92672">*</span>proc)(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>); <span style="color:#75715e">// 输出 11
+</span><span style="color:#75715e"></span>    
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">add</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b){ <span style="color:#75715e">// 函数 add 定义
+</span><span style="color:#75715e"></span>    printf(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, a <span style="color:#f92672">+</span> b);
+    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">+</span> b;
+} 
+</code></pre></div><h2 id="区别">区别</h2>
+<ol>
+<li>
+<p>与指针函数的区别：函数指针指向函数，而指针函数的返回值是一个指针。</p>
+<p>指针函数声明如下：</p>
+<pre><code class="language-none" data-lang="none"> 返回值类型 * 函数名([形参列表]);
+</code></pre></li>
+<li>
+<p>与函数名的区别：函数名也是一个函数指针，但是函数名是个常量，而函数指针通常是个变量。</p>
+</li>
+</ol>
+<h2 id="作用">作用</h2>
+<h3 id="面向接口编程">面向接口编程：</h3>
+<p>接口通常描述一个对象应该具有什么行为方法，是具有面向对象的特点的，而 C 语言是面向过程的。函数指针很好的解决这个问题。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">#define MAXLEN 4096
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">trim</span>(<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> str, <span style="color:#66d9ef">int</span> (<span style="color:#f92672">*</span>ptr)(<span style="color:#66d9ef">char</span>)) {
+    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">char</span> newstr[MAXLEN];
+
+    <span style="color:#66d9ef">while</span>(str[i]){
+        <span style="color:#66d9ef">if</span> ( ptr(str[i]) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span> ) {
+            newstr[j<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> str[i];
+        }
+        i <span style="color:#f92672">++</span>;
+    }
+    newstr[j] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+
+    printf(<span style="color:#e6db74">&#34;%s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, newstr);
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">deleteSpace</span>(<span style="color:#66d9ef">char</span> c) {
+    <span style="color:#66d9ef">if</span> (c <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39; &#39;</span>) {
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">deleteSharp</span>(<span style="color:#66d9ef">char</span> c) {
+    <span style="color:#66d9ef">if</span> ( c <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;#&#39;</span>) {
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">char</span> str[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello World#Yes ha&#34;</span>;
+
+    trim(str, deleteSharp);
+    trim(str, deleteSpace);
+
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><p>上面程序 trim 函数根据输入的函数指针 ptr，删除特定的字符。函数 trim 并不关心 ptr 的实现，它仅仅关注它的行为，即参数个数为一个，参数类型为 char，并且返回值类型为 int 的一类函数。</p>
+<p>这样一来：</p>
+<ul>
+<li>分层设计，底层开发者不需要关注具体函数的实现，而由上层开发者实现。</li>
+<li>松耦合，降低各层之间的耦合度。</li>
+<li>面向接口开发，只要上层开发者提供函数 ptr 的实现，trim 函数就能正常工作。</li>
+</ul>
+<h3 id="回调函数callback">回调函数（callback）</h3>
+<p>回调函数就是上层开发者对函数指针的实现。Windows 编程中有许多地方用到回调函数。
+如，计时器中使用回调函数通知程序。</p>
+
+</main>
+
+  <footer>
+  <script>
+(function() {
+    var i, text, code, codes = document.getElementsByTagName('code');
+    for (i = 0; i < codes.length;) {
+      code = codes[i];
+      if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\$[^$]/.test(text) && /[^$]\$$/.test(text)) {
+          text = text.replace(/^\$/, '\\(').replace(/\$$/, '\\)');
+          code.textContent = text;
+        }
+        if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+            /^\$(.|\s)+\$$/.test(text) ||
+            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+          code.outerHTML = code.innerHTML;  
+          continue;
+        }
+      }
+      i++;
+    }
+  })();  
+</script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/go.min.js"></script>
+<script>
+hljs.initHighlightingOnLoad();
+</script>
+  
+  <hr/>
+  © <a href="mailto:sakeven.jiang@gmail.com">Sakven Jiang</a> 2017-2022 | <a href="https://github.com/sakeven">GitHub</a>
+  
+  </footer>
+  </body>
+</html>
+

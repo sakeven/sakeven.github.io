@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Go 风格指南 | Sakeven&#39;s Blog</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+  <h1>
+    <span class="title">Go 风格指南</span>
+  </h1>
+   
+  
+  
+  <h2 class="date">2014/10/19</h2>
+  
+  
+
+  <p class="terms">
+      Categories: 
+    <a href="/categories/program">Program</a>     Tags: 
+    <a href="/tags/go">go</a>   
+  </p>
+</div>
+
+<main>
+  <p>本篇讲的是 Go 代码风格，翻译自 <a href="https://github.com/golang/go/wiki/CodeReviewComments">CodeReviewComments</a>。</p>
+<h2 id="版权">版权</h2>
+<ol>
+<li>
+<p>如何在程序中使用 GNU 许可证<br>
+无论使用哪种许可证，使用时需要在每个程序的源文件中添加两个元素：一个版权声明和一个复制许可声明，说明该程序使用 GNU 许可证进行授权。另外在声明版权前应该说明文件的名称以及用途，在复制许可声明之后，最好写上作者的联系信息，使得用户可以联系到你,如果对源文件进行了修改，最好使用简短的信息描述修改的内容。通用的格式如下所示：</p>
+<pre><code class="language-none" data-lang="none">&lt;one line to give the program's name and a brief idea of what it does.&gt;
+Copyright (C) &lt;year&gt;  &lt;name of author&gt;
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see http://www.gnu.org/licenses/.
+</code></pre></li>
+</ol>
+<p>版权声明中请务必使用英文单词 “Copyright” ，且其中的年份是完成发布版本的时间，如若 1998 年完成了发布版本直到 1999 年才发布出去，那么使用 1998 年。需要明确说明使用的是 GNU GPL 的那个版本，是版本 2 还是版本 3。</p>
+<h2 id="注释">注释</h2>
+<ol>
+<li>
+<p>注释并不是必须要求的，但是鉴于项目的可维护性，需要对重要的函数、对象、方法、变量加以说明。</p>
+</li>
+<li>
+<p>注释需要以被注释的对象名开始，并以句号结束。</p>
+</li>
+<li>
+<p>如果对象可数且无明确指定数量的情况下，一律使用单数形式和一般进行时描述。</p>
+</li>
+<li>
+<p>注释应当只使用 &ldquo;//&rdquo; 符号。</p>
+</li>
+<li>
+<p>注释一行应当不超过 80 个字符。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// A Request represents a request to run a command.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Request</span> <span style="color:#66d9ef">struct</span> { <span style="color:#f92672">...</span>
+   
+<span style="color:#75715e">// Encode writes the JSON encoding of req to w.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Encode</span>(<span style="color:#a6e22e">w</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">Writer</span>, <span style="color:#a6e22e">req</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Request</span>) { <span style="color:#f92672">...</span>
+</code></pre></div><p>``</p>
+</li>
+<li>
+<p>当对整个包进行文档注释时，需要有一个 doc.go 文件，用以描述包的功能，包括但不限于以下内容，版权申明，功能描述等。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// Copyright 2009 The Go Authors. All rights reserved.
+</span><span style="color:#75715e">// Use of this source code is governed by a BSD-style
+</span><span style="color:#75715e">// license that can be found in the LICENSE file.
+</span><span style="color:#75715e"></span>       
+<span style="color:#75715e">// Package log implements a simple logging package. It defines a type, Logger,
+</span><span style="color:#75715e">// with methods for formatting output. It also has a predefined &#39;standard&#39;
+</span><span style="color:#75715e">// Logger accessible through helper functions Print[f|ln], Fatal[f|ln], and
+</span><span style="color:#75715e">// Panic[f|ln], which are easier to use than creating a Logger manually.
+</span><span style="color:#75715e">// That logger writes to standard error and prints the date and time
+</span><span style="color:#75715e">// of each logged message.
+</span><span style="color:#75715e">// The Fatal functions call os.Exit(1) after writing the log message.
+</span><span style="color:#75715e">// The Panic functions call panic after writing the log message.
+</span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">log</span>
+</code></pre></div><p>`</p>
+</li>
+</ol>
+<h2 id="包">包</h2>
+<ol>
+<li>
+<p>导入包时，应该按名称或者功能分组，组之间应该空一行。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+   
+<span style="color:#f92672">import</span> (
+    <span style="color:#e6db74">&#34;fmt&#34;</span>
+    <span style="color:#e6db74">&#34;hash/adler32&#34;</span>
+    <span style="color:#e6db74">&#34;os&#34;</span>
+
+    <span style="color:#e6db74">&#34;appengine/user&#34;</span>
+    <span style="color:#e6db74">&#34;appengine/foo&#34;</span>
+
+    <span style="color:#e6db74">&#34;code.google.com/p/x/y&#34;</span>
+    <span style="color:#e6db74">&#34;github.com/foo/bar&#34;</span>
+ )
+</code></pre></div></li>
+<li>
+<p>禁止使用相对路径导入（./subpackage），所有导入路径必须符合 go get 标准。</p>
+</li>
+<li>
+<p>包名应该全部小写。</p>
+</li>
+</ol>
+<h2 id="命名">命名</h2>
+<p>命名一般采用驼峰式命名法。</p>
+<ol>
+<li>
+<p>类型<br>
+可导出类型必须用大写驼峰命名法，不可导出用小写驼峰命名法。</p>
+</li>
+<li>
+<p>变量<br>
+变量名应该尽量短，尤其对在小作用域内（for、while）的本地变量命名时。</p>
+<blockquote>
+<p>Prefer c to lineCount. Prefer i to sliceIndex.</p>
+</blockquote>
+<p>更具描述性的名字应该用来命名常用变量、类型和全局变量。</p>
+</li>
+</ol>
+<h2 id="错误处理">错误处理</h2>
+<ol>
+<li>不要使用 panic。</li>
+<li>必须处理 error。如果一个函数返回 error，必须对它进行检查和进行相应处理，不能使用 _ 接收。</li>
+</ol>
+<h2 id="其他">其他</h2>
+<ol>
+<li>
+<p>传递值<br>
+不要仅仅为了节省几字节而传递指针作为函数参数。如果函数仅仅需要参数的值，那么就不要参数就不应该是指针。当然这不应用于大的结构体，或者一个可能增长的小结构体。</p>
+</li>
+<li>
+<p>接收器命名<br>
+一个方法的接收器名字应该反应接收器本身，通常是由一两个对小写字母组成的接收器类型缩写（如用&quot;c&quot;或者&quot;cl&quot;表示 &ldquo;Client&rdquo; ）。不要使用通用的名字（如 &ldquo;me&rdquo;、&ldquo;this&rdquo;、&ldquo;self&rdquo;）作为接收器名。
+接收器的名字应当统一，不要在一个方法中用 &ldquo;c&rdquo;，另一个方法中用 &ldquo;cl&rdquo;。</p>
+</li>
+<li>
+<p>接收器类型</p>
+<ul>
+<li>如果接收器是 map，func，chan	，不要使用指针。</li>
+<li>如果接收器是一个切片(slice)并且方法不对该切片重建或者重新分配内存，不要使用指针。</li>
+<li>如果一个方法需要修改接收器，那么接收器必须是一个指针。</li>
+<li>如果接收器是一个包含 sync.Mutex 等相似同步域的结构体，接收器必须是一个指针，以防止拷贝。</li>
+<li>如果接收器是一个很大的结构体或者数组，一个指针类型的接收器会更加有效。这个很大可以指的是让人感觉很大。</li>
+<li>当一个方法被调用，接收器是一个值类型时，仅仅生成了原接收器的拷贝，方法内对接收器的任何更改都不会应用于原接收器。如果要让任何更改应用于原接收器，那么接收器必须是一个指针。</li>
+<li>如果接收器是一个 struct，array 或者 slice，并且其任一元素都是一个指针，那么建议使用指针类型接收器，因为这可以让读者更清楚的明白其中的意图。</li>
+<li>如果接收器是一个小的值类型 array 或者 struct，并且没有可修改域和指针，或者这个接受器仅仅是基本如 int、string 的类型，使用值类型接收器会更好。值类型接收器可以有效减少需要回收的垃圾。</li>
+<li>最后，当对使用值类型还是指针类型接收器犹豫不决时，请用指针类型。</li>
+</ul>
+</li>
+</ol>
+
+</main>
+
+  <footer>
+  <script>
+(function() {
+    var i, text, code, codes = document.getElementsByTagName('code');
+    for (i = 0; i < codes.length;) {
+      code = codes[i];
+      if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\$[^$]/.test(text) && /[^$]\$$/.test(text)) {
+          text = text.replace(/^\$/, '\\(').replace(/\$$/, '\\)');
+          code.textContent = text;
+        }
+        if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+            /^\$(.|\s)+\$$/.test(text) ||
+            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+          code.outerHTML = code.innerHTML;  
+          continue;
+        }
+      }
+      i++;
+    }
+  })();  
+</script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/go.min.js"></script>
+<script>
+hljs.initHighlightingOnLoad();
+</script>
+  
+  <hr/>
+  © <a href="mailto:sakeven.jiang@gmail.com">Sakven Jiang</a> 2017-2022 | <a href="https://github.com/sakeven">GitHub</a>
+  
+  </footer>
+  </body>
+</html>
+

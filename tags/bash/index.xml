@@ -9,10 +9,10 @@
     <lastBuildDate>Fri, 28 Aug 2015 19:00:00 +0800</lastBuildDate><atom:link href="https://sakeven.github.io/tags/bash/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Linux 命令行</title>
-      <link>https://sakeven.github.io/2015/08/28/linux-%E5%91%BD%E4%BB%A4%E8%A1%8C/</link>
+      <link>https://sakeven.github.io/posts/2015-08-28-bash/</link>
       <pubDate>Fri, 28 Aug 2015 19:00:00 +0800</pubDate>
       
-      <guid>https://sakeven.github.io/2015/08/28/linux-%E5%91%BD%E4%BB%A4%E8%A1%8C/</guid>
+      <guid>https://sakeven.github.io/posts/2015-08-28-bash/</guid>
       <description>echo： 输出一段字符串 与通配符使用可以输出当前目录下的制定文件 find： 查找文件，基本格式 find [目录] [选项] [操作]，如 find . -name &#39;*.go&#39;</description>
     </item>
     
